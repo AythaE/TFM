@@ -22,3 +22,8 @@ Puede ser interesante empezar por _BIR2014_1_ y _BIR2014_5_ como introducciones 
 Todo el mundo parece usar dicha colección para efectuar sus experimentos. Puede ser interesante si la encuentro, búsqueda preliminar infructuosa.
 
 Conferencias previas: ISSI workshop [“Combining Bibliometrics and Information Retrieval”](http://www.gesis.org/en/events/conferences/issiworkshop2013/)
+
+## 24/02/2018
+Concepto interesante: **Contexto de la cita (citation context)**: buscar definición exacta pero imagino que se referira a l contexto textual que se encuentra en torno a cita en sí.
+
+Parece importante: **Modelo de Marcia Bates**: estrategias para sistemas de búsqueda.

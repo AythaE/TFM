@@ -2,8 +2,22 @@
 
 - [ ] **BIR2014_1**: Meaning of citations, use of words in standard parts. Find interesting distribution of words
 - [ ] **BIR2014_5**: iSearch analysis. Extract connection between citation based and topic relevance rankings checking if this collection is suitable to perform these kind of analysis
-- [ ] **BIR2015_1**: Potentiality of interdisciplinary research between IR and bibliomerics. Ask several research questions summarizing other investions in between of this disciplines.
+- [ ] **BIR2015_1**: Potentiality of interdisciplinary research between IR and bibliomerics. Ask several research questions summarizing other investigations in between of this disciplines.
+- [ ] **BIR2015_4**: bibliometric-enhanced search features based on Marcia Bates model with 2 specific examples.
+- [ ] **BIR2016_5**: Bibliometrics data management and consultation tool. Could generate reports on different levels and could be use to study an author or institution. Different indicators
 - [ ] **BIR2014_2**: use citations a mechanism for systematic IR of scientific literature. Helpful in situations in which one needs a comprehensive overview of a research topic.
+- [ ] **BIR2015_2**: How to handle citations info to improve retrieval effectiveness. Citation context.
 - [ ] **BIR2014_4**: Use citation and co-citation as previous probabilities for relevancy. Measures: citation count, PageRank & co-citation clustering. Very query-dependent, suggestion to improve using this citation info & content features
+- [ ] **BIR2015_4**: experimental comparison of a scholary article recommendation system. Methods usage-based. co-download and citation-based.
+- [ ] **BIR2016_7**: Alternative to the bag of words model (TF*IDF) used to find similar documents to a giving one based on citations. The tf and idf meaures re-defined using citation information.
+- [ ] **BIR2015_5**: Combining bibliographics and IR studying how polyrepresentation could be used to improve interactive search. Alternatives to ranked lists using bibliographics and contextual information. Based in clustering.
 - [ ] **BIR2014_3**: Benefits of polyrepresentation and clustering. IR system which provide a ranked list of documents in the best cluster using the polyrepresentation as basis.
+- [ ] **BIR2016_2**: Method to find in-text Negational citations. Information could be useful as an anti-metric for IR.
+- [ ] **BIR2016_3**: Chunk papers with several authors assigning each chunk to its author using stylometric features. Use full to enhance retrieval by author.
 - [ ] **BIR2014_6**: How to increase number of citations to support claims in Wikipedia using a citation recommending system based in different metrics of journal productivity & popularity. As a conclusion a keyword search engine is not enough for this purpose & other metrics as readers number can improve the system.
+- [ ] **BIR2016_4**: enhance a library by collecting domain-specific reference monograms.
+- [ ] **BIR2015_3**: in-text citations study of relationships between rethorical structure o papers and verbs used in citation context.
+- [ ] **BIR2016_1**: potential relationship between book search needs and bibliometric analysis using an online platform Social Book Search Lab in which data from multiple sources is combined and user discussion are made.
+- [ ] **BIR2016_6**: Tool for detecting automatic generated papers based on distance/similarity measurement.
+- [ ] **BIR2016_8**: Discussion about the need of test collections, challenges for creating an ideal collection and procedures to do it.
+- [ ] **BIR2017_1**: Overview of practical experiences running 3 different recommendation systems with empirical results.
