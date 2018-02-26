@@ -9,15 +9,28 @@
 - [ ] **BIR2015_2**: How to handle citations info to improve retrieval effectiveness. Citation context.
 - [ ] **BIR2014_4**: Use citation and co-citation as previous probabilities for relevancy. Measures: citation count, PageRank & co-citation clustering. Very query-dependent, suggestion to improve using this citation info & content features
 - [ ] **BIR2015_4**: experimental comparison of a scholary article recommendation system. Methods usage-based. co-download and citation-based.
+- [ ] **BIR2017_2**: Scholary recomendation system using title, abstract and references to return bibliometric informed recomendations of journals.
 - [ ] **BIR2016_7**: Alternative to the bag of words model (TF*IDF) used to find similar documents to a giving one based on citations. The tf and idf meaures re-defined using citation information.
 - [ ] **BIR2015_5**: Combining bibliographics and IR studying how polyrepresentation could be used to improve interactive search. Alternatives to ranked lists using bibliographics and contextual information. Based in clustering.
 - [ ] **BIR2014_3**: Benefits of polyrepresentation and clustering. IR system which provide a ranked list of documents in the best cluster using the polyrepresentation as basis.
 - [ ] **BIR2016_2**: Method to find in-text Negational citations. Information could be useful as an anti-metric for IR.
 - [ ] **BIR2016_3**: Chunk papers with several authors assigning each chunk to its author using stylometric features. Use full to enhance retrieval by author.
+- [ ] **BIR2017_3**: Local sensitive hashing using metadata of papers on the 2 main bibliographic databases.
 - [ ] **BIR2014_6**: How to increase number of citations to support claims in Wikipedia using a citation recommending system based in different metrics of journal productivity & popularity. As a conclusion a keyword search engine is not enough for this purpose & other metrics as readers number can improve the system.
 - [ ] **BIR2016_4**: enhance a library by collecting domain-specific reference monograms.
 - [ ] **BIR2015_3**: in-text citations study of relationships between rethorical structure o papers and verbs used in citation context.
 - [ ] **BIR2016_1**: potential relationship between book search needs and bibliometric analysis using an online platform Social Book Search Lab in which data from multiple sources is combined and user discussion are made.
+- [ ] **BIR2017_1**: Overview of practical experiences running 3 different recommendation systems with empirical results.
 - [ ] **BIR2016_6**: Tool for detecting automatic generated papers based on distance/similarity measurement.
 - [ ] **BIR2016_8**: Discussion about the need of test collections, challenges for creating an ideal collection and procedures to do it.
-- [ ] **BIR2017_1**: Overview of practical experiences running 3 different recommendation systems with empirical results.
+
+
+- [ ] **BIR2017_4**: Patterns of search during major science events (Nobel's prizes) using google trends and sciencedirect finding different patterns in academic researchers
+- [ ] **BIR2017_5**: Choice overload in social sciences recomendation system.
+- [ ] **BIR2017_6**: Computation of interdisciplinarity of scholary objects as articles. 3 src: author network, citation network and actual text.
+- [ ] **BIR2017_7**: Detecting machine generated text at sentence level.
+- [ ] **BIR2017_8**: Lucene use in Docear (OS) recommendation system determining that Lucene's relevance score could be use as relevance measure.
+- [ ] **BIR2017_9**: Challenge to use author's writing style as feature to enhance recommendation or retrieval systems.
+- [ ] **BIR2017_10**: bibliographic coupling (directed) graphs based on citations with a nearest neighbour algorithm upon it.
+- [ ] **BIR2017_11**: how to improve scientific recommender systems using bibliometry Measures.
+- [ ] **BIR2017_12**: combination of bibliometric measures with word embeddings.

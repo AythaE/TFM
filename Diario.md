@@ -27,3 +27,9 @@ Conferencias previas: ISSI workshop [“Combining Bibliometrics and Information 
 Concepto interesante: **Contexto de la cita (citation context)**: buscar definición exacta pero imagino que se referira a l contexto textual que se encuentra en torno a cita en sí.
 
 Parece importante: **Modelo de Marcia Bates**: estrategias para sistemas de búsqueda.
+
+## 26/02/2018
+Bases de datos bibliográficas más importantes:
+- [Web of Science (WOS)](http://apps.webofknowledge.com/WOS_GeneralSearch_input.do?product=WOS&search_mode=GeneralSearch&SID=D5Dirpg96ThopOFoBlP&preferencesSaved=), probablemente requiera acceso por vpn.
+- [SCOPUS](https://www.scopus.com/search/form.uri?display=basic) de elsevier
+- [ScienceDirect](https://www.sciencedirect.com/): tambien de elsevier, parece tener API gratuita junto con SCOPUS
