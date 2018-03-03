@@ -32,4 +32,10 @@ Parece importante: **Modelo de Marcia Bates**: estrategias para sistemas de bús
 Bases de datos bibliográficas más importantes:
 - [Web of Science (WOS)](http://apps.webofknowledge.com/WOS_GeneralSearch_input.do?product=WOS&search_mode=GeneralSearch&SID=D5Dirpg96ThopOFoBlP&preferencesSaved=), probablemente requiera acceso por vpn.
 - [SCOPUS](https://www.scopus.com/search/form.uri?display=basic) de elsevier
-- [ScienceDirect](https://www.sciencedirect.com/): tambien de elsevier, parece tener API gratuita junto con SCOPUS
+- [ScienceDirect](https://www.sciencedirect.com/): tambien de elsevier, parece tener API gratuita junto con SCOPUS.
+- [PLOS](https://www.plos.org/): Editorial abierta con múltiple revistas sobre diferentes temáticas, permite la descarga de papers en formato XML. Interesante para el parseo. Contiene metadatos
+
+## 03/03/2018
+los resumenes sobre los papers estarán en el fichero [`doc/PaperSummaries.md`](doc/PaperSummaries.md)
+
+He leido el primero de los papers tardando unos 40 min al buscar información y extraer recursos interesantes. Igual es necesario reducir el número de papers del segundo sprint
