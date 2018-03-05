@@ -1,8 +1,8 @@
 # Lista priorizada de papers
 
 - [x] **BIR2014_1**: Meaning of citations, use of words in standard parts. Find interesting distribution of words
-- [ ] **BIR2014_5**: iSearch analysis. Extract connection between citation based and topic relevance rankings checking if this collection is suitable to perform these kind of analysis
-- [ ] **BIR2015_1**: Potentiality of interdisciplinary research between IR and bibliomerics. Ask several research questions summarizing other investigations in between of this disciplines.
+- [x] **BIR2014_5**: iSearch analysis. Extract connection between citation based and topic relevance rankings checking if this collection is suitable to perform these kind of analysis
+- [x] **BIR2015_1**: Potentiality of interdisciplinary research between IR and bibliomerics. Ask several research questions summarizing other investigations in between of this disciplines.
 - [ ] **BIR2015_4**: bibliometric-enhanced search features based on Marcia Bates model with 2 specific examples.
 - [ ] **BIR2016_5**: Bibliometrics data management and consultation tool. Could generate reports on different levels and could be use to study an author or institution. Different indicators
 - [ ] **BIR2014_2**: use citations a mechanism for systematic IR of scientific literature. Helpful in situations in which one needs a comprehensive overview of a research topic.
