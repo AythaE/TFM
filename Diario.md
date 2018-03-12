@@ -39,3 +39,10 @@ Bases de datos bibliográficas más importantes:
 los resumenes sobre los papers estarán en el fichero [`doc/PaperSummaries.md`](doc/PaperSummaries.md)
 
 He leido el primero de los papers tardando unos 40 min al buscar información y extraer recursos interesantes. Igual es necesario reducir el número de papers del segundo sprint
+
+## 12/03/2018
+- **BIR2014_2**: Interesting concept, but too far away from search box user expect from a IR system. Could be interesting to apply key ideas of citation networks as underlying optimization for a more common IR system
+
+- **BIR2014_4**
+    - Use of citation information as static features for IR.
+    - A lot of base citations from early works in the area

@@ -2,6 +2,8 @@
 - El **Principio de Polirepresentación**, se puede describir como el incremento de la relevancia de un documento si múltiples representaciones apuntan a él.
 - **Lematización**: Transformación de una palabra al "lema" al que pertenece. Usado en RI para reducir la variabilidad de terminos. Por ejemplo los verbos se pasan al lexema, los plurales a singulares y se normaliza el genero de los nombres. Esto se aplica tanto a los documentos para crear el índice como a las consultas del usuario.
 - **Análisis de Co-citación**: Medida de similaridad que establece que 2 documentos serán parecidos si aparecen citados frecuentemente ambos por otros documentos. Es decir que si el documento A y B son citados por el documento C estos pueden ser similares y cuantos más documentos C los citen más lo serán.
+- **Language Model Document Priors**: Wessel Kraaij, Thijs Westerveld, and Djoerd Hiemstra. The importance of prior probabilities for entry page search. In Proceedings of the 25th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval, SIGIR ’02, pages 27–34, New York, NY, USA, 2002. ACM.
+- **Binned stimation**: estimación de valores mediante cross validation y media de los resultados
 
 
 # Bases de datos bibliográficas más importantes:
@@ -15,3 +17,8 @@
 
 # Herramientas interesantes:
 - [Part-Of-Speech Tagger (POS Tagger)](https://nlp.stanford.edu/software/tagger.shtml): Capaz de "leer" texto asignándole tipo de palabra realizando tokenización y lematización
+- [Indri search engine](http://www.lemurproject.org/indri.php): Indri is a search engine that provides state-of-the-art text search and a rich structured query language for text collections of up to 50 million documents. _Alternativa a lucene_
+- [Lucene]
+- [Solr]: Alto nivel Lucene
+- [elastic search]: framework de búsqueda mas usado
+- [Graclus](http://www.cs.utexas.edu/users/dml/Software/graclus.html): Graph clustering software

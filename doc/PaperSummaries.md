@@ -29,6 +29,44 @@
 - **Result**: Using only internal references and relevant documents retrieve not enough documents to perform an analysis.
 - **Further works**: Expand co-citation analysis using title, authors, journal and publication year along with the cites itself
 
-# BIR2015_1
-### "In Praise of Interdisciplinary Research through Scientometrics"
-#### Guillaume Cabanac
+# BIR2015_4
+### "An Experimental Platform for Scholarly Article Recommendation"
+#### Ian Wesley-Smith, Ralph Dandrea, and Jevin West
+
+- recommendation algorithm to validate **EigenFactor Recommends**.
+- Bibliometry based recomenders:
+    - **PageRank** Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The pagerank citation ranking: Bringing order to the web. 1999
+    - **ArticleRank** Jiang Li and Peter Willett. ArticleRank: a PageRank?based alternative to numbers of citations for analysing citation networks. Aslib Proceedings, 61(6):605–618, November 2009
+    - **AuthorRank** Xiaoming Liu, Johan Bollen, Michael L. Nelson, and Herbert Van de Sompel. Co-authorship networks in the digital library research community. Inf. Process. Manage., 41(6):1462–1480, December 2005
+    - **Y-factor** Johan Bollen, Marko A. Rodriquez, and Herbert Van de Sompel. Journal status. Scientometrics, 69(3):669–687, December 2006
+- eigenvector centrality methods like page rank. Based on Eigenvector centrality for citation network
+
+# BIR2014_2
+### "Systematic retrieval of scientific literature based on citation relations: Introducing the CitNetExplorer tool"
+#### Nees Jan van Eck and Ludo Waltman
+- Network analysis applied to citation networks. UI really similar to gephi
+- Writen in Java
+- Available in <http://www.citnetexplorer.nl/>
+- perform netowork task like community detection
+- Interesting concept, but too far away from search box user expect from a IR system. Could be interesting to apply key ideas of citation netoworks as underlying optimization for a IR system
+
+# BIR2014_4
+### "Language Model Document Priors based on Citation and Co-citation Analysis"
+#### Haozhen Zhao and Xiaohua Hu
+- **first article talking about combination of IR and Bibliometrics**: H. D. White and K. W. McCain. Visualizing a discipline: An author co-citation analysis of information science, 1972-1995. Journal of the American Society for Information Science, 49(4):327–355, 1998.
+
+- **query independent evidences or static features for IR**:Nick Craswell, Stephen Robertson, Hugo Zaragoza, and Michael Taylor. Relevance weighting for query independent evidence. In Proceedings of the 28th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval, SIGIR ’05, pages 416–423, New York, NY, USA, 2005. ACM.
+
+- **Language Model Document Priors**: Wessel Kraaij, Thijs Westerveld, and Djoerd Hiemstra. The importance of prior probabilities for entry page search. In Proceedings of the 25th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval, SIGIR ’02, pages 27–34, New York, NY, USA, 2002. ACM.
+- indri software
+- **best practice for enhance a IR system**: Diana Ransgaard Sørensen, Toine Bogers, and Birger Larsen. An exploration of retrieval-enhancing methods for integrated search in a digital library. In TBAS 2012: ECIR Workshop on Task-based and Aggregated Search, pages 4–8, 2012.
+- query-likelihood language model [4]
+- Using Bayesian rule, P (D|Q) => P (D|Q) ∝ P (Q|D)P(D) where:
+    - Q query
+    - D document
+    - P (D|Q) probability for a user to query for D
+    - P(D) _document prior_
+- Graph clustering software Graclus http://www.cs.utexas.edu/users/dml/Software/graclus.html
+# BIR2016_5
+### "Bibliometrics: a Publication Analysis Tool"
+#### Padrós-Cuxart, Rosa; Riera-Quintero, Clara, March-Mir, Francesc
