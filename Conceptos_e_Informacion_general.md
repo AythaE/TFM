@@ -4,6 +4,8 @@
 - **Análisis de Co-citación**: Medida de similaridad que establece que 2 documentos serán parecidos si aparecen citados frecuentemente ambos por otros documentos. Es decir que si el documento A y B son citados por el documento C estos pueden ser similares y cuantos más documentos C los citen más lo serán.
 - **Language Model Document Priors**: Wessel Kraaij, Thijs Westerveld, and Djoerd Hiemstra. The importance of prior probabilities for entry page search. In Proceedings of the 25th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval, SIGIR ’02, pages 27–34, New York, NY, USA, 2002. ACM.
 - **Binned stimation**: estimación de valores mediante cross validation y media de los resultados
+- **Smoothing for Language models**: Jelinek–Mercer (JM), Dirichlet, two-stage smoothing http://mlwiki.org/index.php/Smoothing_for_Language_Models
+- **Evaluation measures for IR systems**: Mean Average Precision (MAP), Precision at 10 (P@10), nDCG and BPREF https://en.wikipedia.org/wiki/Evaluation_measures_%28information_retrieval%29#Precision
 
 
 # Bases de datos bibliográficas más importantes:
@@ -13,6 +15,7 @@
 - [ScienceDirect](https://www.sciencedirect.com/): tambien de elsevier, parece tener API gratuita junto con SCOPUS.
 - [PLOS](https://www.plos.org/): Editorial abierta con múltiple revistas sobre diferentes temáticas, permite la descarga de papers en formato XML. Interesante para el parseo. Contiene metadatos.
 - [Digital Bibliography & Library Project (DBLP)](https://dblp.org/): Dataset libre de referencias. Interesante para analisis de co-citación
+- [MR.Dlib](http://mr-dlib.org/): Machine-readable Digital Library, Opensource recommender system => RaaS
 
 
 # Herramientas interesantes:

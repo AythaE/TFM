@@ -46,3 +46,6 @@ He leido el primero de los papers tardando unos 40 min al buscar información y 
 - **BIR2014_4**
     - Use of citation information as static features for IR.
     - A lot of base citations from early works in the area
+    - Buena fuente de informacion sobre metodologia de evaluacion de un sistema IR
+    - Solo han evaluado utilizando información bibliografica, sin incluir contenido. Conjunto de test disperso.
+    - Buscar mas trabajos de sus autores Haozhen Zhao and Xiaohua Hu

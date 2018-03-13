@@ -67,6 +67,34 @@
     - P (D|Q) probability for a user to query for D
     - P(D) _document prior_
 - Graph clustering software Graclus http://www.cs.utexas.edu/users/dml/Software/graclus.html
+- Jelinek–Mercer (JM)
+- Dirichlet
+- two-stage smoothing
+- Measurements for retrieval effectiveness: Mean Average Precision (MAP), Precision at 10 (P@10), nDCG [8] and BPREF[2].
+
+
+# BIR2017_11
+### "Extending a Research-Paper Recommendation System with Scientometric Measures"
+#### Sophie Siebert, Siddarth Dinesh, and Stefan Feyer
+- **List of bibliometric measures**:Wildgaard, L. ; Schneider, J. W. ; Larsen, B. : A review of the characteristics of 108 author-level bibliometric indicators. In: Scientometrics 101 (2014), Nr. 1, S. 125–158
+- **Scientometrics concept**: Hood, W. ; Wilson, C. : The literature of bibliometrics, scientometrics, and informetrics. In: Scientometrics 52 (2001), Nr. 2, S. 291–314
+- **Altmetrics**: Alternative metrics(social media, blogs etc): Brigham, T. J.: An introduction to altmetrics. In: Medical reference services quarterly 33 (2014), Nr. 4, S. 438–447
+- **Rank papers**:Behnert, C. ; Lewandowski, D. : Ranking search results in library information systems-considering ranking approaches adapted from web search engines. In: The Journal of Academic Librarianship 41 (2015), Nr. 6, S. 725–735
+    - ’text statistics’
+    - _’popularity’_:
+    - ’freshness’
+    - ’locality and vailability’
+    - ’content properties’
+    - ’user’s background’
+- **Example of a search engine that use citation, h-index and recency**:Bethard, S. ; Jurafsky, D. : Who should I cite: learning literature search models from citation behavior. In: Proceedings of the 19th ACM internationa  conference on Information and knowledge management ACM, 2010, S. 609–618
+- **Correlation between readership and citations**: Thelwall, M. : Why do papers have many Mendeley readers but few Scopus-indexed citations and vice versa? In: Journal of Librarianship and Information Science (2015), S. 0961000615594867
+- **Scientometry measures for ranking**:
+    - Readers count: Turns to be the best
+    - Readership count normalized by the age of the paper _good papers need time to become famous_ = Rc / (now-publishYear +1)
+    - Readership normalized by the number of authors _Paper with many authors are likely to be more famous because they are wider spread_ =  Rc/#authors
+- Best results re-ranking short list of candidates (10) or long (50+)
+
+
 # BIR2016_5
 ### "Bibliometrics: a Publication Analysis Tool"
 #### Padrós-Cuxart, Rosa; Riera-Quintero, Clara, March-Mir, Francesc
