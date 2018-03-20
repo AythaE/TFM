@@ -95,6 +95,25 @@
 - Best results re-ranking short list of candidates (10) or long (50+)
 
 
-# BIR2016_5
-### "Bibliometrics: a Publication Analysis Tool"
-#### Padrós-Cuxart, Rosa; Riera-Quintero, Clara, March-Mir, Francesc
+# BIR2016_7
+### "Bag of Works Retrieval: TF*IDF Weighting of Co-cited Works"
+#### Howard D. White
+- TF: counts of documents co-cited with the seed document in later papers
+- IDF:
+    - DF scores are the total citation counts for documents in the database
+    - I inverse to favor works specifically related with seed instead of general documents used in many places
+- Co-citation not widely used as is citation in IR system. Only CiteSeer use it, neither WoS, Scopus or GS
+- Netflix and Amazon recomender systems use co-purchasing as motor.
+- Related with BIR2014_5
+- looks important author Marcia J. Bates
+- White 2010
+
+# BIR2015_5
+### "Extending search facilities via bibliometric-enhanced stratagems"
+#### Zeljko Carevic and Philipp Mayr
+- Bates, M.J.: The design of browsing and berrypicking techniques for the online search interface. Online Review 13(5), 407–424 (May 1989), http://www.emeraldinsight.com/doi/abs/10.1108/eb024320
+- **Move**: simple search activity like entring a query or selecting a document.
+- **Tactics**: combination of moves like breaking a complex search in multiple sub queries.
+- **Stratagem**: complex moves and/or tactics involves particular id search domain to be productive for user and a way to organize documents in that domain.
+- **Strategy**: Combination of above that satisfies an information need.
+-  _Focus: develop Move, Tactics and Stratagem support to help users in DLs_

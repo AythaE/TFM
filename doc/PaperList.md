@@ -7,12 +7,12 @@
 - [x] **BIR2014_2**: use citations a mechanism for systematic IR of scientific literature. Helpful in situations in which one needs a comprehensive overview of a research topic.
 - [x] **BIR2014_4**: Use citation and co-citation as previous probabilities for relevancy. Measures: citation count, PageRank & co-citation clustering. Very query-dependent, suggestion to improve using this citation info & content features
 - [x] **BIR2017_11**: how to improve scientific recommender systems using bibliometry Measures.
+- [x] **BIR2016_7**: Alternative to the bag of words model (TF*IDF) used to find similar documents to a giving one based on citations. The tf and idf meaures re-defined using citation information.
 - [ ] **BIR2015_2**: How to handle citations info to improve retrieval effectiveness. Citation context.
 - [ ] **BIR2016_5**: Bibliometrics data management and consultation tool. Could generate reports on different levels and could be use to study an author or institution. Different indicators.
-- [ ] **MISSING PAPER BIR2015_4**: experimental comparison of a scholary article recommendation system. Methods usage-based. co-download and citation-based.
 - [ ] **BIR2017_6**: Computation of interdisciplinarity of scholary objects as articles. 3 src: author network, citation network and actual text.
 - [ ] **BIR2017_2**: Scholary recomendation system using title, abstract and references to return bibliometric informed recomendations of journals.
-- [ ] **BIR2016_7**: Alternative to the bag of words model (TF*IDF) used to find similar documents to a giving one based on citations. The tf and idf meaures re-defined using citation information.
+- [ ] **MISSING PAPER BIR2015_4**: experimental comparison of a scholary article recommendation system. Methods usage-based. co-download and citation-based.
 - [ ] **BIR2015_5**: Combining bibliographics and IR studying how polyrepresentation could be used to improve interactive search. Alternatives to ranked lists using bibliographics and contextual information. Based in clustering.
 - [ ] **BIR2014_3**: Benefits of polyrepresentation and clustering. IR system which provide a ranked list of documents in the best cluster using the polyrepresentation as basis.
 - [ ] **BIR2016_2**: Method to find in-text Negational citations. Information could be useful as an anti-metric for IR.
