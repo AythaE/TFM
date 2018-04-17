@@ -112,8 +112,30 @@
 ### "Extending search facilities via bibliometric-enhanced stratagems"
 #### Zeljko Carevic and Philipp Mayr
 - Bates, M.J.: The design of browsing and berrypicking techniques for the online search interface. Online Review 13(5), 407–424 (May 1989), http://www.emeraldinsight.com/doi/abs/10.1108/eb024320
+- Bates, M.J.: Where should the person stop and the information search interface start? Information Processing & Management 26(5), 575–591 (Jan 1990), http://linkinghub.elsevier.com/retrieve/pii/0306457390901039
 - **Move**: simple search activity like entring a query or selecting a document.
 - **Tactics**: combination of moves like breaking a complex search in multiple sub queries.
 - **Stratagem**: complex moves and/or tactics involves particular id search domain to be productive for user and a way to organize documents in that domain.
 - **Strategy**: Combination of above that satisfies an information need.
 -  _Focus: develop Move, Tactics and Stratagem support to help users in DLs_
+
+- **IRM Project**: scholarly Information Retrieval using Scientometrics measurs for re-ranking results. 0Mutschke, P., Mayr, P., Schaer, P., Sure, Y.: Science models as value-added services for scholarly information systems. Scientometrics 89(1), 349–364 (Jun 2011), http://arxiv.org/abs/1105.2441 http://www.springerlink.com/index/10.1007/s11192-011-0430-x
+
+- context-preserving move: Keep context between moves, example faceted broswing, select one search result and combine it with the original search query
+- Context free move: non preserving, like select one author of the search set and looks for all its works.
+- **Journal run**: stratagem based on order paper by date and publication journal. Rearrange the ranking from document based to journal based using a bibliometic measure to sort journals.
+- **bibliographic coupling** 2 papers are related if they have common references. Kessler, M.M.: Bibliographic coupling between scientific papers. American Documentation 14(1), 10–25 (1963), http://dx.doi.org/10.1002/asi.5090140103
+
+
+# BIR2014_3
+### "Exploiting Information Needs and Bibliographics for Polyrepresentative Document Clustering"
+#### Muhammad Kamran Abbasi and Ingo Frommholz
+- **Polyrepresentation**: use of several data representations to integrate context and interpretation of different actors. This representations could come for different actors or from the same actor but with distinct purposes and functionality. Ingwersen, P., Järvelin, K.: The turn: integration of information seeking and retrieval in context. Springer-Verlag New York, Inc., Secaucus, NJ, USA (2005)
+    - bibliographic information i.e. authors, references and the citation context could be exploited as representations.
+
+- bradfordizing: Mayr, P., Mutschke, P.: Bibliometric-enhanced retrieval models for big scholarly information systems. IEEE International Conference on Big Data (2013)
+- Connections between IR, bilbiometric and relevance theory: White, H.: Combining bibliometrics, information retrieval, and relevance theory, Part 2: Some implications for information science. JASIST 58(4) (2007) 583–605
+- suitability of the bibliometirc measures for enhancement of retrieval in scholarly systems is presented and evaluated:
+    - Mayr, P., Mutschke, P.: Bibliometric-enhanced retrieval models for big scholarly information systems. IEEE International Conference on Big Data (2013)
+    - Mutschke, P., Mayr, P., Schaer, P., Sure, Y.: Science models as value-added services for scholarly information systems. Scientometrics 89(1) (June 2011) 349–364
+- Optimum Clustering Framework (OCF) Fuhr, N., Lechtenfeld, M., Stein, B., Gollub, T.: The Optimum Clustering Framework: Implementing the Cluster Hypothesis. Information Retrieval 14 (2011)
