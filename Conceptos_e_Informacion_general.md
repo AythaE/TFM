@@ -8,13 +8,28 @@
 - **Evaluation measures for IR systems**: Mean Average Precision (MAP), Precision at 10 (P@10), nDCG and BPREF https://en.wikipedia.org/wiki/Evaluation_measures_%28information_retrieval%29#Precision
 
 # Medidas bibliométricas
+- **Numero de citas**: Es la más básica, se puede encontrar en GS,Scopues o WoS
 - **Co-citación**: explicado arriba en análisis de cocitación
-- **Índice-h**:
+- **Índice-h**: Diseñado para medir la productividad y el impacto de un _autor_. Número de sus publicaciones h que tienen h o más citas.
 - **Índice-g**:
-- **Factor de impacto**:
+- **Factor de impacto de la revista**: media de citas recibidas por paper de una revista en los previos 2 años
+- **Impacto de citas¡ ponderado por el campo**: ratio de citas relativo a la media mundial de la materia, tipo de publicación y año
 - **Bibliographic coupling**: medida de similaridad entre documentos basada en que 2 documentos serán más parecidos cuantas más referencias compartan.
 - **Bradfordizing**
+- **Altmetrics**: Metrícas relativas al mundo online, veces que un articulo es descargado, compartido o mencionado en redes sociales, blogs o periodicos.
+    - Altmetric donut: una medida creada como conglomerado de diversas altmetric
 
+## Limitaciones bibliometría:
+- No indican directamente calidad, solo de lo que se "habla" mucho
+- Dependientes de disciplina, no se cita igual en medicina que en otros campos
+- Las medidas a nivel de autor dependen de la experiencia de este.
+- Datos incompletos.
+
+## Fuentes interesantes:
+- White Paper Measuring Research Output through Bibliometrics
+https://uwspace.uwaterloo.ca/bitstream/handle/10012/10323/Bibliometrics%20White%20Paper%202016%20Final_March2016.pdf
+- https://library.leeds.ac.uk/info/1406/research_support/17/measuring_research_impact
+- http://www.metrics-toolkit.org
 # Bases de datos bibliográficas más importantes:
 - [Web of Science (WOS)](http://apps.webofknowledge.com/WOS_GeneralSearch_input.do?product=WOS&search_mode=GeneralSearch&SID=D5Dirpg96ThopOFoBlP&preferencesSaved=), probablemente requiera acceso por vpn.
 - Journal Citation Reports (JCR): informe de impacto de multiples revistas cientificas incluyendo su Factor de Impacto. Parte de WOS.
@@ -23,6 +38,7 @@
 - [PLOS](https://www.plos.org/): Editorial abierta con múltiple revistas sobre diferentes temáticas, permite la descarga de papers en formato XML. Interesante para el parseo. Contiene metadatos.
 - [Digital Bibliography & Library Project (DBLP)](https://dblp.org/): Dataset libre de referencias. Interesante para analisis de co-citación
 - [MR.Dlib](http://mr-dlib.org/): Machine-readable Digital Library, Opensource recommender system => RaaS
+- [SciVal] producto de elsevier, plataforma para acceder a datos bibliograficos, parece de pago
 
 
 # Herramientas interesantes:

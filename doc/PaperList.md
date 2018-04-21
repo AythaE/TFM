@@ -9,12 +9,12 @@
 - [x] **BIR2017_11**: how to improve scientific recommender systems using bibliometry Measures.
 - [x] **BIR2016_7**: Alternative to the bag of words model (TF*IDF) used to find similar documents to a giving one based on citations. The tf and idf meaures re-defined using citation information.
 - [x] **BIR2015_5**: Combining bibliographics and IR studying how polyrepresentation could be used to improve interactive search. Alternatives to ranked lists using bibliographics and contextual information. Based in clustering.
+- [x] **BIR2014_3**: Benefits of polyrepresentation and clustering. IR system which provide a ranked list of documents in the best cluster using the polyrepresentation as basis.
 - [ ] **BIR2015_2**: How to handle citations info to improve retrieval effectiveness. Citation context.
 - [ ] **BIR2016_5**: Bibliometrics data management and consultation tool. Could generate reports on different levels and could be use to study an author or institution. Different indicators.
 - [ ] **BIR2017_6**: Computation of interdisciplinarity of scholary objects as articles. 3 src: author network, citation network and actual text.
 - [ ] **BIR2017_2**: Scholary recomendation system using title, abstract and references to return bibliometric informed recomendations of journals.
 - [ ] **MISSING PAPER BIR2015_4**: experimental comparison of a scholary article recommendation system. Methods usage-based. co-download and citation-based.
-- [ ] **BIR2014_3**: Benefits of polyrepresentation and clustering. IR system which provide a ranked list of documents in the best cluster using the polyrepresentation as basis.
 - [ ] **BIR2016_2**: Method to find in-text Negational citations. Information could be useful as an anti-metric for IR.
 - [ ] **BIR2017_12**: combination of bibliometric measures with word embeddings.
 - [ ] **BIR2016_3**: Chunk papers with several authors assigning each chunk to its author using stylometric features. Use full to enhance retrieval by author.
