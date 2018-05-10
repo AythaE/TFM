@@ -4,7 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 
-% \usepackage[style=list, number=none]{glossary} %
+\usepackage[acronym]{glossaries} %
 %\usepackage{titlesec}
 %\usepackage{pailatino}
 
@@ -48,7 +48,7 @@ Telecomunicación\xspace}
 
 
 \hypersetup{
-pdfauthor = {\myName (email (en) ugr (punto) es)},
+pdfauthor = {\myName (aythae (at) ugr (punto) es)},
 pdftitle = {\myTitle},
 pdfsubject = {},
 pdfkeywords = {palabra_clave1, palabra_clave2, palabra_clave3, ...},
@@ -170,14 +170,17 @@ pdfproducer = {pdflatex}
 }
 \makeatother
 
+\makeglossaries
+\input{glosario/entradas_glosario}
+
 \usepackage{pdfpages}
 \begin{document}
 \input{portada/portada}
 \input{prefacios/prefacio}
 \frontmatter
-%\tableofcontents
-%\listoffigures
-%\listoftables
+\tableofcontents
+\listoffigures
+\listoftables
 %
 \mainmatter
 \setlength{\parskip}{5pt}
@@ -201,16 +204,18 @@ pdfproducer = {pdflatex}
 %%\chapter{Conclusiones y Trabajos Futuros}
 %
 %
-%%\nocite{*}
-%\bibliography{bibliografia/bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
-%\bibliographystyle{miunsrturl}
-%
-%\appendix
+%\nocite{*}
+\bibliographystyle{unsrt}
+\bibliography{bibliografia/bibliografia} \addcontentsline{toc}{chapter}{Bibliografía}
+
+\appendix
 %\input{apendices/manual_usuario/manual_usuario}
 %%\input{apendices/paper/paper}
-%\input{glosario/entradas_glosario}
-% \addcontentsline{toc}{chapter}{Glosario}
-% \printglossary
+
+
+
+\printglossary
+\addcontentsline{toc}{chapter}{Glosario}
 \chapter*{}
 \thispagestyle{empty}
 
