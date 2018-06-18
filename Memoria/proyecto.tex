@@ -4,7 +4,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 
-\usepackage[acronym]{glossaries} %
+\usepackage[acronym, numberedsection=autolabel, entrycounter]{glossaries} %
+\usepackage{amsmath} 
 %\usepackage{titlesec}
 %\usepackage{pailatino}
 
@@ -48,11 +49,12 @@ Telecomunicación\xspace}
 
 
 \hypersetup{
-pdfauthor = {\myName (aythae (at) ugr (punto) es)},
+urlcolor=blue,
+pdfauthor = {\myName (aythae (at) correo (punto) ugr (punto) es)},
 pdftitle = {\myTitle},
 pdfsubject = {},
 pdfkeywords = {palabra_clave1, palabra_clave2, palabra_clave3, ...},
-pdfcreator = {LaTeX con el paquete ....},
+pdfcreator = {LaTeX con el paquete pdflatex},
 pdfproducer = {pdflatex}
 }
 
@@ -170,17 +172,18 @@ pdfproducer = {pdflatex}
 }
 \makeatother
 
-\makeglossaries
+\renewcommand*{\glsentrycounterlabel}{}
+\makenoidxglossaries
 \input{glosario/entradas_glosario}
 
 \usepackage{pdfpages}
 \begin{document}
 \input{portada/portada}
-\input{prefacios/prefacio}
+%\input{prefacios/prefacio}
 \frontmatter
 \tableofcontents
 \listoffigures
-\listoftables
+%\listoftables
 %
 \mainmatter
 \setlength{\parskip}{5pt}
@@ -205,7 +208,7 @@ pdfproducer = {pdflatex}
 %
 %
 %\nocite{*}
-\bibliographystyle{unsrt}
+\bibliographystyle{ieeetr}
 \bibliography{bibliografia/bibliografia} \addcontentsline{toc}{chapter}{Bibliografía}
 
 \appendix
@@ -214,8 +217,11 @@ pdfproducer = {pdflatex}
 
 
 
-\printglossary
-\addcontentsline{toc}{chapter}{Glosario}
+\printnoidxglossary[sort=use]
+%\addcontentsline{toc}{chapter}{Glosario}
+
+\printnoidxglossary[type=\acronymtype, title=Lista de Acrónimos]
+%\addcontentsline{toc}{chapter}{Lista de Acrónimos}
 \chapter*{}
 \thispagestyle{empty}
 

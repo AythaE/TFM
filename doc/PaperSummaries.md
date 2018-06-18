@@ -140,4 +140,8 @@
     - Mutschke, P., Mayr, P., Schaer, P., Sure, Y.: Science models as value-added services for scholarly information systems. Scientometrics 89(1) (June 2011) 349–364
 - Optimum Clustering Framework (OCF) Fuhr, N., Lechtenfeld, M., Stein, B., Gollub, T.: The Optimum Clustering Framework: Implementing the Cluster Hypothesis. Information Retrieval 14 (2011)
 - Terrier IR platform [17] & CombSum [18] BM25 weights
-- 
+
+
+# BIR2018_3
+### Testing a Citation and Text-Based Framework for Retrieving Publications for Literature Reviews
+#### M. Janina Sarol, Linxi Liu, and Jodi Schneider

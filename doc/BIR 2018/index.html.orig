@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- CEURVERSION=2015-12-02 -->
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../ceur-ws.css">
+<title>CEUR-WS.org/Vol-XXX - 7th International Workshop on Bibliometric-enhanced Information Retrieval (BIR 2018)</title>
+</head>
+<!--CEURLANG=eng -->
+<body>
+
+
+
+<table style="border: 0; border-spacing: 0; border-collapse: collapse; width: 95%">
+<tbody><tr>
+<td style="text-align: left; vertical-align: middle">
+<a href="http://ceur-ws.org/"><div id="CEURWSLOGO"></div></a>
+</td>
+<td style="text-align: right; vertical-align: middle">
+
+<span class="CEURVOLNR">Vol-XXX</span> <br>
+<span class="CEURURN">urn:nbn:de:0074-XXX-C</span>
+<p class="unobtrusive copyright" style="text-align: justify">Copyright &copy; 
+<span class="CEURPUBYEAR">JJJJ</span> for the individual papers
+by the papers' authors. Copying permitted for private and academic purposes.
+This volume is published and copyrighted by its editors.</p>
+</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<br><br><br>
+
+<h1><a href="https://www.gesis.org/en/services/events/events-archive/conferences/ecir-workshops/ecir-workshop-2018/"><span class="CEURVOLACRONYM">BIR 2018</span></a><br>
+<span class="CEURVOLTITLE">7th International Workshop on Bibliometric-enhanced Information Retrieval</span></h1>
+<br>
+
+<h3>
+<span class="CEURFULLTITLE">Proceedings of the 7th International Workshop on Bibliometric-enhanced Information Retrieval (BIR)</span><br>
+
+co-located with the 40th European Conference on Information Retrieval (<span class="CEURCOLOCATED">ECIR 2018</span>)<br>
+</h3>
+<h3><span class="CEURLOCTIME">Grenoble, France, March 26th, 2018</span>.</h3> 
+<br>
+<b> Edited by </b>
+<p>
+
+</p><h3>
+     <a href="https://philippmayr.github.io/"><span class="CEURVOLEDITOR">Philipp Mayr</span></a> *<br>
+     <a href="http://www.beds.ac.uk/howtoapply/departments/computing/staff/ingo-frommholz"><span class="CEURVOLEDITOR">Ingo Frommholz</span></a> **<br>
+	<a href="https://www.irit.fr/~Guillaume.Cabanac/"><span class="CEURVOLEDITOR">Guillaume Cabanac</span></a> ***<br>
+    
+ 
+</h3>
+
+* <a href="http://www.gesis.org/">GESIS - Leibniz Institute for the Social Sciences</a>, Knowledge Technologies for the Social Sciences, Cologne, Germany<br>
+** <a href="http://www.beds.ac.uk/">University of Bedfordshire</a>, Luton, UK<br>
+*** <a href="http://en.univ-toulouse.fr/">University of Toulouse</a>, France<br>
+
+  <br>
+
+<br><br><br>
+
+
+<div class="CEURTOC">
+<h2> Table of Contents </h2>
+<ul>
+<li id="preface"><a href="editorial.pdf">
+<span class="CEURTITLE">Editorial for the 7th Bibliometric-enhanced Information Retrieval Workshop at ECIR 2018</span></a>
+<span class="CEURPAGES">1-5</span> <br>
+<span class="CEURAUTHOR">Philipp Mayr</span>, <span class="CEURAUTHOR">Ingo Frommholz</span>, <span class="CEURAUTHOR">Guillaume Cabanac</span>
+</li>
+
+
+</ul>
+
+
+<h3><span class="CEURSESSION">Keynote papers</span></h3>
+<ul>
+
+<li id="paper1"><a href="paper1.pdf">
+<span class="CEURTITLE">Trends in Gaming Indicators: On Failed Attempts at Deception and their Computerised Detection</span></a>
+<span class="CEURPAGES">6-15</span> <br>
+<span class="CEURAUTHOR">Cyril Labbé</span>
+</li>
+
+<li id="paper2"><a href="paper2.pdf">
+<span class="CEURTITLE">Integrating and exploiting public metadata sources in a bibliographic information system</span></a>
+<span class="CEURPAGES">16-21</span> <br>
+<span class="CEURAUTHOR">Ralf Schenkel</span>
+</li>
+
+</ul>
+
+<h3><span class="CEURSESSION">Full papers</span></h3>
+
+<ul>
+
+<li id="paper3"><a href="paper3.pdf">
+<span class="CEURTITLE">Testing a Citation and Text-Based Framework for Retrieving Publications for Literature Reviews</span></a>
+<span class="CEURPAGES">22-33</span> <br>
+<span class="CEURAUTHOR">Maria Janina Sarol</span>, <span class="CEURAUTHOR">Linxi Liu</span>, <span class="CEURAUTHOR">Jodi Schneider</span>
+</li>
+
+<li id="paper4"><a href="paper4.pdf">
+<span class="CEURTITLE">BIBLME RecSys: Harnessing Bibliometric Measures for a Scholarly Paper Recommender System</span></a>
+<span class="CEURPAGES">34-45</span> <br>
+<span class="CEURAUTHOR">Anaïs Ollagnier</span>, <span class="CEURAUTHOR">Sebastien Fournier</span>, <span class="CEURAUTHOR">Patrice Bellot</span>
+</li>
+
+<li id="paper5"><a href="paper5.pdf">
+<span class="CEURTITLE">Local Word Embeddings for Query Expansion based on Co-Authorship and Citations</span></a>
+<span class="CEURPAGES">46-53</span> <br>
+<span class="CEURAUTHOR">André Rattinger</span>, <span class="CEURAUTHOR">Jean-Marie Le Goff</span>, <span class="CEURAUTHOR">Christian Guetl</span>
+</li>
+
+<li id="paper6"><a href="paper6.pdf">
+<span class="CEURTITLE">InTeReC: In-text Reference Corpus for Applying Natural Language Processing to Bibliometrics</span></a>
+<span class="CEURPAGES">54-62</span> <br>
+<span class="CEURAUTHOR">Marc Bertin</span>, <span class="CEURAUTHOR">Iana Atanassova</span>
+</li>
+
+<li id="paper7"><a href="paper7.pdf">
+<span class="CEURTITLE">Users are not influenced by high impact and core journals while searching</span></a>
+<span class="CEURPAGES">63-75</span> <br>
+<span class="CEURAUTHOR">Ameni Kacem</span>, <span class="CEURAUTHOR">Philipp Mayr</span>
+</li>
+
+</ul>
+
+<h3><span class="CEURSESSION">Demo papers</span></h3>
+
+<ul>
+
+<li id="paper8"><a href="paper8.pdf">
+<span class="CEURTITLE">All for One or One for All? Analyzing Collaboration Patterns in Research Environments</span></a>
+<span class="CEURPAGES">76-79</span> <br>
+<span class="CEURAUTHOR">Mario Cataldi</span>, <span class="CEURAUTHOR">Luigi Di Caro</span>, <span class="CEURAUTHOR">Claudio Schifanella</span>
+</li>
+
+<li id="paper9"><a href="paper9.pdf">
+<span class="CEURTITLE">A generic framework to perform comprehensive analysis of tweets</span></a>
+<span class="CEURPAGES">80-85</span> <br>
+<span class="CEURAUTHOR">Marie-Noelle Bessagnet</span>
+</li>
+
+
+</ul>
+
+
+
+
+</div>
+
+
+<hr>
+<span class="unobtrusive">
+2018-03-21: submitted by Philipp Mayr,
+            metadata incl. bibliographic data published under <A HREF="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0</A><br>
+<span class="CEURPUBDATE">yyyy-mm-dd</span>: published on CEUR-WS.org 
+|<A HREF="http://validator.w3.org/check?uri=http%3A%2F%2Fceur-ws.org%2FVol-XXX%2F">valid HTML5</A>|
+</span>
+</body></html>
