@@ -145,3 +145,26 @@
 # BIR2018_3
 ### Testing a Citation and Text-Based Framework for Retrieving Publications for Literature Reviews
 #### M. Janina Sarol, Linxi Liu, and Jodi Schneider
+
+Code: https://github.com/janinaj/lit-review-search
+
+Complicate to perfom literature reviews with increasing amount of scholary works. A lot of time is spended for diferente literary review types
+
+Framework: From seed documents using them citatiion network to find the documents with strong citation and topical relationship with the seed ones.
+
+**hybrid methods text + citation**:  Silva, F.N., Amancio, D.R., Bardosova, M., Costa, L.d.F., Oliveira, O.N.: Using
+network science and text analytics to produce surveys in a scientific topic. Journal
+of Informetrics 10(2) (2016) 487–502
+
+Steps:
+- Select seed
+- Search them citation space: => Using scopus api
+    - Papers cited by seed _references_
+    - Papers that cite a seed _citations_
+    - Papers that cite the same articles than the seed _Co-Citing_
+    - Papers that are cited by the same articles that cite a seed _Co-Cited_
+- Filter:
+    - *Citation-based*: Only keep direct citation to/from seed and the co-citing/cited that **shares 10% of citations**: Belter, C.W.: Citation analysis as a literature search method for systematic re-views. Journal of the Association for Information Science and Technology 67(11) (2016) 2766–2777
+    - *Text-based*: using phrases from abstract. keep works with at least 1 bigram-trigram common with seed abstract. To extract phrases: **Rapid Automatic Keyword Extraction (RAKE) algorithm**: Rose, S., Engel, D., Cramer, N., Cowley, W.: Automatic keyword extraction from individual documents. Text Mining: Applications and Theory (2010) 1–20
+
+Nice results using all combinations of 3-seed articles they always find the rest of the available papers (not all in scopus) reducing the numbers of total studies retrievec  
