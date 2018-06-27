@@ -30,6 +30,8 @@
 https://uwspace.uwaterloo.ca/bitstream/handle/10012/10323/Bibliometrics%20White%20Paper%202016%20Final_March2016.pdf
 - https://library.leeds.ac.uk/info/1406/research_support/17/measuring_research_impact
 - http://www.metrics-toolkit.org
+
+
 # Bases de datos bibliográficas más importantes:
 - [Web of Science (WOS)](http://apps.webofknowledge.com/WOS_GeneralSearch_input.do?product=WOS&search_mode=GeneralSearch&SID=D5Dirpg96ThopOFoBlP&preferencesSaved=), probablemente requiera acceso por vpn.
 - Journal Citation Reports (JCR): informe de impacto de multiples revistas cientificas incluyendo su Factor de Impacto. Parte de WOS.
@@ -48,3 +50,6 @@ https://uwspace.uwaterloo.ca/bitstream/handle/10012/10323/Bibliometrics%20White%
 - [Solr]: Alto nivel Lucene
 - [elastic search]: framework de búsqueda mas usado
 - [Graclus](http://www.cs.utexas.edu/users/dml/Software/graclus.html): Graph clustering software
+
+# Bibliometric-enhanced-IR Bibliography
+<https://github.com/PhilippMayr/Bibliometric-enhanced-IR_Bibliography>

@@ -50,7 +50,7 @@ He leido el primero de los papers tardando unos 40 min al buscar información y 
     - Solo han evaluado utilizando información bibliografica, sin incluir contenido. Conjunto de test disperso.
     - Buscar mas trabajos de sus autores Haozhen Zhao and Xiaohua Hu
 
-## 20/03/2018
+## 20/03/2018   
 - **BIR2016_7**: recuperación de documentos basado en medidas de co-citación usando documentos recuperados del propio historial de búsqueda del usuario. Interesante la recuperación en 2 tiempos, usar un enfoque tradicional para buscar documentos y un modelo bibliométrico para buscar similares a los primeros documentos recuperados en la primera fase.
 - _Larsen, B. References and citations in automatic indexing and retrieval systems: Experiments with the boomerang effect. PhD dissertation, Royal School of Library and Information Science, Copenhagen, Denmark (2004)_.
 
