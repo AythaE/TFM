@@ -58,4 +58,48 @@ He leido el primero de los papers tardando unos 40 min al buscar información y 
 ## 23/06/2018
 - Estoy revisando la introuducción y me asaltan algunas dudas:
     - como evaluar un sistema de RI sin una colección de prueba o usuarios reales
-    - 
+
+## 27/06/2018
+
+Comienzo las pruebas con elastic search. 
+
+Lo he instlado via docker container en su version open source, ver [instrucciones](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html).
+
+
+Para arrancar el contendor 
+
+```shell
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0
+```
+
+## 02/07/2018
+Logrado montar el docker compose con cerebro y un nodo elasticSearch
+curl -XPUT 'http://elasticsearch:9200/blog/user/dilbert' -d '{
+ "name": "Dilbert Brown"
+}'
+Front end con buena pinta [dejavu](https://hub.docker.com/r/appbaseio/dejavu/)
+
+necesario añadir -H 'Content-Type: application/json' por ES 6.x tiene comprobación explicita de tipos
+
+Endpoint _bulk para enviar múltiples operaciones
+
+Reranking en ES: <http://elasticsearch-learning-to-rank.readthedocs.io/en/latest/fits-in.html#what-the-plugin-does>
+
+ES parece algo rigido y de alto nivel seguir investigando
+
+Ver function_score, script_score 
+
+Lenguajes de script admitidos Lucene Expressions Language y Painless Scripting Language
+
+## 03/07/2018
+Reunion con el tutor, necesario extraer los documentos de autores de la escuela, para ello ver el ranking de investigadores.
+
+Los he extraido mediante web scraping ver [fichero](Exploring/web_scraping/investigadores_etsiit.py) que guarda en mongodb los resultados extraidos de la web.
+
+Ver el siguiente [dataset](http://opendata.ugr.es/dataset/rankings-de-investigadores-ugrinvestiga-segun-citacion/resource/4937db08-d757-469d-9bee-96fee9f798f8) actualizado el Mayo 28, 2018. Misma información, algo atrasada pero para cargar en pandas directamente
+
+Cuestiones:
+1. De que cifras fiarse? UGR, Schoolar, ResearchGate y Scopus distintas cifras de citas y articulos
+    1. Schoolar y research gate no Api, scopus si pero límites
+    2. En alguna busqueda preliminar si se añade que sea de la universidad de granada separando por nombre y apellido se obtienen resultados decentes en scopus, para schoolar ya estan los link y los de research gate se pueden sacar del perfil por scraping
+
