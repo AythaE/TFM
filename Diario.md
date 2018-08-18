@@ -103,3 +103,91 @@ Cuestiones:
     1. Schoolar y research gate no Api, scopus si pero límites
     2. En alguna busqueda preliminar si se añade que sea de la universidad de granada separando por nombre y apellido se obtienen resultados decentes en scopus, para schoolar ya estan los link y los de research gate se pueden sacar del perfil por scraping
 
+## 04/07/2018
+Herramientas para scrap GS https://github.com/jonhurlock/Google-Scholar-Tools
+He creado cuenta de dev en elsevier para dar de alta keys
+
+Scopus api package https://scopus.readthedocs.io/en/latest/index.htmls
+
+## 08/07/2018
+He creado un script que busca en scopus todos los autores del dataframe probando varias combinaciones de sus nombres. Frecuentemente la búsqueda de autores en scopus devuelve varios resultados que pueden ser el mismo author u no.
+
+Con el script he logrado obener algun resultado de 202 de los 214 autores buscados (94 % aprox)
+
+Se podría filtrar más por la disciplina y sera necesario agrupar lo que sean similares,
+
+Eliminado las filas duplicadas y salen un total de 397 autores de los 1424 recuperados
+
+Se puede seguir filtrando como por ejemplo eliminando aquellos autores que no tengan obras en el area de computer sciences ('COMP') `unique_eids_df[unique_eids_df['areas'].str.contains('COMP', regex=False)]` pero se pierden autores (haciendo eso se mantienen 176 autores)
+
+## 10/07/18
+
+Filtrando resultados, ver funcion `explore_retrieved_data` de retrieve_auth_info.py: total 164 autores de los 214 buscados.
+
+Ver como hacer alguna gráfica para explicar el filtrado en mathplotib <https://pandas.pydata.org/pandas-docs/stable/visualization.html>
+
+Interesante barras, pie para pais y ciudad. 
+
+Crear clases (comp_spa_granada, spa_granada, spa) dividiendo en un pie el 100% entre las clases en autores y artículos
+
+
+## 13/07/18
+
+Límites apis https://dev.elsevier.com/api_key_settings.html
+
+Actualmente descargando abstacts en modo FULL para obtener las referencia de esas
+
+Modificar clase `ScopusAbstact` para obtener authkeywords como estos
+```xml
+ <authkeywords>
+        <author-keyword>Computing with words (CW)</author-keyword>
+        <author-keyword>Information fusion</author-keyword>
+        <author-keyword>Linguistic modeling</author-keyword>
+        <author-keyword>Linguistic variables</author-keyword>
+    </authkeywords>
+```
+
+Modificar tambien método `load_api_key` de get_content para poder cargar varias API key, que sea una lista y coja la siguiente en caso de error 429, cuota excedida
+
+## 16/07/18
+
+Todos los abstract por fin descargados, generando DF en [`./Exploring/scopus/generate_df_from_abstracts.py`](Exploring/scopus/generate_df_from_abstracts.py)
+
+Limpiar los eid de los autores, ver [`./Exploring/scopus/retrieve_author_info.py`](Exploring/scopus/retrieve_author_info.py)
+
+Que hacer con las medidas bibliométricas sobre citas e indice h tomar lo de investiga ugr aunque luego no se refleje en los documentos??
+
+author impact factor how is calc, useful?
+
+Las citas de scopus son citation_count o cited_by
+
+Un total de 5670 abstract de 164 autores 
+
+
+TODO:
+- [x] Unificar autores ugr con autores scopus
+- [x] Unificar autores por ugr id: combinando campos scopus: citas la suma, hindex el mayor, eid una lista, numero documentos la suma, url lista
+- [x] unir abstracts a autores sustituyendo eid por ugr id y a su vez por ObjectID
+- [x] filtrar referencias de los artículos para solo apuntar a referencias internas 
+- [x] una vez hecho lo anterior sustituir eid por ObjectId
+- [x] acabar el modelo para guardar las cosas en MongoDB
+
+
+## 30/07/2018
+Todos los datos en mongo, es hora de pasar a ES.
+
+Interfaces usuario ES:
+- Searchkit https://github.com/searchkit/searchkit mejor pinta, solo componentes front, no demasiado customizable
+- Reactive search https://opensource.appbase.io/reactivesearch/ Más customizable, parece depender se uno de sus servicios de back, 
+
+
+## 17/08/18
+Crear e insertar documentos es https://sarahleejane.github.io/learning/python/2015/10/14/creating-an-elastic-search-index-with-python.html
+
+Seleccionar tipos para índice ES: https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html
+
+Autores ya en indice, falta crear el de abstracts
+
+## 18/08/18
+
+Puede merecer la pena crear índices en mongo sobre los ugr_id y scopus_id
