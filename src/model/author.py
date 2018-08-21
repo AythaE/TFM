@@ -87,7 +87,6 @@ class Author(object):
         return self._investigation_group
 
     def __init__(self, _id=None, scopus_id=None, data=None):
-
         if _id is not None and ObjectId.is_valid(_id):
             self._id = _id
             data = self.load()
@@ -145,9 +144,9 @@ class Author(object):
 
     def load(self, scopus_id=None):
         if scopus_id:
-            return mongo_db.abstract.find_one({'scopus_id': scopus_id})
+            return mongo_db.author.find_one({'scopus_id': scopus_id})
         if self._id:
-            return mongo_db.abstract.find_one({'_id': self._id})
+            return mongo_db.author.find_one({'_id': self._id})
         return {}
 
 
