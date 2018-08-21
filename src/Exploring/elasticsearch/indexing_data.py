@@ -148,6 +148,9 @@ def create_abstract_index():
                     "subject_areas": {
                         "type": "text"
                     },
+                    "authors": {
+                        "type": "text"
+                    }
                 }
             }
         }
@@ -178,6 +181,7 @@ def insert_abstract_data():
             "_id": abst['scopus_id'] ## TODO maybe use mongo id instead of ugrid
         }}
         data_dict = {k: v for k,v in abst.iteritems() if k in ABSTRACT_ES_INDEXED_COLS }
+        data_dict.update({"authors": [abst['authors'][au_id]['name'] for au_id in abst['authors']]})
         bulk_data.append(op_dict)
         bulk_data.append(data_dict)
 
