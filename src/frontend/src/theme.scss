@@ -1,0 +1,11 @@
+@import "../node_modules/searchkit/theming/theme.scss";
+
+$primary_color: $sk-primary-theme-color; //#2a4466
+$primart_light_color: #576f94;
+
+.primary_light_color_background {
+    background: $primart_light_color;
+    color: white;
+}
+
+

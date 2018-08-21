@@ -191,3 +191,9 @@ Autores ya en indice, falta crear el de abstracts
 ## 18/08/18
 
 Puede merecer la pena crear índices en mongo sobre los ugr_id y scopus_id
+
+## 19/08/18
+
+Ejemplo de start app con searchkit https://github.com/searchkit/searchkit-starter-app
+
+Tabs: https://material-ui.com/api/tabs/
