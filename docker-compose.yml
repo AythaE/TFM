@@ -1,5 +1,30 @@
 version: '2.2'
 services:
+  app:
+    container_name: app
+    build: ./src/backend
+    restart: always
+
+    ports: 
+      - 5000:5000
+    volumes:
+      - ./src/backend:/usr/src/app
+    networks:
+      default:
+        aliases:
+          - app
+  nginx:
+    image: nginx:1.14
+    restart: always
+    container_name: nginx
+    ports:
+      - 80:80
+    # volumes:
+    #   - /data/db_docker:/data/db
+    networks:
+      default:
+        aliases:
+          - nginx
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0
     container_name: elasticsearch
@@ -13,8 +38,8 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - esdata1:/usr/share/elasticsearch/data
-      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data/es_data:/usr/share/elasticsearch/data
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 9200:9200
       - 9300:9300
@@ -29,12 +54,13 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - /data/db_docker:/data/db
+      - ./data/mongodb_data:/data/db
     command: mongod
     networks:
       default:
         aliases:
           - mongodb
+
   cerebro:
     image: lmenezes/cerebro
     container_name: cerebro
@@ -46,7 +72,7 @@ services:
       default:
         aliases:
           - cerebro
-volumes:
-  esdata1:
-    driver: local
+# volumes:
+#   esdata1:
+#     driver: local
 

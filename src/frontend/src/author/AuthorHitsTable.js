@@ -20,7 +20,7 @@ class AuthorHitsTable extends Component {
             <tbody>
               {hits.map( hit => (
                 <tr key={hit._id}>
-                  <td><AuthorView name={hit._source.full_name} ugr_id= {hit._id}/></td>
+                  <td><AuthorView name={hit._source.full_name} ugr_id={hit._id}/></td>
                   <td>{hit._source.ugr_cites}</td>
                   <td>{hit._source.ugr_hindex}</td>
                 </tr>

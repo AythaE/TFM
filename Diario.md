@@ -197,3 +197,12 @@ Puede merecer la pena crear índices en mongo sobre los ugr_id y scopus_id
 Ejemplo de start app con searchkit https://github.com/searchkit/searchkit-starter-app
 
 Tabs: https://material-ui.com/api/tabs/
+
+## 27/08/2018
+
+Ranking combinations python https://github.com/diegoches/PyRanker/tree/develop
+
+documentacion sobre function_score para modificar las consultas https://www.elastic.co/guide/en/elasticsearch/reference/6.2/query-dsl-function-score-query.html
+Parece ser capaz de calcular una nueva puntacion de diversas maneras y combinarla directamente con la puntuación de ES.
+
+Interesante precalcular las citas normalizadas para usar en la puntuacion directamente, También se podría combinar el índice h de los autores y normalizarlo (la media de los indices de los autores conocidos por ejemplo).

@@ -1,36 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Icon from '@material-ui/core/Icon';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, CircularProgress, Icon } from '@material-ui/core';
 
 import './AuthorView.css';
 
-const mockupAuthor = {
-    'full_name': 'FRANCISCO HERRERA TRIGUERO',
-    'gscholar_url': 'https://scholar.google.es/citations?user=HULIk-QAAAAJ&hl=es',
-    'investigation_group': 'SOFT COMPUTING Y SISTEMAS DE INFORMACI\xd3N INTELIGENTES',
-    'nick_name': 'Francisco Herrera',
-    'num_docs': 653,
-    'scopus_cites': 36417,
-    'scopus_hindex': 91,
-    'scopus_id': ['7102347190', '57200918445'],
-    'scopus_url': ['https://www.scopus.com/authid/detail.uri?partnerID=HzOxMe3b&authorId=7102347190&origin=inward',
-        'https://www.scopus.com/authid/detail.uri?partnerID=HzOxMe3b&authorId=57200918445&origin=inward'],
-    'speciality': 'Ciencias de la Computaci\xf3n e Inteligencia Artificial',
-    'ugr_cites': 53124,
-    'ugr_cites5': 31814,
-    'ugr_hindex': 115,
-    'ugr_hindex5': 89,
-    'ugr_id': 22962,
-    'ugr_url': 'http://investigacion.ugr.es/ugrinvestiga/static/Buscador/*/investigadores/ficha/22962'
-};
-
+const AUTHOR_SERVICE_URL = 'http://localhost:5000/author/'
 
 class AuthorView extends React.Component {
     constructor(props) {
@@ -52,10 +26,16 @@ class AuthorView extends React.Component {
     };
 
     loadAuthor = () => {
-        // TODO Call backend querying for mongo id
-
-        let data = mockupAuthor
-        this.setState({ author: data, loaded: true })
+        fetch(AUTHOR_SERVICE_URL+this.props.ugr_id).then(response => {
+            response.json().then(json => {
+                if(json.success){
+                    this.setState({ author: json.data, loaded: true })
+                }
+                else{
+                    //TODO display error message
+                }
+            })
+        })
     }
     render() {
 
@@ -67,13 +47,16 @@ class AuthorView extends React.Component {
                     onClose={this.handleClose}
                     aria-labelledby="responsive-dialog-title"
                     maxWidth="md"
+                    fullWidth={true}
                 >
                     <DialogTitle id="responsive-dialog-title">{this.props.name}</DialogTitle>
 
                     {this.state.loaded &&
                         <DialogContent>
-                            <DialogContentText>
+                            <DialogContentText component="div">
+
                                 <h3>General info</h3>
+
                                 <ul>
                                     <li><b>Nick name:</b> {this.state.author.nick_name}</li>
                                     <li><b>Speciality:</b> {this.state.author.speciality}</li>
@@ -96,7 +79,10 @@ class AuthorView extends React.Component {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>{this.state.author.ugr_cites}</td> <td>{this.state.author.ugr_hindex}</td> <td>{this.state.author.ugr_cites5}</td> <td>{this.state.author.ugr_hindex5}</td>
+                                                    <td>{this.state.author.ugr_cites}</td>
+                                                    <td>{this.state.author.ugr_hindex}</td>
+                                                    <td>{this.state.author.ugr_cites5}</td>
+                                                    <td>{this.state.author.ugr_hindex5}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -113,7 +99,9 @@ class AuthorView extends React.Component {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>{this.state.author.num_docs}</td> <td>{this.state.author.scopus_cites}</td> <td>{this.state.author.scopus_hindex}</td>
+                                                    <td>{this.state.author.num_docs}</td>
+                                                    <td>{this.state.author.scopus_cites}</td>
+                                                    <td>{this.state.author.scopus_hindex}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -137,7 +125,7 @@ class AuthorView extends React.Component {
                                             profileNumber = index + 1
                                         else
                                             profileNumber = ""
-                                        return <Button classes={{ root: "button" }} variant="outlined" href={url} target="_blank">
+                                        return <Button key={`scopus_${profileNumber}`} classes={{ root: "button" }} variant="outlined" href={url} target="_blank">
                                             Scopus profile {profileNumber}
                                         </Button>
                                     })}

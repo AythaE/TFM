@@ -1082,3 +1082,9 @@ body {
 .primary_light_color_background {
   background: #576f94;
   color: white; }
+
+.sk-hits-list-hit {
+  flex-direction: column; }
+
+.sk-hits-list__item {
+  margin-bottom: 0px; }
