@@ -2,25 +2,26 @@ from db.elasticsearch_connection import es_conn
 from db.mongodb_connection import mongo_db
 
 AUTHOR_ES_INDEXED_COLS = ['scopus_cites',
- 'speciality',
- 'ugr_cites5',
- 'full_name',
- 'scopus_hindex',
- 'num_docs',
- 'ugr_hindex',
- 'nick_name',
- 'investigation_group',
- 'ugr_cites',
- 'ugr_hindex5']
+                          'speciality',
+                          'ugr_cites5',
+                          'full_name',
+                          'scopus_hindex',
+                          'num_docs',
+                          'ugr_hindex',
+                          'nick_name',
+                          'investigation_group',
+                          'ugr_cites',
+                          'ugr_hindex5']
 
 ABSTRACT_ES_INDEXED_COLS = [u'publisher',
- u'publication_name',
- u'subject_areas',
- u'title',
- u'abstract',
- u'keywords',
- u'date',
- u'cites']
+                            u'publication_name',
+                            u'subject_areas',
+                            u'title',
+                            u'abstract',
+                            u'keywords',
+                            u'date',
+                            u'cites']
+
 
 def create_author_index():
     created = False
@@ -91,15 +92,16 @@ def create_author_index():
 def insert_author_data():
 
     author_data = list(mongo_db.author.find({}, {'_id': 0}))
-  
+
     bulk_data = []
     for auth in author_data:
         op_dict = {"index": {
             "_index": 'author',
             "_type": 'doc',
-            "_id": auth['ugr_id'] ## TODO maybe use mongo id instead of ugrid
+            "_id": auth['ugr_id']  # TODO maybe use mongo id instead of ugrid
         }}
-        data_dict = {k: v for k,v in auth.iteritems() if k in AUTHOR_ES_INDEXED_COLS }
+        data_dict = {k: v for k, v in auth.iteritems()
+                     if k in AUTHOR_ES_INDEXED_COLS}
         bulk_data.append(op_dict)
         bulk_data.append(data_dict)
 
@@ -142,6 +144,9 @@ def create_abstract_index():
                     "cites": {
                         "type": "integer"
                     },
+                    "cites_norm": {
+                        "type": "double"
+                    },
                     "date": {
                         "type": "date"
                     },
@@ -171,6 +176,8 @@ def create_abstract_index():
 def insert_abstract_data():
 
     abstract_data = list(mongo_db.abstract.find({}, {'_id': 0}))
+    max_cites = float(max([abstract['cites']
+                     for abstract in mongo_db.abstract.find({}, {'_id': 0, 'cites': 1})]))
     index_name = 'abstract'
 
     bulk_data = []
@@ -178,10 +185,14 @@ def insert_abstract_data():
         op_dict = {"index": {
             "_index": index_name,
             "_type": 'doc',
-            "_id": abst['scopus_id'] ## TODO maybe use mongo id instead of ugrid
+            # TODO maybe use mongo id instead of ugrid
+            "_id": abst['scopus_id']
         }}
-        data_dict = {k: v for k,v in abst.iteritems() if k in ABSTRACT_ES_INDEXED_COLS }
-        data_dict.update({"authors": [abst['authors'][au_id]['name'] for au_id in abst['authors']]})
+        data_dict = {k: v for k, v in abst.iteritems(
+        ) if k in ABSTRACT_ES_INDEXED_COLS}
+        data_dict.update(
+            {"authors": [abst['authors'][au_id]['name'] for au_id in abst['authors']]})
+        data_dict.update({"cites_norm": abst['cites'] / max_cites})
         bulk_data.append(op_dict)
         bulk_data.append(data_dict)
 
@@ -190,4 +201,3 @@ def insert_abstract_data():
     # check data is in there, and structure in there
     es_conn.search(body={"query": {"match_all": {}}}, index=index_name)
     es_conn.indices.get_mapping(index=index_name)
-
