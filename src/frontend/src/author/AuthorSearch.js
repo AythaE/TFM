@@ -13,11 +13,11 @@ class AuthorSearch extends Component {
 
                         <ActionBarRow>
                             <HitsStats />
-                            <div style={{ marginRight: "15px" }}>
+                            {/* <div style={{ marginRight: "15px" }}>
                                 <label className="sk-hits-stats__info">Results per page: </label>
 
                                 <PageSizeSelector options={[5, 10, 15, 20]} />
-                            </div>
+                            </div> */}
                             <div>
                                 <label className="sk-hits-stats__info">Sorting: </label>
                                 <SortingSelector options={[
@@ -29,9 +29,9 @@ class AuthorSearch extends Component {
                         </ActionBarRow>
 
                     </ActionBar>
-                    <Hits mod="sk-hits-list" hitsPerPage={10} listComponent={AuthorHitsTable} />
+                    <Hits mod="sk-hits-list" hitsPerPage={200} listComponent={AuthorHitsTable} />
                     <NoHits />
-                    <Pagination showNumbers={true} />
+                     <Pagination showNumbers={true} /> 
 
                 </LayoutResults>
         );

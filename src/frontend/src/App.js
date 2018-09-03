@@ -16,29 +16,29 @@ import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 const authorSearchkit = new SearchkitManager("http://localhost:9200/author");
 const abstractSearchkit = new SearchkitManager("http://localhost:9200/abstract");
 
-abstractSearchkit.setQueryProcessor((plainQueryObject) => {
-  console.log("Before modification")
-  console.log(JSON.stringify(plainQueryObject))
+// abstractSearchkit.setQueryProcessor((plainQueryObject) => {
+//   console.log("Before modification")
+//   console.log(JSON.stringify(plainQueryObject))
 
-  if ('query' in plainQueryObject) {
-    const originalQuery = Object.assign({}, plainQueryObject.query)
+//   if ('query' in plainQueryObject) {
+//     const originalQuery = Object.assign({}, plainQueryObject.query)
 
-    plainQueryObject.query = {
-      "function_score": {
-        "query": originalQuery,
-        "field_value_factor": {
-          "field": "cites",
-          "missing": 0
-        },
-        "boost_mode": "sum"
-      }
-    }
+//     plainQueryObject.query = {
+//       "function_score": {
+//         "query": originalQuery,
+//         "field_value_factor": {
+//           "field": "cites",
+//           "missing": 0
+//         },
+//         "boost_mode": "sum"
+//       }
+//     }
 
-    console.log("After modification")
-    console.log(JSON.stringify(plainQueryObject))
-    return plainQueryObject
-  }
-});
+//     console.log("After modification")
+//     console.log(JSON.stringify(plainQueryObject))
+//     return plainQueryObject
+//   }
+// });
 // First search to initialize properly
 abstractSearchkit._search();
 authorSearchkit._search();
@@ -64,7 +64,7 @@ class App extends Component {
       searchkit = authorSearchkit
     else
       searchkit = abstractSearchkit
-
+    searchkit._search();
     this.setState({ selectedTab: value, searchkit: searchkit });
   };
 
@@ -74,9 +74,9 @@ class App extends Component {
         <Layout>
           <TopBar>
 
-            <div className="my-logo" style={{ display: "flex" }}>
-              <img src={logo} className="App-logo" alt="App logo" style={{ height: "auto" }} /> Bibliometry Search Engine
-                </div>
+            <div className="my-logo perfect_centering" >
+              <h1>BiblioIR</h1>
+            </div>
             {this.state.searchkit === authorSearchkit &&
               <SearchBox
                 autofocus={true}

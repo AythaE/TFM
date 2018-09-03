@@ -4,8 +4,25 @@ import AuthorView from './AuthorView';
 
 class AuthorHitsTable extends Component {
 
+    normalizeAndResort = () => {
+      let max_score = 0;
+      let score_array = [];
+      console.log(this.props.hits)
+      this.props.hits.map(h => {score_array.push(h._score)});
+
+      max_score = Math.max(...score_array)
+
+      console.log(max_score)
+
+      this.props.hits.map(h => {h._score /= max_score});
+
+      console.log("After resort")
+      console.log(this.props.hits)
+
+    }
     render(){
       const { hits } = this.props
+      this.normalizeAndResort();
       return (
         <div style={{width: '100%', boxSizing: 'border-box', padding: 8}}>
           <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>

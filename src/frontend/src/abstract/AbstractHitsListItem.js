@@ -179,19 +179,19 @@ class AbstractHitsListItem extends Component {
     render() {
         return (
             <div>
-                <div className={`${this.props.bemBlocks.item().mix(this.props.bemBlocks.container("item"))} ${this.props.bemBlocks.item("details")}`} data-qa="hit">
-                    <div className={this.props.bemBlocks.item("title")}>
+                <div className="sk-hits-list-hit sk-hits-list__item sk-hits-list-hit__details" data-qa="hit">
+                    <div className="sk-hits-list-hit__title">
                         {<AbstractDialog result={this.props.result} referencesLookup={this.props.referencesLookup} title={this.props.result._source.title} scopusId={this.props.result._id} />
                         }
                     </div>
-                    <p className={this.props.bemBlocks.item("subtitle")}>{this.authors}</p>
+                    <p className="sk-hits-list-hit__subtitle">{this.authors}</p>
 
-                    {this.source.date && <p className={this.props.bemBlocks.item("subtitle")}>
+                    {this.source.date && <p className="sk-hits-list-hit__subtitle">
                         Date: {this.date}
                         <span className="cites-separator" />
                         Cites: {this.source.cites}
                     </p>}
-                    {!this.source.date && <p className={this.props.bemBlocks.item("subtitle")}>
+                    {!this.source.date && <p className="sk-hits-list-hit__subtitle">
                         Cites: {this.source.cites}
                     </p>}
                     {this.source.keywords.length > 0 && renderChipsFromList(this.source.keywords)}
