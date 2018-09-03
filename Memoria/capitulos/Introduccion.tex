@@ -110,6 +110,7 @@ La búsqueda de documentos en la web siempre ha resultado un reto debido a su na
 Hoy en día existe una dependencia casi absoluta por los motores de búsqueda para navegar por internet, lo que hace de este un tema tan crucial en el que aún se sigue trabajando, con retos aún por delante como el enorme tamaño que ha alcanzado la web, la heterogeneidad de contenido con cada vez más contenidos multimedia o el acceso desde cualquier tipo de dispositivo y desde cualquier lugar. 
 
 \section{Bibliometría}
+\label{sc:bibliometria}
 \subsection{Definición}
 La \textbf{bibliometría} se puede definir como el análisis estadístico de publicaciones escritas. Sus métodos se suelen utilizar para ofrecer un análisis cuantitativo de la literatura académica \cite{de2009bibliometrics}. Se relaciona mucho con la \textbf{cienciometría} que se puede entender como el estudio cuantitativo de la ciencia de forma general \cite{DBLP:journals/corr/abs-1208-4566}. 
 
@@ -168,6 +169,7 @@ En las medidas que dependan de citaciones (prácticamente todas) hay que conside
 En los últimos años han surgido diversos trabajos que proponen combinar ambas disciplinas, utilizar la bibliometría para mejorar la recuperación de información. Esto no se puede aplicar de manera genérica y directa a cualquier sistema de \acrshort{RI} ya que la bibliometría esta muy centrada en el mundo de la académico y de la investigación, sin embargo con algunas adaptaciones las ideas de la bibliometría se encuentran muy presentes en los sistemas de \acrshort{RI}, por ejemplo el algoritmo PageRank hace una analogía entre páginas web con artículos científicos así como hiperenlaces con citas en los mismos \cite{PageRankPaper}. 
 
 \subsection{Sistemas de \acrshort{RI} actuales con medidas bibliométricas}
+\label{subsec:sistemasRI}
 Donde resulta obvio que esta combinación puede ser beneficiosa es los sistemas \acrshort{RI} especializados en literatura académica siendo los más importantes:
 
 \begin{itemize}
@@ -179,6 +181,7 @@ Donde resulta obvio que esta combinación puede ser beneficiosa es los sistemas 
 \end{itemize}
 
 \subsection{Trabajos relacionados}
+\label{subsc:trabajosRelacionados}
 Desde un punto de vista académico resultan especialmente interesantes los trabajos de los talleres \acrfull{BIR}. Estos congresos se celebran anualmente desde 2014 y tienen como objetivo "\textit{hacer consciente a la comunidad de \acrshort{RI} de sus posibles vínculos con la bibliometría}" \cite{DBLP:conf/ecir/X14}. Voy a destacar algunos de ellos a continuación.
 
 % Re ordenar resultados usando alguna medida, uso de altmetrics
@@ -194,7 +197,7 @@ Siguiendo un modelo vectorial pero aplicando una variación del conocido esquema
 
 El modelo propuesto en este paper apuesta por buscar documentos en función de otros, es decir los términos de consulta son otros documentos de la colección, los cuales se conocen como semillas. Para la ponderación de peso en cada documento ahora \textit{tf} es el número de documentos co-citados con el documento semilla e \textit{idf} la inversa del número total de citas entre documentos de la colección. Por último cita algunos ejemplos sobre colecciones de prueba y discute el modelo planteado sin llegar a evaluarlo realmente. De este, se dice que sería especialmente útil para usuarios con conocimiento previo del dominio, por ejemplo para llevar acabo una investigación bibliográfica sobre algún autor.
 
-Basado parcialmente en el trabajo previo, el siguiente artículo \cite{DBLP:conf/ecir/SarolLS18} propone la creación de un framework para llevar a cabo una investigación bibliográfica siguiendo un enfoque híbrido combinando información textual y de citación. A partir de la selección de algunos documentos semilla, el sistema crea el espacio de citaciones \footnote{Documentos citados por las semillas, aquellos que las citan a ellas y documentos con relación de co-citación con estas}, sobre el cual se filtra poniendo condiciones, el resultado de este filtrado se refina buscando términos y frases comunes con las semillas en el resumen de los documentos. 
+Basado parcialmente en el trabajo previo, el siguiente artículo \cite{DBLP:conf/ecir/SarolLS18} propone la creación de un \gls{framework} \glsrefentry{framework} para llevar a cabo una investigación bibliográfica siguiendo un enfoque híbrido combinando información textual y de citación. A partir de la selección de algunos documentos semilla, el sistema crea el espacio de citaciones \footnote{Documentos citados por las semillas, aquellos que las citan a ellas y documentos con relación de co-citación con estas}, sobre el cual se filtra poniendo condiciones, el resultado de este filtrado se refina buscando términos y frases comunes con las semillas en el resumen de los documentos. 
 
 Utilizan su sistema para comparar con diversos trabajos de revisión bibliográfica realizados manualmente con el objetivo de lograr obtener el mismo conjunto final de documentos relevantes revisando menos trabajos con lo que se ahorraría un tiempo significativo. Sus resultados resultan prometedores, usando todas las combinaciones de 3 documentos semilla entre los seleccionados finalmente por cada revisión logran recuperar todos los documentos finales disponibles en Scopus (plataforma en la que realizan el estudio) reduciendo el número de documentos totales recuperados para esa revisión en hasta el 80 \% dependiendo de la revisión concreta.
 

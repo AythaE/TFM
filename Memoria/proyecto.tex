@@ -6,9 +6,10 @@
 
 \usepackage[acronym, numberedsection=autolabel, entrycounter]{glossaries} %
 \usepackage{amsmath} 
+\usepackage{nameref}
 %\usepackage{titlesec}
 %\usepackage{pailatino}
-
+\usepackage{appendix}
 \decimalpoint
 \usepackage{dcolumn}
 \newcolumntype{.}{D{.}{\esperiod}{-1}}
@@ -39,8 +40,7 @@
 %\newcommand{\mySupervisor}{Put name here\xspace}
 \newcommand{\myFaculty}{Escuela Técnica Superior de Ingenierías Informática y de
 Telecomunicación\xspace}
-\newcommand{\myFacultyShort}{E.T.S. de Ingenierías Informática y de
-Telecomunicación\xspace}
+\newcommand{\myFacultyShort}{E.T.S.I.I.T.\xspace}
 \newcommand{\myDepartment}{Departamento de Ciencias de la Computación e Inteligencia Artificial\xspace}
 \newcommand{\myUni}{\protect{Universidad de Granada}\xspace}
 \newcommand{\myLocation}{Granada\xspace}
@@ -75,7 +75,9 @@ pdfproducer = {pdflatex}
 % Definición de comandos que me son tiles:
 %\renewcommand{\indexname}{Índice alfabético}
 %\renewcommand{\glossaryname}{Glosario}
-
+\renewcommand{\appendixname}{Anexos}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LO]{\leftmark}
@@ -183,26 +185,34 @@ pdfproducer = {pdflatex}
 \frontmatter
 \tableofcontents
 \listoffigures
-%\listoftables
+\listoftables
 %
 \mainmatter
 \setlength{\parskip}{5pt}
 
-\input{capitulos/01_Introduccion}
+\input{capitulos/Introduccion}
+
+\input{capitulos/Objetivos}
+
+\input{capitulos/Planificacion}
 %
-%\input{capitulos/02_EspecificacionRequisitos}
+
 %
-%\input{capitulos/03_Planificacion}
+
 %
 %\input{capitulos/04_Analisis}
 %
-%\input{capitulos/05_Diseno}
+\input{capitulos/Diseno}
+
+\input{capitulos/Herramientas}
+
+\input{capitulos/Desarrollo}
 %
 %\input{capitulos/06_Implementacion}
 %
 %\input{capitulos/07_Pruebas}
 %
-%\input{capitulos/08_Conclusiones}
+\input{capitulos/Conclusiones}
 %
 %%\chapter{Conclusiones y Trabajos Futuros}
 %
@@ -212,7 +222,10 @@ pdfproducer = {pdflatex}
 \bibliography{bibliografia/bibliografia} \addcontentsline{toc}{chapter}{Bibliografía}
 
 \appendix
-%\input{apendices/manual_usuario/manual_usuario}
+\clearpage
+\addappheadtotoc
+\appendixpage
+
 %%\input{apendices/paper/paper}
 
 
@@ -222,6 +235,8 @@ pdfproducer = {pdflatex}
 
 \printnoidxglossary[type=\acronymtype, title=Lista de Acrónimos]
 %\addcontentsline{toc}{chapter}{Lista de Acrónimos}
+\input{apendices/manual_de_uso}
+
 \chapter*{}
 \thispagestyle{empty}
 
