@@ -7,6 +7,7 @@ Como punto inicial para la extracción de los datos de los autores de la \acrsho
 Sin embargo no hay modo de obtener datos de los artículos concretos por lo que barajé múltiples bases de datos bibliográficas, además de las ya comentadas en la sección \nameref{subsec:sistemasRI} también exploré \href{https://www.researchgate.net/}{Research Gate}.
 
 Los resultados de mi análisis fueron los siguientes: 
+\label{ls:dataSourceAnalisis}
 \begin{itemize}
 	
 	\item Google Scholar y Research Gate parecen tener bastantes datos en comparación a otras opciones, sin embargo no ofrecen una \acrshort{API} por lo que la extracción de datos solo se podría llevar a cabo mediante \textit{\gls{webscraping}} \glsrefentry{webscraping}. Lo cual no es un proceso sencillo ya que muchas de estas web contienen mecanismos de detección de bots como los CAPTCHAs \cite{scrapping_GS} y además es un método muy sensible al cambio, en caso de que produzca alguna modificación en la web en cuestión es probable que toque reescribir el método de extracción de datos.

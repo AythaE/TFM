@@ -60,15 +60,124 @@ Continué leyendo algunos trabajos más con lo que dí por concluida mi proceso 
 
 Desgraciadamente estos enfoques dependen ampliamente de la cobertura de medidas bibliométricas disponibles, por ejemplo me hubiera encantado poder probar una reordenación previa utilizando alguna \textit{altmetric} como el número de lecturas o descargas de un artículo, pero la plataforma que he utilizado para extraer los artículos no dispone de dichas medidas.
 
-Como parte adicional de este sprint también estuve haciendo alguna pruebas con \glspl{framework} de búsqueda. Como he dicho previamente ya había utilizado \textit{Lucene} como parte de las prácticas de la asignatura \acrshort{GIW}, pero me pareció demasiado bajo nivel así que me centré en investigar otras alternativas. Encontré que las principales, que casualmente utilizaban por debajo \textit{Lucene}, eran \textit{\textbf{Solr}} y \textit{\textbf{\acrlong{ES}}}.
+\section{\textit{Sprint} 4}
+Una vez sintetizado lo investigado y teniendo una idea aproximada de lo que pensaba desarrollar, en este \textit{sprint} me dispuse a realizar diversas pruebas que fueran definiendo las tecnologías a emplear, en concreto:
+\begin{itemize}
+	\item Buscar soluciones para montar sistemas \acrshort{RI}.
+	\item Investigar como conectarse a la \acrshort{API} de Scopus o \acrshort{WoS}.
+\end{itemize}
+
+Estuve haciendo alguna pruebas con algunos \glspl{framework} de búsqueda. Como he dicho previamente ya había utilizado \textit{Lucene} como parte de las prácticas de la asignatura \acrshort{GIW}, pero me pareció demasiado bajo nivel así que me centré en investigar otras alternativas. Encontré que las principales, que casualmente utilizaban por debajo \textit{Lucene}, eran \textit{\textbf{Solr}} y \textit{\textbf{\acrlong{ES}}}.
 
 Buscando alguna comparativa \cite{ES_Solr} y comentarios de usuarios en plataformas tan reputadas como \textit{StackOverflow} \cite{ES_Solr_SO} parecía que se recomendaba \acrshort{ES} por ser más sencillo de usar por lo que realicé un breve tutorial \cite{ES_tutorial} que me gustó bastante ya que resulta realmente simple de usar y basta únicamente con realizar consultas sobre una \acrshort{API} \acrshort{REST} por lo que basta con hacer peticiones \acrshort{HTTP} con algún cliente simple como \texttt{curl}. Todo esto hizo que me decidiera por este servidor de búsqueda.
 
+Como ya comenté en el apartado \ref{ls:dataSourceAnalisis} realicé un análisis de diversas fuentes de datos y me decanté por seleccionar alguna que dispusiera de \acrshort{API}, en concreto Scopus ya que me resultó más rápido encontrar artículos que me servirían para mi colección documental. Por lo que comencé buscando la implementación que habían realizado en el artículo \cite{DBLP:conf/ecir/SarolLS18}, ya que en el mismo comentan que se encuentra disponible en \textit{GitHub} \cite{bir_scopus_gh}. Vi que dicha implementación era de muy bajo nivel, extraía los artículos mediante peticiones \acrshort{HTTP} y parseaban el \acrshort{XML} obtenido directamente. Pensé que tenía que haber un mejor método para esto, alguna librería que ya implementara los métodos de la \acrshort{API} y abstrayera de esas tareas. 
 
-\section{\textit{Sprint} 4}
+Así encontré la implementación oficial ofrecida por Elsevier, \texttt{elsapy} \cite{elsapy}, un modulo en \textit{python} que cuenta con diversas clases para modelar los tipos de documentos y permite obtener y parsear los datos de la \acrshort{API} de manera transparente. También encontré el módulo \texttt{scopus} \cite{scopus-api} una implementación alternativa que había comenzado a desarrollarse algo antes que la oficial, parecía más activa y contaba con mejor documentación incluyendo ejemplos bastante útiles. 
+
+Funcionalmente \texttt{scopus} era muy similar a la versión oficial, pero estaba mejor modelada, se centraba solo en Scopus, que era lo que yo necesitaba, y tenia algunos añadidos muy útiles como uso de una caché por defecto con el objetivo de no repetir peticiones ya hechas, si no servirlas desde un documento almacenado en disco, lo que hacia increíblemente veloz la recuperación de entidades ya consultadas previamente así como gestión transparente de \acrshort{API} \textit{key}, basta con introducirla en la primera ejecución y la propia librería la guarda en un fichero interno el cual usa para su consulta el resto de ocasiones. Todo esto hizo que me decantara por esta última sobre la implementación oficial.
+
+Para poder realizar mis pruebas tuve que solicitar una \acrshort{API} \textit{key} en el portal de Elsevier developers \url{https://dev.elsevier.com/myapikey.html} creando una cuenta gratuita. Para poder descargar los datos de Scopus desde fuera de la red de la universidad me ha sido necesario utilizar el servicio de \acrshort{VPN} de la \acrshort{UGR} siguiendo el siguiente tutorial \cite{vpnUGR}.
 
 \section{\textit{Sprint} 5}
+Tras toda la documentación e investigación previas en este punto realicé el proceso de obtención de datos. Dicho proceso fue dividido en 
+\begin{itemize}
+	\item Extraer información de los autores del ranking UGRinvestiga.
+	\item Usar esos autores obtenidos para buscarlos en Scopus.
+	\item Descargar todos los \textit{abstracts} de los autores obtenidos en el punto previo.
+	\item Preprocesar y limpiar los datos obtenidos.
+\end{itemize}
 
+\subsection{Obtención de datos}
+
+Teniendo en cuenta que no parecía haber opción de descarga de los datos del Ranking UGRinvestiga y que el formato parecía bastante estático con todos los datos en una tabla mi primer enfoque fue realizar un \gls{webscraping} utilizando la librería \texttt{BeautifulSoup} ya comentada previamente. El aspecto de la tabla se puede ver en la siguiente imagen.
+
+
+\begin{figure}[h!]
+	
+	\centering
+	\includegraphics[width=0.9\linewidth]{imagenes/aspectoRankingUGRi}
+	\caption{Aspecto tabla ranking UGRinvestiga}
+\end{figure}
+
+Realizando este proceso extraje datos de históricos y de los últimos 5 años de los autores de la facultad, además de aplicar este proceso al catálogo de grupos de investigación de Tecnologías de la Información y la Comunicación de la  \acrshort{UGR} para realizar un macheo por código de grupo con los datos del ranking.
+
+Posteriormente dí con el proyecto OpenData de la \acrlong{UGR} el cual entre otros \textit{datasets} ofrecía el mencionado ranking actualizado a fecha 28 de Mayo de 2018 \cite{opendataUGR} en formato Excel, fácilmente legible y con algunos datos adicionales como el departamento de los autores, la url de Google Scholar de cada autor o su \textit{nick} el cual podía ser muy útil para buscarlos en Scopus.
+
+Tras cargar estos últimos datos obtuve \textbf{214 autores} de la facultad. A continuación pasé al problema de buscar estos autores en Scopus, este problema no es nada trivial, ya que con frecuencia los autores no firman sus trabajos con su nombre completo, si no con parte de él o incluso de manera distinta entre unos trabajos y otros. Por ejemplo mi tutor, "JUAN MANUEL FERNÁNDEZ LUNA" suele firmar como Fernández Luna, Juan M. o como Fernández Luna, J.M.
+
+El formato necesario para la búsqueda de autores en Scopus es nombre, apellidos y afiliación (la \acrshort{UGR} en este caso) por lo tanto primero me dispuse a extraer el nombre y apellidos a partir de la cadena completa que disponía, esto puede parecer sencillo, pero la riqueza del lenguaje español hace que existan apellidos compuestos o personas con segundos nombres lo que dificulta la tarea.
+
+Estos problemas con los nombres me hicieron montar el siguiente algoritmo para intentar buscar un autor en Scopus:
+
+
+\begin{algorithm}[h]
+	\begin{algorithmic} 
+		\ForAll {author in author\_list}
+		\State $f\_name, l\_name \gets get\_name(author.nick)$
+		\State $success, auth\_result  \gets author\_query(f\_name, l\_name)$
+		\If {not success}
+		\State $f\_name, l\_name \gets get\_name(author.full\_name)$
+		\State $success, auth\_result  \gets author\_query(f\_name, l\_name)$
+		\If {not success}
+		\State $f\_name, l\_name \gets get\_name(author.name\_wo\_1\_lname)$
+		\State $success, auth\_result  \gets author\_query(f\_name, l\_name)$
+		\If {not success}
+		\State $f\_name, l\_name \gets get\_name(author.name\_wo\_2\_lname)$
+		\State $success, auth\_result  \gets author\_query(f\_name, l\_name)$
+		\If {not success}
+		\State $\textbf{return}\ No\ results\ found$
+		\EndIf
+		\EndIf
+		\EndIf
+		\EndIf
+		\State $\textbf{return}\ auth\_result$
+	
+		\EndFor
+	\end{algorithmic}  
+	\caption{Obtiene los autores de Scopus a partir del ranking UGR}	
+\end{algorithm}
+
+
+Donde $f\_name$ y $l\_name$ hacen referencia a nombre y apellidos respectivamente y $name\_wo\_2\_lname$ hace referencia al nombre completo del autor eliminando el segundo apellido.
+
+Con este algoritmo he logrado encontrar algún resultado en Scopus para \textbf{202 de los 214} autores buscados ($\sim$ 94.39 \% de los autores), a pesar de esto el número total de autores recuperados son 397, por lo que habrá que realizar una limpieza de los mismos.
+
+\subsubsection{Limpieza de datos de autores}
+Si observamos la distribución de \textbf{nacionalidades de los autores} recuperados, la cual se ve en la siguiente imagen se aprecia que hay una mayoría abrumadora de Españoles (como cabría esperar) pero también algunas nacionalidades inesperadas como Palestina o Australiana. Por ello consideraré que todo autor cuya nacionalidad no sea española debe haber sido recuperado incorrectamente y sera eliminado al tratarse de ruido, haciendo esto pasamos de 397 autores de Scopus representando a 202 autores de la \acrshort{UGR} a un total de 381 autores de Scopus respresentando a \textbf{198 autores de la \acrshort{UGR} ($\sim$ 98.02 \% de los 202 previos)}.
+
+\begin{figure}[h!]
+	
+	\centering
+	\includegraphics[width=0.9\linewidth]{imagenes/country_hist}
+	\caption{Distribución de nacionalidades entre los autores recuperados}
+\end{figure}
+
+Continuando el filtrado si mostramos la distribución de \textbf{ciudades de los autores} restantes (ver la siguiente imagen) vemos que Granada o sus variantes aglutinan a la gran mayoría de los autores, por ello filtraré todos aquellos que no sean Granada lo cual me deja con un total de 334 autores de Scopus (\textbf{188 autores de la \acrshort{UGR} $\sim$ 94.95\% de los 198 previos}).
+
+Por último he realizado un filtrado por \textbf{área del conocimiento} descartando aquellos autores que no tengan al menos un trabajo englobado en el área de Ciencias de la Computación (\textit{computer science}) con lo que finalmente me quedo con 199 autores de Scopus (\textbf{164 de la \acrshort{UGR}, $\sim$ 87.23 \% de los 188 previos})
+
+\begin{figure}[h]
+	
+	\centering
+	\includegraphics[width=0.5775\linewidth]{imagenes/city_hist}
+	\caption{Fragmento de la distribución de ciudades entre los autores españoles recuperados}
+\end{figure}
+\newpage
+
+En la siguiente gráfica represento un \textbf{\textit{clustering} de autores} \acrshort{UGR} donde aparecen etiquetadas las siguientes clases: la clase \textit{comp\_spa\_gr} representa a los autores que tienen algún autor en Scopus el cual es Español, de Granada y tiene algún artículo de Ciencias de la computación; la clase \textit{spa\_gr} igual con excepción del área del conocimiento, la clase \textit{spa} que tiene algún autor solo español y la clase \textit{other} que no cumple ningún criterio. Por tanto cada clase se ha ido eliminando en cada filtrado hasta quedarnos solo con la primera, la cual representa al \textbf{$\sim$ 81.19 \% de los autores totales de la \acrshort{UGR} (164 de 202 autores posibles)}.
+
+\begin{figure}[h]
+	
+	\centering
+	\includegraphics[width=0.5\linewidth]{imagenes/class_pie}
+	\caption{Representación del clustering de autores llevado a cabo en la limpieza de datos}
+\end{figure}
+
+\subsubsection{Obtención de abstracts}
+Una vez estuve contento con la limpieza de autores me dispuse a llevar a cabo el grueso de la obtención de datos, la descarga de todos sus \textit{abstracts}
+
+Como curiosidad de este \textit{sprint} me gustaría destacar que durante mi investigación de los datos devueltos por Scopus sobre los \textit{abstracts} me percaté que la librería \texttt{scopus} no parseaba las palabras clave de los mismos aunque estas aparecían en los \acrshort{XML} obtenidos de la \acrshort{API}, estas palabras clave podían funcionar bien en los sistema de búsqueda, como había leído durante mi proceso de documentación, por ello añadí esa funcionalidad a la librería y dicho cambio fue \href{https://github.com/scopus-api/scopus/pull/68}{incorporado a la misma} en su versión 0.9
 \section{\textit{Sprint} 6}
 
 \section{\textit{Sprint} 7}
