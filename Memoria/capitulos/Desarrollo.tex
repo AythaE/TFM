@@ -61,6 +61,7 @@ Continué leyendo algunos trabajos más con lo que dí por concluida mi proceso 
 Desgraciadamente estos enfoques dependen ampliamente de la cobertura de medidas bibliométricas disponibles, por ejemplo me hubiera encantado poder probar una reordenación previa utilizando alguna \textit{altmetric} como el número de lecturas o descargas de un artículo, pero la plataforma que he utilizado para extraer los artículos no dispone de dichas medidas.
 
 \section{\textit{Sprint} 4}
+\label{sc:sprint4}
 Una vez sintetizado lo investigado y teniendo una idea aproximada de lo que pensaba desarrollar, en este \textit{sprint} me dispuse a realizar diversas pruebas que fueran definiendo las tecnologías a emplear, en concreto:
 \begin{itemize}
 	\item Buscar soluciones para montar sistemas \acrshort{RI}.
@@ -79,6 +80,15 @@ Funcionalmente \texttt{scopus} era muy similar a la versión oficial, pero estab
 
 Para poder realizar mis pruebas tuve que solicitar una \acrshort{API} \textit{key} en el portal de Elsevier developers \url{https://dev.elsevier.com/myapikey.html} creando una cuenta gratuita. Para poder descargar los datos de Scopus desde fuera de la red de la universidad me ha sido necesario utilizar el servicio de \acrshort{VPN} de la \acrshort{UGR} siguiendo el siguiente tutorial \cite{vpnUGR}.
 
+En la siguiente tabla se puede contemplar las distintas \acrshort{API}s de Scopus así como sus límites. En concreto he utilizado las \acrshort{API}s: \textit{Author Search} para realizar las búsquedas de autores, \textit{Author Retrieval} para obtener los datos completos de los autores y \textit{Abstract Retrieval} para obtener los artículos o \textit{abstracts}. 
+Como se puede ver los límites de las \acrshort{API}s son bastante elevados 5000 peticiones semanales para la búsqueda y recuperación de autores así como 1000 para los \textit{abstracts}, por ello no han sido rebasados, pero en caso de sobrepasarlos bastaría con solicitar otra \acrshort{API} \textit{key} y cambiarla en el módulo \texttt{scopus}.
+
+\begin{figure}[h]
+	
+	\centering
+	\includegraphics[width=\linewidth]{imagenes/scopusAPIs}
+	\caption{ \acrshort{API}s de Scopus junto con sus límites}
+\end{figure}
 \section{\textit{Sprint} 5}
 Tras toda la documentación e investigación previas en este punto realicé el proceso de obtención de datos. Dicho proceso fue dividido en 
 \begin{itemize}
@@ -174,12 +184,119 @@ En la siguiente gráfica represento un \textbf{\textit{clustering} de autores} \
 	\caption{Representación del clustering de autores llevado a cabo en la limpieza de datos}
 \end{figure}
 
-\subsubsection{Obtención de abstracts}
-Una vez estuve contento con la limpieza de autores me dispuse a llevar a cabo el grueso de la obtención de datos, la descarga de todos sus \textit{abstracts}
+\subsubsection{Obtención de autores}
+Esta limpieza se llevo acabo usando los resultados devueltos por la búsqueda de autores de Scopus (usando la clase \texttt{AuthorSearch} del paquete \texttt{scopus} la cual implementa la \acrshort{API} \textit{Author Search} de Scopus). Estos resultados de búsqueda contienen un subconjunto de los datos de autores disponibles, por lo que el siguiente paso fue descargar la ficha de cada uno de los 199 autores de Scopus usando para ello la clase \texttt{ScopusAuthor} del paquete \texttt{scopus} la cual implementa la \acrshort{API} \textit{Author Retrieval} de Scopus.
 
-Como curiosidad de este \textit{sprint} me gustaría destacar que durante mi investigación de los datos devueltos por Scopus sobre los \textit{abstracts} me percaté que la librería \texttt{scopus} no parseaba las palabras clave de los mismos aunque estas aparecían en los \acrshort{XML} obtenidos de la \acrshort{API}, estas palabras clave podían funcionar bien en los sistema de búsqueda, como había leído durante mi proceso de documentación, por ello añadí esa funcionalidad a la librería y dicho cambio fue \href{https://github.com/scopus-api/scopus/pull/68}{incorporado a la misma} en su versión 0.9
+\subsubsection{Obtención de abstracts}
+Una vez hecho esto me dispuse a llevar a cabo el grueso de la obtención de datos, la descarga de todos sus \textit{abstracts}. A partir de los autores de Scopus obtenidos previamente se obtienen todos los \texttt{eid} o \texttt{scopus\_id} de sus artículos con la clase \texttt{ScopusAuthor}. Utilizando esos identificadores recuperé todos los \textit{abstracts} usando la clase \texttt{ScopusAbstract} del paquete \texttt{scopus}, la cual implementa la \acrshort{API} \textit{Abstract Retrieval}, en su vista completa o \textit{full} \cite{scopusAbstractViews} ya que es la única que incluye las referencias, las palabras clave y las áreas del conocimiento de cada \textit{abstract}.
+
+Los 199 autores recuperados cuentan con un total de 1263 artículos en Scopus, aunque este dato no es real, ya que frecuentemente los artículos tienen varios autores de entre esos 199, por lo que estos serían contados múltiples veces, el número de artículos únicos asciende a \textbf{891}.
+
+\subsection{Preprocesado de los datos obtenidos}
+En este punto había obtenido tres conjuntos de datos relacionados pero algo inconexos:
+\begin{itemize}
+	\item 164 autores del Ranking UGRinvestiga (tras la limpieza)
+	\item 199 autores de Scopus (tras la limpieza)
+	\item 891 \textit{abstracts} de Scopus. 
+\end{itemize}
+
+El primer paso como parece lógico fue combinar los autores de la \acrshort{UGR} y Scopus, el numero de estos no coincide ya Scopus a veces no es capaz que dos autores son la misma persona si firma de distinta manera, por ello crea dos autores distintos.
+
+Para realizar esta combinación agrupé los autores de Scopus por el ID \acrshort{UGR} sumando el número de documentos y de citas de los autores individuales seleccionando el mayor índice h individual entre ellos. A continuación mezclé estos 164 autores combinados de Scopus con los datos provenientes del Ranking UGRinvestiga y del nombre del grupo de investigación, quedando finalmente constituida la entidad de datos descrita en la sección \nameref{subsc:author} del capítulo Diseño. Dicha entidad se encuentra implementada en la clase del modelo \texttt{Author} y ha sido introducida en la \acrshort{BD} \textit{MongoDB} en la colección \textit{author}.
+
+En los \textit{abstract} emulé el proceso de combinación de autores asignando los artículos al mismo autor \acrshort{UGR} aunque originalmente fueran de distintos autores Scopus. 
+
+Tras ello limpié las referencias de cada uno de ellos para mantener solo las referencias a artículos que formaban parte de la colección, eliminando las referencias a otros trabajos externos. Esto puede suponer una perdida de información, ya que limitaría el análisis de co-citación, pero hace más manejable el conjunto de referencias y como se comprueba en \cite{DBLP:conf/ecir/SarolLS18} cuando más directa sea la relación de citación, más útil resulta para este análisis. Aplicando esta limpieza se mantienen un total de \textbf{742} referencias, quedando con esto la entidad descrita en la sección \nameref{subsc:abstract} del capítulo Diseño. Dicha entidad se encuentra implementada en la clase del modelo \texttt{Abstract} y ha sido introducida en la \acrshort{BD} \textit{MongoDB} en la colección \textit{abstract}.
+
+
+
+Como curiosidad de este \textit{sprint} me gustaría destacar que durante mi investigación de los datos devueltos por Scopus sobre los \textit{abstracts} me percaté que la librería \texttt{scopus} no parseaba las palabras clave de los mismos aunque estas aparecían en los \acrshort{XML} obtenidos de la \acrshort{API}, estas palabras clave podían funcionar bien en los sistema de búsqueda, como había leído durante mi proceso de documentación, por ello añadí esa funcionalidad a la librería y dicho cambio fue \href{https://github.com/scopus-api/scopus/pull/68}{incorporado a la misma} en su versión 0.9.
+
 \section{\textit{Sprint} 6}
+Una vez tenía los datos preparados en este sprint me marqué como objetivo crear un sistema de búsqueda básico por contenido (sin aplicar bibliometría). Este objetivo se descompuso en:
+\begin{itemize}
+	\item Indexar los datos en \acrlong{ES}.
+	\item Crear un cliente web que permita la búsqueda usando \acrshort{ES}.
+	\item Crear un servidor \gls{backend} como apoyo al proceso de búsqueda que permita recuperar los datos completos, no solo los indexados.
+\end{itemize}
+
+\subsection{Indexación de los datos}
+Tras analizar un par de alternativas como motores de búsqueda (ver \nameref{sc:sprint4}) me decanté por utilizar \acrshort{ES}. Tras realizar un breve tutorial me pareció muy manual el proceso de introducir datos por lo que busqué alguna forma de hacerlo programáticamente. En mi búsqueda dí con el tutorial \cite{indexingES}, que utilizaba el cliente oficial de \acrshort{ES} en \textit{python} \texttt{elasticsearch-py} \cite{ES_client}. Usando dicho tutorial como base y realizando un mapeo del índice \footnote{Forzar los datos y tipos de estos en un índice, lo cual no es necesario ya que \acrshort{ES} es capaz de gestionarlo dinámicamente, pero con ello se consigue aplicar estrategias de búsquedas específicas para los tipos de datos y hace que no se pueda introducir un documento distinto por error}\cite{mappingES} creé los índices \textit{author} y \textit{abstract}.
+
+No todos los datos de dichas entidades han sido indexadas, ya que hay algunas que no aportaría nada a la búsqueda, es más solo la entorpecería al ocupar un espacio innecesario en el índice. Por ejemplo los identificadores o \acrshort{URL}s no aportan nada.
+
+El índice \textit{author} está constituido por los campos útiles para la búsqueda de contenido (de tipo \textit{text}) y los campos de medidas bibliométricas para poder ordenar o aplicarlos en la búsqueda bibliométrica. En la siguiente tabla se recoge los campos concretos de la clase \texttt{Author} que forman parte del índice homónimo:
+
+\begin{table} [h!]
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		\textbf{Campo}                & \textbf{Tipo}    \\ \hline
+		\textit{full\_name}           & \textit{text}    \\
+		\textit{nick\_name}           & \textit{text}    \\
+		\textit{scopus\_cites}        & \textit{integer} \\
+		\textit{scopus\_hindex}       & \textit{integer} \\
+		\textit{speciality}           & \textit{text}    \\
+		\textit{num\_docs}            & \textit{integer} \\
+		\textit{investigation\_group} & \textit{text}    \\
+		\textit{ugr\_hindex}          & \textit{integer} \\
+		\textit{ugr\_cites}           & \textit{integer} \\
+		\textit{ugr\_hindex5}         & \textit{integer} \\
+		\textit{ugr\_cites5}          & \textit{integer} \\ \hline
+	\end{tabular}
+	\caption{Campos del índice \textit{author}}
+\end{table}
+
+\newpage
+Respecto al índice \textit{abstract} los campos específicos son:
+
+\begin{table} [h!]
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		\textbf{Campo}             & \textbf{Tipo}    \\ \hline
+		\textit{title}             & \textit{text}    \\
+		\textit{abstract}          & \textit{text}    \\
+		\textit{authors}           & \textit{text}    \\
+		\textit{subject\_areas}    & \textit{text}    \\
+		\textit{keywords}          & \textit{text}    \\
+		\textit{publisher}         & \textit{text}    \\
+		\textit{publication\_name} & \textit{text}    \\
+		\textit{cites}             & \textit{integer} \\
+		\textit{date}              & \textit{date}    \\ \hline
+	\end{tabular}
+	\caption{Campos del índice \textit{abstract}}
+\end{table}
+
+
+\subsection{Desarrollo cliente de búsqueda}
+Teniendo en cuenta la características del proyecto cuyo objetivo es desarrollar un prototipo, el diseño no era un punto primordial, pero también quería crear un cliente que fuera fácilmente usable. Esto hizo que me decantara por crear un cliente web, ya que trabajo como desarrollador \textit{full-stack} y es un ambiente en el que me muevo cómodo y me permitiría desarrollar algo sin la necesidad de aprender tecnologías muy distintas.
+
+Por eso comencé buscando librerías que facilitaran el desarrollo de interfaces de usuario para sistemas basados en \acrshort{ES}. Me topé con dos destacadas \textit{Searchkit} \cite{searchKit} y \textit{Reactivesearch} \cite{reactiveSearch}, ambas basadas en el \gls{framework} \textit{ReactJS}. Básicamente suponen un conjunto de componentes visuales ya construidos (filtros, barras de búsqueda...), \textit{layouts} y otras utilidades adicionales que facilitan la comunicación con \acrshort{ES}.
+
+Ojeando las documentaciones y ejemplos me dió la impresión de que \textit{Reactivesearch} parecía más completa y customizable, con más componentes y opciones de diseño, pero es desarrollada por appbase.io, una plataforma de \acrshort{DBaaS} y la documentación de \textit{Reactivesearch} se orienta mucho a que desarrolles aplicaciones de búsqueda utilizando su plataforma como fuente de datos, lo cual me echó algo para atrás. Por otro lado \textit{Searchkit} parecía más simple, con menos componentes y opciones pero funcionales, ideal para mí ya que no buscaba realizar una interfaz gráfica compleja, si no simple, contaba con ejemplos en vivo y proyectos de ejemplo demostrando la funcionalidad de cada uno de sus componentes.
+
+Por eso decidí utilizar \textit{Searchkit} 
+
+Layout básico
+
+Explicar conexión y CORS ES
+
+MaterialUI
+
+Aspecto tabla author y listado abstract
+
+
+Aspecto dialogo Abstract y author
+
 
 \section{\textit{Sprint} 7}
+
+Lista ordenaciones
+
+Memoria
+
+cites\_norm
+hindex norm
 
 \section{\textit{Sprint} 8}
