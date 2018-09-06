@@ -1,5 +1,19 @@
 \chapter{Diseño}
 
+\section{Enfoque planteado}
+Como se ha podido comprobar en el apartado previo existen numerosas propuestas para combinar estas la bibliometría y la \acrshort{RI}, pero estos trabajos se realizan en un ámbito más académico y muchas veces no llegan a materializarse en sistemas reales. Los principales sistemas de \acrshort{RI} para la recuperación de literatura académica integran algunas medidas básicas pero no llegan a implementar los modelos más complejos planteados desde la investigación a pesar de que sus resultados sean esperanzadores. 
+
+Esto hace que este campo siga estando en desarrollo y resulte interesante plantear nuevos modelos a la par que testearlos.
+
+Por ello este \acrshort{TFM} servirá para desarrollar un prototipo de modelo que combine ambas ramas de la teoría de la información y sirva para evaluar el rendimiento de estos planteamientos. El objetivo es comparar un sistema de \acrshort{RI} clásico con uno que incorpore técnicas bibliométricas intentando medir su viabilidad y potencial mejora en los resultados recuperados.
+
+En los últimos tiempos el acceso a artículos se ha incrementado exponencialmente gracias a algunas de las plataformas descritas previamente, a su vez la información bibliográfica que incorporan también ha aumentado sustancialmente lo que hace cada vez más plausible la implementación de este tipo de sistemas. La irrupción de las \textit{altmetrics} resulta destacable, a pesar de ser unas medidas bibliométricas bastante recientes su capacidad para determinar la popularidad de los trabajos científicos es muy significativa.
+
+Es especialmente interesante el enfoque de las técnica híbridas, como las planteadas en el último trabajo analizado, que permiten por un lado no divergir del modelo mental de sistema de \acrshort{RI} del usuario, un buscador textual, pero incluir las potenciales ventajas de usar otro tipo de medidas. 
+
+El sistema propuesto utilizará como base un modelo clásico realizando una reordenación \textit{a priori} de los resultados en función de algunas medidas directas como el número de citas y el número de lectores en una plataforma (incluyendo con ello alguna \textit{altmetric}). Se plantea utilizar una realimentación inconsciente del usuario basada en considerar como relevantes los documentos del listado inicial que el usuario descargue tras leer el resumen y utilizándolos como semillas para refinar la búsqueda de manera transparente para él. Esta reordenación  \textit{a posteriori} se servirá del grafo de citación de estos documentos semilla para seleccionar los que documentos que tengan una relación fuerte.
+
+\section{Fuentes de datos}
 Al ser este un sistema \acrshort{RI} el diseño ha de girar en torno a los datos, por ello comencé explorando diversas alternativas para utilizar como fuente de datos. 
 
 Como punto inicial para la extracción de los datos de los autores de la \acrshort{ETSIIT} partí del Ranking UGRinvestiga \cite{Ranking_UGRInvestiga}. En este se lista a todos los autores de la facultad junto con sus citas e índice h total y los últimos 5 años.

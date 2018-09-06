@@ -14,7 +14,7 @@ Siguiendo la recomendación de mi tutor (co-autor del libro) me centré en los c
 
 Esta lectura me hizo adquirir unas bases más teóricas a lo que ya había estudiado en la asignatura del máster \acrlong{GIW} donde obtuvimos una nociones básicas de lo que supone la \acrshort{RI} y sus vertientes realizando alguna práctica.
 
-Los artículos de los talleres \acrlong{BIR} que encontré más destacados están detallados en el apartado \nameref{subsc:trabajosRelacionados} de la Introducción. Dichos trabajos se encuentran disponibles gratuitamente en \url{http://ceur-ws.org/} bajo el amparo de la Universidad Técnica de Aquisgrán (\textit{RWTH Aachen University}) en Alemania.
+Los artículos de los talleres \acrlong{BIR} que encontré más destacados están detallados en el apartado \nameref{subsc:trabajosRelacionados}. Dichos trabajos se encuentran disponibles gratuitamente en \url{http://ceur-ws.org/} bajo el amparo de la Universidad Técnica de Aquisgrán (\textit{RWTH Aachen University}) en Alemania.
 
 Cada una de las ediciones de estos talleres se encuentra estructurada dividida en diversos trabajos. Por un lado un editorial que resume la edición y todos los trabajos aceptados en la conferencia así como los trabajos individuales, alguna \textit{keynote} o presentación y algunas demostraciones. 
 
@@ -31,7 +31,7 @@ En este \textit{sprint} me dediqué a leer dichos editoriales clasificando por a
 Para el segundo \textit{sprint} plantee el indagar en la \acrshort{RI} e ir introduciendo la bibliometría. Sus objetivos concretos son: 
 
 \begin{itemize}
-	\item Leer los primeros 17 papers de los \acrshort{BIR} resumiendo y extrayendo ideas interesantes para el proyecto.
+	\item Leer los primeros papers de los \acrshort{BIR} resumiendo y extrayendo ideas interesantes para el proyecto.
 	\item Buscar información sobre medidas bibliométricas (Citas, índice h combinado...)
 \end{itemize}
 
@@ -44,17 +44,17 @@ A partir de la lista priorizada fui leyendo los primeros artículos, el orden de
 	\caption{Ejemplo de resumen de uno de los papers}
 \end{figure}
 
-En este momento me empecé a introducir en el mundo de las medidas bibliométricas, ya que no tenía conocimiento previo alguno de que existiera esta disciplina siquiera, mediante la lectura de artículos iba descubriendo distintas medidas así como sus posibles aplicaciones a la \acrshort{RI} cuyo resultado final se encuentra sintetizado en la sección \nameref{sc:bibliometria} de la Introducción.
+En este momento me empecé a introducir en el mundo de las medidas bibliométricas, ya que no tenía conocimiento previo alguno de que existiera esta disciplina siquiera, mediante la lectura de artículos iba descubriendo distintas medidas así como sus posibles aplicaciones a la \acrshort{RI} cuyo resultado final se encuentra sintetizado en la sección \nameref{sc:bibliometria}.
 
 \section{\textit{Sprint} 3}
 Ya en este punto decidí que estaba listo para ir documentando todo lo que había aprendido por ello en este \textit{sprint} me puse como objetivo escribir la introducción de este \acrshort{TFM}. Los objetivos concretos son:
 \begin{itemize}
-	\item Escribir la introducción del \acrshort{TFM}.
+	\item Sintetizar mi estudio hasta este punto en los primeros capítulos de este \acrshort{TFM}.
 	\item Pensar un enfoque para el proyecto a desarrollar decidiendo que clase de sistema se desarrollaría.
 	\item Continuar leyendo algunos artículos más de los \acrshort{BIR}.
 \end{itemize}
 
-Para asimilar y reflexionar sobre todo lo que había leído me puse a escribir la introducción de este trabajo ya que ello me ayudaría a pensar un enfoque correcto. También quería poder mostrar algo a mi tutor para obtener algo de \textit{feedback} por su parte.
+Para asimilar y reflexionar sobre todo lo que había leído me puse a escribir el capítulo Contexto e Introducción de este trabajo ya que ello me ayudaría a pensar un enfoque correcto. También quería poder mostrar algo a mi tutor para obtener algo de \textit{feedback} por su parte.
 
 Continué leyendo algunos trabajos más con lo que dí por concluida mi proceso de investigación. Uno de esos últimos trabajos fue \cite{DBLP:conf/ecir/SarolLS18} el cual me gustó especialmente ya que pasaban de un modelo teórico a algo más práctico, accediendo a la \acrshort{API} de Scopus e incluyendo ejemplos de su implementación en un repositorio de \textit{GitHub} lo que me llevo a plantear mi modelo híbrido combinando el sistema habitual de un sistema \acrshort{RI} con reordenamiento de resultados \textit{a priori} usando medidas bibliométricas y un ordenamiento \textit{a posteriori} utilizando un grafo de citación entre los documentos.
 
@@ -68,7 +68,7 @@ Una vez sintetizado lo investigado y teniendo una idea aproximada de lo que pens
 	\item Investigar como conectarse a la \acrshort{API} de Scopus o \acrshort{WoS}.
 \end{itemize}
 
-Estuve haciendo alguna pruebas con algunos \glspl{framework} de búsqueda. Como he dicho previamente ya había utilizado \textit{Lucene} como parte de las prácticas de la asignatura \acrshort{GIW}, pero me pareció demasiado bajo nivel así que me centré en investigar otras alternativas. Encontré que las principales, que casualmente utilizaban por debajo \textit{Lucene}, eran \textit{\textbf{Solr}} y \textit{\textbf{\acrlong{ES}}}.
+Estuve haciendo alguna pruebas con algunos \glspl{framework} de búsqueda. Ya había utilizado \textit{Lucene} como parte de las prácticas de la asignatura \acrshort{GIW}, pero me pareció demasiado bajo nivel así que me centré en investigar otras alternativas. Encontré que las principales, que casualmente utilizaban por debajo \textit{Lucene}, eran \textit{\textbf{Solr}} y \textit{\textbf{\acrfull{ES}}}.
 
 Buscando alguna comparativa \cite{ES_Solr} y comentarios de usuarios en plataformas tan reputadas como \textit{StackOverflow} \cite{ES_Solr_SO} parecía que se recomendaba \acrshort{ES} por ser más sencillo de usar por lo que realicé un breve tutorial \cite{ES_tutorial} que me gustó bastante ya que resulta realmente simple de usar y basta únicamente con realizar consultas sobre una \acrshort{API} \acrshort{REST} por lo que basta con hacer peticiones \acrshort{HTTP} con algún cliente simple como \texttt{curl}. Todo esto hizo que me decidiera por este servidor de búsqueda.
 
@@ -81,7 +81,7 @@ Funcionalmente \texttt{scopus} era muy similar a la versión oficial, pero estab
 Para poder realizar mis pruebas tuve que solicitar una \acrshort{API} \textit{key} en el portal de Elsevier developers \url{https://dev.elsevier.com/myapikey.html} creando una cuenta gratuita. Para poder descargar los datos de Scopus desde fuera de la red de la universidad me ha sido necesario utilizar el servicio de \acrshort{VPN} de la \acrshort{UGR} siguiendo el siguiente tutorial \cite{vpnUGR}.
 
 En la siguiente tabla se puede contemplar las distintas \acrshort{API}s de Scopus así como sus límites. En concreto he utilizado las \acrshort{API}s: \textit{Author Search} para realizar las búsquedas de autores, \textit{Author Retrieval} para obtener los datos completos de los autores y \textit{Abstract Retrieval} para obtener los artículos o \textit{abstracts}. 
-Como se puede ver los límites de las \acrshort{API}s son bastante elevados 5000 peticiones semanales para la búsqueda y recuperación de autores así como 1000 para los \textit{abstracts}, por ello no han sido rebasados, pero en caso de sobrepasarlos bastaría con solicitar otra \acrshort{API} \textit{key} y cambiarla en el módulo \texttt{scopus}.
+Como se puede ver los límites de las \acrshort{API}s son bastante elevados 5000 peticiones semanales para la búsqueda y recuperación de autores así como 10000 para los \textit{abstracts}, por ello no han sido rebasados, pero en caso de sobrepasarlos bastaría con solicitar otra \acrshort{API} \textit{key} y cambiarla en el módulo \texttt{scopus}.
 
 \begin{figure}[h]
 	
@@ -151,7 +151,7 @@ Estos problemas con los nombres me hicieron montar el siguiente algoritmo para i
 
 Donde $f\_name$ y $l\_name$ hacen referencia a nombre y apellidos respectivamente y $name\_wo\_2\_lname$ hace referencia al nombre completo del autor eliminando el segundo apellido.
 
-Con este algoritmo he logrado encontrar algún resultado en Scopus para \textbf{202 de los 214} autores buscados ($\sim$ 94.39 \% de los autores), a pesar de esto el número total de autores recuperados son 397, por lo que habrá que realizar una limpieza de los mismos.
+Con este algoritmo he logrado encontrar algún resultado en Scopus para \textbf{202 de los 214} autores buscados (\textbf{$\sim$ 94.39 \% de los autores}), a pesar de esto el número total de autores recuperados son 397, por lo que habrá que realizar una limpieza de los mismos.
 
 \subsubsection{Limpieza de datos de autores}
 Si observamos la distribución de \textbf{nacionalidades de los autores} recuperados, la cual se ve en la siguiente imagen se aprecia que hay una mayoría abrumadora de Españoles (como cabría esperar) pero también algunas nacionalidades inesperadas como Palestina o Australiana. Por ello consideraré que todo autor cuya nacionalidad no sea española debe haber sido recuperado incorrectamente y sera eliminado al tratarse de ruido, haciendo esto pasamos de 397 autores de Scopus representando a 202 autores de la \acrshort{UGR} a un total de 381 autores de Scopus respresentando a \textbf{198 autores de la \acrshort{UGR} ($\sim$ 98.02 \% de los 202 previos)}.
@@ -269,34 +269,125 @@ Respecto al índice \textit{abstract} los campos específicos son:
 \end{table}
 
 
-\subsection{Desarrollo cliente de búsqueda}
+\subsection{Desarrollo del buscador por contenido}
 Teniendo en cuenta la características del proyecto cuyo objetivo es desarrollar un prototipo, el diseño no era un punto primordial, pero también quería crear un cliente que fuera fácilmente usable. Esto hizo que me decantara por crear un cliente web, ya que trabajo como desarrollador \textit{full-stack} y es un ambiente en el que me muevo cómodo y me permitiría desarrollar algo sin la necesidad de aprender tecnologías muy distintas.
 
 Por eso comencé buscando librerías que facilitaran el desarrollo de interfaces de usuario para sistemas basados en \acrshort{ES}. Me topé con dos destacadas \textit{Searchkit} \cite{searchKit} y \textit{Reactivesearch} \cite{reactiveSearch}, ambas basadas en el \gls{framework} \textit{ReactJS}. Básicamente suponen un conjunto de componentes visuales ya construidos (filtros, barras de búsqueda...), \textit{layouts} y otras utilidades adicionales que facilitan la comunicación con \acrshort{ES}.
 
 Ojeando las documentaciones y ejemplos me dió la impresión de que \textit{Reactivesearch} parecía más completa y customizable, con más componentes y opciones de diseño, pero es desarrollada por appbase.io, una plataforma de \acrshort{DBaaS} y la documentación de \textit{Reactivesearch} se orienta mucho a que desarrolles aplicaciones de búsqueda utilizando su plataforma como fuente de datos, lo cual me echó algo para atrás. Por otro lado \textit{Searchkit} parecía más simple, con menos componentes y opciones pero funcionales, ideal para mí ya que no buscaba realizar una interfaz gráfica compleja, si no simple, contaba con ejemplos en vivo y proyectos de ejemplo demostrando la funcionalidad de cada uno de sus componentes.
 
-Por eso decidí utilizar \textit{Searchkit} 
+Por todo ello decidí utilizar \textit{Searchkit}. En la siguiente imagen se puede apreciar el aspecto de la demo de esta librería, como se puede observar cuenta con una interfaz bastante simple, muy inspirada en \textit{Material Design} \cite{materialDesign} y con unas zonas claramente diferenciadas: En rojo podemos ver una barra superior con el nombre de la aplicación y la barra de búsqueda, a la izquierda en amarillo una zona de filtros, en recuadros azules un par de barras que muestran información sobre los resultados de búsqueda y permiten modificar la ordenación o visualización; por último en verde aparece la zona de resultados.
 
-Layout básico
+\begin{figure}[h]
+	
+	\centering
+	\includegraphics[width=\linewidth]{imagenes/AspectDemoSearchKit}
+	\caption{Aspecto demo \textit{Searchkit}}
+\end{figure}
 
-Explicar conexión y CORS ES
+Para mi aplicación seguiré este esquema a excepción de la zona de filtros amarilla ya que el pretendo que el la búsqueda sea lo más simple posible.
 
-MaterialUI
+Habilitar la conexión entre \acrshort{ES} y \textit{Searchkit} es realmente sencillo, basta con instanciar un objeto \texttt{SearchkitManager} y pasarlo como argumento al componente \textit{React} \texttt{SearchkitProvider} que englobe todos los componentes de \textit{Searchkit} como si se tratara de un contexto. En el siguiente bloque de código se puede contemplar como se realiza la conexión con el índice de \textit{author} de \acrshort{ES}.
 
-Aspecto tabla author y listado abstract
+\newpage
+
+\begin{lstlisting}[style=htmlcssjs, caption=Conexión de \textit{Searchkit} a una instancia \acrshort{ES} local]
+const searchkit = new SearchkitManager("http://localhost:9200/author")
 
 
-Aspecto dialogo Abstract y author
+<SearchkitProvider searchkit={searchkit}>
+...
+</SearchkitProvider>
+\end{lstlisting}
 
+Además de esto al conectarnos con una instancia local es necesario activar las opciones de \acrshort{ES} relacionadas con CORS como la documentación oficial aclara \cite{searchKit_cors}.
+
+Además de \textit{Searchkit} también he utilizado el \gls{framework} \textit{MaterialUI} para algunos de los componentes visuales como las \textit{tabs} de selección de búsqueda de autores o \textit{abstracts} o los botones que aparecen en la aplicación.
+
+Esta imagen muestra el aspecto que tiene el buscador de autores, como se puede ver la interfaz es realmente sencilla contando unicamente con una barra de búsqueda, unas pestañas para cambiar entre búsqueda de autores o artículos y las propias vistas de resultados así como un selector de orden de los mismos.
+
+
+\begin{figure}[h]
+	
+	\centering
+	\includegraphics[width=\linewidth]{imagenes/AspectoBuscadorAutores}
+	\caption{Aspecto buscador de autores}
+\end{figure}
+\newpage
+Al seleccionar cualquiera de los autores haciendo click en su nombre podemos ver una ficha detallada con todos los datos de la clase \texttt{Author} incluyendo botones a los perfiles disponibles del autor.
+
+\begin{figure}[h]
+	
+	\centering
+	\includegraphics[width=\linewidth]{imagenes/AspectoVistaAutor}
+	\caption{Aspecto vista de un autor}
+\end{figure}
+
+\newpage
+
+Por otro lado la vista del buscador de \textit{abstracts} es algo diferente ya que no muestra los resultados en una tabla, si no a modo de lista. Para cada uno de los artículos se puede observar unos datos básicos: su título, autores, fecha de publicación, citas y palabras clave.
+
+\begin{figure}[h]
+	
+	\centering
+	\includegraphics[width=\linewidth]{imagenes/AspectoBuscadorAbstracts}
+	\caption{Aspecto buscador de artículos}
+\end{figure}
+
+\newpage
+
+Como cabe esperar también se dispone de una vista detallada de cada artículo, donde se muestran datos más detallados, el\textit{abstract} o en enlace del mismo en Scopus.
+\begin{figure}[h]
+	
+	\centering
+	\includegraphics[width=\linewidth]{imagenes/AspectoVistaAbstract}
+	\caption{Aspecto vista de un artículo}
+\end{figure}
+
+Además de todo este \gls{frontend} he desarrollado un pequeño servidor utilizando \textit{Flask} que permite recuperar los datos completos de un autor o artículo por su id para combinarlos con los que vienen de \acrshort{ES} y poder desplegar las vistas detalladas de cada elemento que se han mostrado antes. También cuenta con servicio para obtener un diccionario de artículos por id de Scopus y así poder mostrar una sección de referencias en los artículos que las tengan con enlaces directos a sus referencias.
 
 \section{\textit{Sprint} 7}
+Con toda la infraestructura de búsqueda ya funcionando había llegado la hora de aplicar medidas bibliométricas para mejorar la búsqueda así como documentar lo hecho hasta ahora. Este objetivo se se divide por tanto en:
+\begin{itemize}
+	\item Investigar como modificar la puntuación asignada por \acrshort{ES} a los documentos.
+	\item Combinar esa puntuación con medidas sobre las citas e índices h.
+	\item Documentar lo desarrollado hasta ahora.
+\end{itemize}
 
-Lista ordenaciones
+\subsection{Aplicación de medidas bibliométricas y ordenación de resultados}
+\acrlong{ES} provee una puntuación o \texttt{\_score} en cada documento devuelto por cada consulta. Dicha puntuación está basada en el propio modelo de \textit{Lucene}, el cual se explica brevemente en la documentación oficial de \acrshort{ES} \cite{ES_scoring}. Básicamente supone la combinación de varios modelos clásicos explicados en el apartado \nameref{subsc:modelos}. 
 
-Memoria
+Primero se ejecuta un modelo booleano para descartar documentos que pueden formar parte del resultado de la consulta, tras esto para ordenar por relevancia este subconjunto de documentos se utiliza el modelo vectorial con un esquema de pesos \textit{tf*idf} modificado con una normalización en función de la longitud del campo (a campo más corto, más relevancia) además de algunas otras modificaciones, como los campos que el usuario haya decidido priorizar.
 
-cites\_norm
-hindex norm
+Todo esto hace que esta puntuación sea muy dependiente de la consulta y no tenga un límite superior, ya que eso significaría que se puede determinar la relevancia absoluta dada una consulta, cosa que no es posible como ya he discutido en los comienzos de esta memoria. 
+
+Por suerte en \acrshort{ES} esta contemplada la posibilidad de modificar esta puntuación de manera interna usando lo que se conoce como \textit{Function Score Query} \cite{ES_func_score}, simplemente en la propia consulta se determina como se quiere modificar dicha puntuación. Dispone de bastante flexibilidad, permite reemplazarla por completo, combinarla mediante una suma, media o multiplicación con otras medidas como por ejemplo una función sobre un campo del documento (como puede ser las citas) o cualquier función calculable con un \textit{script}. 
+
+Esta fue mi primera opción con la que estuve probando logrando realizar combinaciones. Logre probar algunos ejemplos prometedores pero no tenía claro como combinar ya que por ejemplo la puntuaciones que \acrshort{ES} asignaba en mis pruebas a los documentos solían ser pequeñas (menores que 10) y aplicarle alguna modificación con el campo de las citas (que llega a superar las centenas) hacía que prácticamente diera igual la consulta, los resultados siempre eran un listado ordenado por citas ya que su peso era mucho mayor que todo el mecanismo de puntuación interno de \acrshort{ES}. Por ello me puse a buscar como normalizar las puntuaciones internas entre 0 y 1 para aplicar yo también una normalización a las citas y poder combinar ambas medidas con igual peso cada una. Tras navegar por varia preguntas en \textit{StackOverflow} que aplicaban diversos trucos que no llegaban a funcionar dí con una \textit{feature request} en el propio repositorio \textit{GitHub} de \acrshort{ES} \cite{ES_normalize_score} donde los autores afirmaban que no se trataba de una buena idea y simplemente se limitaban a cerrar.
+
+Esto hizo que me planteara un enfoque más manual, si no podía combinar a mi gusto las puntuaciones en \acrshort{ES} podría obtener las puntuaciones de los documentos en el \gls{frontend}, normalizar por la máxima puntuación para la consulta y tras esto combinar con mis medidas. 
+
+Para llevar a cabo este enfoque lo primero que realicé fue normalizar los números de citas e índices h para introducirlos como nuevos campos precalculados en los índices ya creados, por ello creé los campos \texttt{cites\_norm} y \texttt{hindex\_norm} en el índice de autores y los homólogos en el de artículos, con la excepción de que el índice h de un artículo no es algo real, ya que esta medida se aplica a los autores, pero para poder aplicarlo realice una normalización de la media de los índices h de los autores del artículo.
+
+Teniendo ya ambas medidas normalizas tenia que establecer el método de combinación, siguiendo el consejo de mi tutor implementé dos combinaciones que han sido ampliamente utilizadas y estudiadas para este tipo de problemas, los algoritmos \texttt{CombMAX} y \texttt{CombSUM} \cite{DBLP:conf/trec/ShawF94}. El primero es básicamente seleccionar el valor máximo en N rankings de puntuación normalizados para cada uno de los documentos mientras que el segundo supone la suma de las N puntuaciones normalizadas para cada documento. 
+
+Estas son todas las piezas para la aplicación de medidas bibliométricas en mi sistema, el mecanismo por tanto es el siguiente:
+
+Cada consulta $q$ devuelve un conjunto de documentos ordenados por el mecanismo interno de \acrshort{ES} $\{d_1, d_2, ..., d_n\}$ cada uno de los cuales cuenta con una puntuación $s$, por lo que lo primero que hago tras recibir el resultado es buscar la puntuación máxima de entre todos los documentos $maxScore$ y normalizar las puntuaciones de la manera siguiente:
+
+\begin{equation}
+s_{ni} = \frac{s_i}{maxScore} \forall i \in \{1, 2, ..., n\}
+\end{equation}
+
+Tras esto según el mecanismo de ordenación elegido entre: \texttt{CombMAX\_cites}, \texttt{CombSUM\_cites}, \texttt{CombMAX\_hindex} y \texttt{CombSUM\_hindex} se suman o calculan los máximos entre las puntuaciones \acrshort{ES} normalizadas y las puntuaciones de citas o índice H asignando finalmente una puntuación $s'$ a cada documento por la cual se reordena la lista de documentos.
+
+Esto se aplica tanto para la búsqueda de autores como de artículos. Además de este mecanismo también se puede seleccionar la ordenación de \acrshort{ES} (sin medidas bibliométricas ninguna) y ordenación únicamente por citas, índice h, nombre (en caso de autores) o título (en caso de artículos).
+
 
 \section{\textit{Sprint} 8}
+
+Refinamientos de la memoria
+
+Mejorar despliegue
+
+Documentación código

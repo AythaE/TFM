@@ -206,3 +206,16 @@ documentacion sobre function_score para modificar las consultas https://www.elas
 Parece ser capaz de calcular una nueva puntacion de diversas maneras y combinarla directamente con la puntuación de ES.
 
 Interesante precalcular las citas normalizadas para usar en la puntuacion directamente, También se podría combinar el índice h de los autores y normalizarlo (la media de los indices de los autores conocidos por ejemplo).
+
+## 06/09/2018
+
+Preparando para enviar segunda versión al tutor.
+
+Cuestiones:
+1. El título oficial por que se encuentra registrado el TFM es "Desarrollo de un prototipo de motor de búsqueda que incorpore técnicas bibliométricas para mejorar la recuperación", sin incluir "...de información" ¿puede haber problemas por poner otro?
+2. Objetivo de evaluación no bastaría con concluir que no ha sido cumplido por las dificultades de la misma y la falta de tiempo esbozando una idea de realizar algunas encuestas a profesores de las escuela ya que son expertos en la materia del sistema.
+3. Apartado de sofware en planificación está igual en el TFG que me adjuntaste.
+4. En la sección Metodologia de desarrollo detallo la Ingenieria del software que he llevado a cabo, que es escasa lo sé, pero realista, no me voy a poner ahora a escribir especificaciones de requisitos, a hacer diagramas detallados ya una vez finalizado el desarrollo, ya que me parecen artefactos totalmente artificiales que no utiliza prácticamente nadie. Puedo añadir algún caso de uso básico con un diagrama general y una breve explicación de cada uno, esos casos de uso pueden ser por ejemplo realizar una búsqueda o cambiar la ordenación de los resultados ya que no creo que el sistema tenga mucha más funcionalidad de cara al usuario 
+5. La planificación temporal se encuentra en la sección homonima del capítulo Planificación
+6. Respecto a la arquitectura del sistema que te parece la ide de añadir en el diseño un breve esbozo con una idea de una arquitectura básica cliente servidor con un servidor de búsqueda que se conecte a una BD y un cliente que realice consultas sobre ese servidor y ya en el final del desarrollo incluir este diagrama detallado con las tecnologías concretas.
+7. No te parece buena idea que el apartado de tenicas y herramientas tenga un capítulo propio donde recoger la información sobre las mismas y desde el apartado del desarrollo simplemente mentar las herramientas o librerías sin entrar en detalle
