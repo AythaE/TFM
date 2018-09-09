@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './theme.css'
 import Tabs from '@material-ui/core/Tabs';
@@ -9,8 +8,6 @@ import {
 } from "searchkit";
 import AuthorSearch from './author/AuthorSearch';
 import AbstractSearch from './abstract/AbstractSearch';
-import { Button } from '@material-ui/core';
-import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 // Declare both search indexes
 const authorSearchkit = new SearchkitManager("http://localhost:9200/author");
@@ -56,6 +53,8 @@ class App extends Component {
       selectedTab: abstractTab,
       searchkit: abstractSearchkit
     };
+
+    this.abstractSearchBox = React.createRef();
   }
 
   handleChange = (event, value) => {
@@ -69,6 +68,7 @@ class App extends Component {
   };
 
   render() {
+
     return (
       <SearchkitProvider searchkit={this.state.searchkit}>
         <Layout>
@@ -85,9 +85,12 @@ class App extends Component {
             }
             {this.state.searchkit === abstractSearchkit &&
               <SearchBox
+                ref={this.abstractSearchBox}
                 autofocus={true}
-                searchOnChange={true}
-                prefixQueryFields={["abstract", "title", "keywords", "subject_areas", "authors"]} />
+                // searchOnChange={true}
+                prefixQueryFields={["abstract^1", "title^5", "keywords^10", "subject_areas^5", "authors^5"]}
+                // searchThrottleTime={500} 
+                />
             }
 
           </TopBar>
@@ -100,8 +103,8 @@ class App extends Component {
               </Tabs>
               {/* <Button variant='fab' color="primary" classes={{fab: "fab"}} aria-label="Scroll to top"> <UpIcon /></Button> */}
 
-              {this.state.selectedTab === authorTab && <AuthorSearch />}
-              {this.state.selectedTab === abstractTab && <AbstractSearch />}
+              {this.state.selectedTab === authorTab && <AuthorSearch searchkit={authorSearchkit}/>}
+              {this.state.selectedTab === abstractTab && <AbstractSearch searchkit={abstractSearchkit} searchbox={this.abstractSearchBox}/>}
 
             </div>
           </LayoutBody>

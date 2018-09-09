@@ -6,20 +6,30 @@ import { normalizeHitsScore, combSum, resortHits, generateId, combMax } from '..
 
 class AbstractHitsTable extends Component {
 
-    rerankHits = (hits, debug= false) => {
+    rerankHits = (hits, debug = false) => {
         switch (this.props.rerank_method) {
             case "combSum_cites_norm":
                 hits = normalizeHitsScore(this.props.hits, debug);
-                hits = combSum(hits, 'cites_norm', debug);
+                hits = combSum(hits, 'cites_norm');
                 hits = resortHits(hits, debug);
                 break;
             case "combMax_cites_norm":
                 hits = normalizeHitsScore(this.props.hits, debug);
-                hits = combMax(hits, 'cites_norm', debug);
+                hits = combMax(hits, 'cites_norm');
+                hits = resortHits(hits, debug);
+                break;
+            case "combSum_hindex_norm":
+                hits = normalizeHitsScore(this.props.hits, debug);
+                hits = combSum(hits, 'hindex_norm');
+                hits = resortHits(hits, debug);
+                break;
+            case "combMax_hindex_norm":
+                hits = normalizeHitsScore(this.props.hits, debug);
+                hits = combMax(hits, 'hindex_norm');
                 hits = resortHits(hits, debug);
                 break;
             default:
-                // Use normal ES order
+            // Use normal ES order
         }
         return hits;
 
@@ -30,7 +40,7 @@ class AbstractHitsTable extends Component {
         hits = this.rerankHits(hits, true);
         let key_prop = generateId();
         return (
-            <div style={{marginLeft: "5px"}}>
+            <div style={{ marginLeft: "5px" }}>
                 {hits.map((hit, index) => {
                     return (
                         <AbstractHitsListItem key={key_prop + '-' + index} result={hit} referencesLookup={this.props.referencesLookup} />

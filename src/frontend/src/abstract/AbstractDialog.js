@@ -33,7 +33,7 @@ class AbstractDialog extends Component {
 
     }
 
-    componentDidMount() {
+    getData() {
         // TODO call back for references lookup
         if (!this.state.fullLoaded) {
             fetch(ABSTRACT_SERVICE_URL + this.props.scopusId).then(response => {
@@ -67,10 +67,10 @@ class AbstractDialog extends Component {
             }
         }
         this.keywords = formatCommaList(abstractData.keywords);
-        this.date = formatDate(abstractData.date);
+        this.date = formatDate(abstractData.date.$date);
     }
     handleClick = () => {
-        this.setState({ open: !this.state.open })
+        this.setState({ open: !this.state.open }, this.getData)
     }
 
     render() {
@@ -140,7 +140,7 @@ class AbstractDialog extends Component {
                                                                 {/* <b>{this.props.referencesLookup[ref_id].title}</b><br/> */}
                                                                 <AbstractDialog referencesLookup={this.props.referencesLookup} scopusId={ref_id} title={this.props.referencesLookup[ref_id].title} />
                                                                 {formatCommaList(this.props.referencesLookup[ref_id].authors)}<br />
-                                                                {formatDate(this.props.referencesLookup[ref_id].date)}
+                                                                {formatDate(this.props.referencesLookup[ref_id].date.$date)}
                                                             </div>
                                                         </li>
                                                     );

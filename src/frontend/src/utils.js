@@ -16,12 +16,12 @@ export function normalizeHitsScore(hits, debug = false) {
     let score_array = [];
     let t1, t2, t3;
     if (debug) {
-        console.log(hits);
+        console.log(Object.assign({}, hits));
         t1 = performance.now();
 
     }
 
-    hits.map(h => { score_array.push(h._score) });
+    hits.map(h => { return score_array.push(h._score); });
 
     max_score = Math.max(...score_array)
     if (debug) {
@@ -30,12 +30,12 @@ export function normalizeHitsScore(hits, debug = false) {
 
     }
 
-    hits.map(h => { h._score /= max_score });
+    hits.map(h => { return h._score /= max_score; });
     if (debug) {
         t3 = performance.now()
 
         console.log("After normalize")
-        console.log(hits)
+        console.log(Object.assign({}, hits));
 
         console.log("time for find max_score: " + (t2 - t1) + " ms")
         console.log("time for normalizing: " + (t3 - t2) + " ms")
@@ -74,7 +74,7 @@ export function resortHits(hits, debug=false) {
     if(debug)
         t1 = performance.now();
 
-    hits.sort((h1, h2) => { return (h1._score - h2._score); }).reverse();
+    hits.sort((h1, h2) => { return (h2._score - h1._score ); });
     if(debug ){
         t2 = performance.now()
         console.log("time for resorting: " + (t2 - t1) + " ms")

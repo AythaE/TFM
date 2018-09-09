@@ -219,3 +219,9 @@ Cuestiones:
 5. La planificación temporal se encuentra en la sección homonima del capítulo Planificación
 6. Respecto a la arquitectura del sistema que te parece la ide de añadir en el diseño un breve esbozo con una idea de una arquitectura básica cliente servidor con un servidor de búsqueda que se conecte a una BD y un cliente que realice consultas sobre ese servidor y ya en el final del desarrollo incluir este diagrama detallado con las tecnologías concretas.
 7. No te parece buena idea que el apartado de tenicas y herramientas tenga un capítulo propio donde recoger la información sobre las mismas y desde el apartado del desarrollo simplemente mentar las herramientas o librerías sin entrar en detalle
+
+**Detallar los campos usados en las consultas de Searchkit y el tema del prefix**
+
+
+## 08/09/2018
+Algo lenta la busqueda de abstracts, se bloquea el input, puede ser mejor desactivar la busqueda segun escribes
