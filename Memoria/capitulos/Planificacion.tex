@@ -83,3 +83,36 @@ En Octubre de 2017 comencé a trabajar, lo que supuso muchas horas menos al día
 \end{table}
 
 \section{Presupuesto}
+
+En este apartado haré una estimación a \textit{grosso} modo de los costes de llevar a cabo el proyecto si el objetivo fuera desarrollar un producto listo para explotación (no olvidemos que esto es un prototipo). 
+
+A pesar de la dilatada planificación temporal, si se fuera a implementar este sistema la duración se reduciría drásticamente, al contar con una persona trabajando a tiempo completo. Estimo que en 2 meses a tiempo completo un desarrollador de mis características podría finalizar el proyecto holgadamente. Para ponerle un costo a esto estimaré un salario de 15€/hora brutos, lo que a jornada completa serían 2400 € brutos al mes, a mi juicio, un salario digno para un ingeniero con máster, desgraciadamente nada real. 
+
+Respecto a los costes de hardware sería necesario un equipo para el desarrollo algo más potente que el utilizado, ya que en momentos puntuales la memoria de mi equipo se ha visto desbordada.
+Por ello lo indicado sería un portátil con 16 GB de RAM y almacenamiento SSD de 256GB que puede rondar los 1000€ ahora mismo. Teniendo en cuenta que el periodo de amortización de un equipo de estas características ronda los 3 años y que la duración del proyecto sería 2 meses eso dejaría un coste de 55,55 €
+
+Además sería necesario un servidor donde desplegar el sistema para su explotación. Hoy en día son pocos los proyectos que puedan requerir la compra de un servidor físico teniendo en cuenta las posibilidades que ofrece la computación en la nube y la variada oferta de la que se dispone. Por ello se contrataría una instancia en \textit{Amazon Web Services} de tipo \texttt{i3.xlarge} con 4 núcleos, 30 GB de RAM y 1 TB de SSD cuyos costes estimados mensuales son de 220 €.
+
+Respecto al software a utilizar se apostaría por el software libre con licencias que permitan la comercialización como Apache2 o MIT, por lo que el coste estimado en Software es de 0€.
+
+Si el proyecto se desarrollara en el ámbito académico, para ayudar a la labor investigadora de una universidad, seguramente no habría que considerar costes para usar datos de artículos ya que alta probabilidad la universidad en cuestión contará con licencias o acuerdos con editoriales científicas como Elsevier. En caso de querer desarrollar este sistema para su explotación económica los gastos editoriales podrían suponer un importante sobrecoste que hiciera peligrar la viabilidad del proyecto.
+
+Para esta estimación supondré que se desarrolla el proyecto en un ambiente académico obviando los gastos mencionados previamente. En la siguiente tabla se recogen los gastos requeridos para el desarrollo de este sistema (2 meses de proyecto), a esto habría que sumar 220€ por cada mes que se mantenga el sistema desplegado en concepto de costes de infraestructura.
+
+\begin{table} [h!]
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		     \textbf{Elemento}      & \textbf{Coste} \\ \hline
+		     Recursos humanos       & 4800€          \\
+		Hardware para el desarrollo & 55,55€         \\
+		         Servidor           & 440 €          \\
+		         Software           & 0 €            \\
+		    Gastos editoriales      & 0 €            \\ \hline
+		    TOTAL & 5295,55 € \\ \hline
+	\end{tabular}
+	\caption{Estimación de costes del proyecto}
+\end{table}
+
+
+
