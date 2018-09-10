@@ -225,3 +225,14 @@ Cuestiones:
 
 ## 08/09/2018
 Algo lenta la busqueda de abstracts, se bloquea el input, puede ser mejor desactivar la busqueda segun escribes
+
+## 10/09/2018
+
+TODO:
+- [ ] Escribir apartado Introducción > Organización de la memoria
+- [ ] Escribir apartado Técnicas y Herramientas
+- [ ] Escribir apartado Desarrollo > Script 8
+- [ ] Escribir apartado Conclusiones y Trabajos Futuos
+- [ ] Escribir resumen
+- [ ] Escribir resumen inglés
+- [ ] Limpiar código y documentar un poco frontend

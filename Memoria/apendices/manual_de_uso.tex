@@ -1,4 +1,60 @@
 \chapter{Manual técnico de uso}
 
-Explicar despliege utilizando docker
+\section{Descipción de la arquitectura}
+El sistema desarrollado a lo largo de este proyecto se ha servido de \textit{Docker} como forma de gestionar la infraestructura de los diversos nodos que lo conforman. La arquitectura final del sistema como se recoge en la figura \ref{fig:finalArchitecture} se constituye de 4 nodos o contenedores \textit{Docker} concretamente.
+
+\begin{itemize}
+	\item \textit{\textbf{app}}: contenedor que contiene una imagen con un servidor \textit{Nginx} encargado de servir el \gls{frontend} \textit{React} y el cual se comunica con servidor de aplicación \textit{uWSGI} mediante un \textit{socket UNIX}. Dicho servidor de aplicación sirve la aplicación \textit{Flask} que constituye el \gls{backend} del sistema.
+	\item \textit{\textbf{elasticsearch}}: contenedor en el cual se encuentra alojada una imagen de \acrlong{ES} en su versión \textit{Open Source} siguiendo las instrucciones oficiales \cite{ES_docker}.
+	\item \textit{\textbf{mongodb}}: contenedor con la imagen de \textit{MongoDB} utilizada
+	\item \textit{\textbf{cerebro}}: contenedor con el servicio de monitorización de \acrshort{ES} \textit{Cerebro}. Este contenedor no es necesario para el funcionamiento del sistema pero ha resultado muy útil durante el desarrollo para gestionar el contenedor de \acrshort{ES}
+\end{itemize}
+
+\section{\texttt{docker-compose.yml}}
+En el siguiente listing se observa la configuración del fichero \texttt{docker-compose.yml} que determina la infraestructura descrita arriba.
+
+\lstinputlisting[language=yaml, caption=Fichero \texttt{docker-compose.yml} de la aplicación]{code/docker-compose.yml}
+
+\section{Instalación}
+\subsection{Docker y Docker Compose}
+Para poder desplegar la aplicación por tanto lo primero sera instalar \textit{Docker} y \textit{Docker Compose}. Para instalar \textit{Docker} se ha utilizado su versión \textit{Community Edition (CE)} por ello ver las instrucciones de instalación para el sistema en el que se desee instalar \cite{dockerInstall}. Respecto a \textit{Docker Compose} recomiendo instalar la versión nativa para el sistema de destino en lugar de utilizar las opciones alternativas de instalación, ver la documentación oficial en \cite{dockerComposeInstall}.
+
+\newpage
+
+\subsection{Descripción del repositorio}
+Una vez instalado esto sera necesario \textit{clonar} el repositorio de \textit{GitHub}, que recuerdo era \url{https://github.com/AythaE/TFM}, cuya estructura se observa a continuación. Para disponer de los datos de \textit{MongoDB} y \acrlong{ES} será necesario descomprimir el fichero \texttt{data.7z}. Esto creara una carpeta \texttt{data}.
+
+\dirtree{%
+.1 TFM.
+.2 data/.
+.3 es\_data/.
+.3 mongodb\_data/.
+.2 config/.
+.3 elasticsearch.yml.
+.2 src/.
+.3 backend/\DTcomment{Código \gls{backend} y fichero \texttt{requirements.txt} con las dependencias de \textit{Python}}.
+.3 frontend/\DTcomment{Código \gls{frontend} y fichero \texttt{package.json} con las dependencias de \textit{JS}}.
+.3 Exploring/.
+.4 elasticsearch/\DTcomment{Código de indexación en \acrshort{ES}}.
+.4 Exploratory\_analysis/\DTcomment{Ficheros y gráficos generados en el análisis de datos}.
+.4 investigadores/\DTcomment{Código extracción de datos del ranking UGRinvestiga}.
+.4 scopus/\DTcomment{Código extracción de datos de Scopus}.
+.3 Dockerfile\DTcomment{Fichero que dertermina la construcción del contenedor \textit{\textbf{app}}}.
+.2 docker-compose.yml.
+}
+
+\section{Despliegue}
+Con todo esto ya estamos listos para desplegar la aplicación. Para ello basta con ejecutar el siguiente comando desde el directorio \texttt{TFM}:
+
+\begin{lstlisting}[style=Consola, caption=Comando para desplegar el sistema]
+$ docker-compose -f "docker-compose.yml" up --build
+\end{lstlisting}
+
+Una vez finalice la construcción del contenedor \textbf{\textit{app}} se mostrarán unos mensajes indicando que todos los contenedores han arrancado correctamente, tras esto podremos acceder a \url{http://localhost} donde se encontrará desplegada la aplicación.
+
+En caso de algún problema en el despliegue esto seguramente se deba a los puertos disponibles, el sistema utiliza los puertos 80 (acceso \acrshort{HTTP} \gls{frontend}), 27017 (\textit{MongoDB}), 9000 (\textit{Cerebro}), 9200 y 9300 (\acrlong{ES}). Por lo que si alguno de esos puertos se encuentra en uso el despliegue fallará. Dicho mapeo de puertos se puede cambiar fácilmente modificando los \texttt{ports} en el fichero \texttt{docker-compose.yml}.
+
+
+Para parar la aplicación basta con aplicar un \texttt{Ctrl\^\ C} sobre la consola donde se esté ejecutando el comando de despliegue.
+
 

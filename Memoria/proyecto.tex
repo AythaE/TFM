@@ -5,6 +5,7 @@
 \usepackage{marvosym}
 \usepackage[spanish]{babel}
 
+
 \usepackage[acronym, numberedsection=autolabel, entrycounter]{glossaries} %
 \usepackage{amsmath} 
 \usepackage{nameref}
@@ -13,6 +14,7 @@
 \usepackage{appendix}
 \decimalpoint
 \usepackage{dcolumn}
+\usepackage{dirtree}
 \newcolumntype{.}{D{.}{\esperiod}{-1}}
 \makeatletter
 \addto\shorthandsspanish{\let\esperiod\es@period@code}
@@ -30,6 +32,7 @@
 \usepackage{afterpage}
 \usepackage{xspace}
 \usepackage{longtable}
+\usepackage[dvipsnames]{xcolor}
 
 \usepackage[pdfborder={000}]{hyperref} %referencia
 
@@ -117,6 +120,9 @@ pdfproducer = {pdflatex}
 \definecolor{purple}{rgb}{0.38,0.18,0.81}
 \definecolor{lightblue}{rgb}{0.1,0.57,0.7}
 \definecolor{lightred}{rgb}{1,0.4,0.5}
+\newcommand\YAMLcolonstyle{\color{red}\mdseries}
+\newcommand\YAMLkeystyle{\color{black}\bfseries}
+\newcommand\YAMLvaluestyle{\color{blue}\mdseries}
 
 \lstset{ frame=Ltb,
      framerule=0.5pt,
@@ -303,6 +309,39 @@ pdfproducer = {pdflatex}
     numbers=none
    }
 
+\makeatletter
+% here is a macro expanding to the name of the language
+% (handy if you decide to change it further down the road)
+\newcommand\language@yaml{yaml}
+
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@yaml}
+{
+	keywords={true,false,null,y,n},
+	keywordstyle=\color{darkgray}\bfseries,
+	basicstyle=\YAMLkeystyle,                                 % assuming a key comes first
+	sensitive=false,
+	comment=[l]{\#},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\YAMLvaluestyle\ttfamily,
+	moredelim=[l][\color{orange}]{\&},
+	moredelim=[l][\color{magenta}]{*},
+	moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:},   % switch to value style at :
+	morestring=[b]',
+	morestring=[b]",
+	basicstyle={\footnotesize\ttfamily},
+	literate =    {---}{{\ProcessThreeDashes}}3
+	{>}{{\textcolor{red}\textgreater}}1     
+	{|}{{\textcolor{red}\textbar}}1 
+	{\ -\ }{{\mdseries\ -\ }}3,
+}
+
+% switch to key style at EOL
+\lst@AddToHook{EveryLine}{\ifx\lst@language\language@yaml\YAMLkeystyle\fi}
+\makeatletter
+
+\newcommand\ProcessThreeDashes{\llap{\color{cyan}\mdseries-{-}-}}
 
 \newcommand{\bigrule}{\titlerule[0.5mm]}
 

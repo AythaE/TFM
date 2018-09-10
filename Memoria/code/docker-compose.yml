@@ -1,0 +1,58 @@
+version: '2.2'
+services:
+    app:
+        container_name: app
+        build: ./src
+        restart: always
+        ports: 
+            - 80:80
+        networks:
+            default:
+                aliases:
+                    - app
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0
+        container_name: elasticsearch
+        environment:
+            - cluster.name=docker-cluster
+            - ES_JAVA_OPTS=-Xms512m -Xmx512m
+            - discovery.type=single-node
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        volumes:
+            - ./data/es_data:/usr/share/elasticsearch/data
+            - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+        ports:
+            - 9200:9200
+            - 9300:9300
+        networks:
+            default:
+                aliases:
+                    - elasticsearch
+    mongodb:
+        image: mongo:3.4
+        container_name: mongodb
+
+        ports:
+            - 27017:27017
+        volumes:
+            - ./data/mongodb_data:/data/db
+        command: mongod
+        networks:
+            default:
+                aliases:
+                    - mongodb
+
+    cerebro:
+        image: lmenezes/cerebro
+        container_name: cerebro
+
+        ports: 
+         - 9000:9000
+
+        networks:
+            default:
+                aliases:
+                    - cerebro
