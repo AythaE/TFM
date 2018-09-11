@@ -1,17 +1,27 @@
 \chapter{Introducción}
 \section{Motivación}
 
+A día de hoy usamos constantemente buscadores: web como Google o Bing, de ficheros como los integrados en todos los sistemas de ficheros modernos o de contenido como puede ser una búsqueda de algún término en un \acrshort{PDF} como este. Todo buscador es conocido desde un punto de vista más técnico como un \textbf{Sistemas de \acrfull{RI}}. 
 
-Durante la asignatura del máster \acrfull{GIW} se vieron algunas pinceladas de las herramientas empleadas para llevar a cabo sistemas de \acrfull{RI} así como su base teórica. Esto me llamó realmente la atención ya que todos utilizamos diariamente sistemas de búsqueda, pero no tenía ni idea de como se podía implementar uno. A pesar de haber desarrollado un pequeño sistema como parte de sus prácticas me quedé con la ganas de ver un sistema más "real" desarrollado con herramientas más potentes. Este es el principal motivo por el que me decanté a la realización de este proyecto, a nivel personal me gustaría poder llenar esta curiosidad con desarrollo del presente trabajo.
+Tradicionalmente estos sistemas realizan una búsqueda por contenido, si buscamos una palabra o término de búsqueda concreto en Google, este retorna páginas relevantes que contentan dicha palabra. 
+
+Esto también funciona así para la recuperación de artículos científicos, pero en este caso los artículos científicos disponen de algunas medidas asociadas como el número de citas que pueden ser interesantes para determinar la relevancia de un artículo. Se puede entender que si un par de artículos contienen un término de búsqueda, él que sea más citado parece, a \textit{priori}, más relevante, ya que la propia comunidad científica lo menciona con mayor frecuencia. Dichas métricas asociadas a la literatura científica se conocen como \textbf{medidas bibliométricas}.
+
+Este proyecto pretende explorar las posibilidades de estas medidas para mejorar los procesos de recuperación de información.
+
+Durante la asignatura del máster \acrfull{GIW}, se vieron algunas pinceladas de las herramientas empleadas para llevar a cabo sistemas de \acrlong{RI}, así como su base teórica. Esto me llamó realmente la atención, ya que todos utilizamos diariamente sistemas de búsqueda, pero no tenía ni idea de como se podía implementar uno. A pesar de haber desarrollado un pequeño sistema como parte de sus prácticas me quedé con la ganas de ver un sistema "más real", desarrollado con herramientas más potentes. Este es el principal motivo por el que me decanté a la realización de este proyecto, a nivel personal me gustaría poder llenar esta curiosidad con el desarrollo del presente trabajo.
 
 \section{Objetivos}
 
-En este apartado recogeré de manera sintetizada los objetivos del proyecto, lo cual ayudará a comprender la funcionalidad del sistema a desarrollar así como definir su alcance. El objetivo principal es \textbf{comprobar los resultados de la aplicación de medidas bibliométricas a un sistema de \acrfull{RI}}. Junto a este objetivo también tenemos 
+En este apartado recogeré de manera sintetizada los objetivos del proyecto, lo cual ayudará a comprender la funcionalidad del sistema a desarrollar así como definir su alcance. El objetivo principal es \textbf{desarrollar un Sistema de \acrlong{RI} que incorpore medidas bibliométricas como mejora a la recuperación clásica}. Junto a este objetivo también tenemos 
 
 %\section{Objetivos generales}
 \begin{itemize}
-	\item \textbf{Evaluar la mejora producida al aplicar medidas bibliométricas al sistema}: como colección de datos del sistema \acrshort{RI} a desarrollar se ha decidido utilizar el conjunto de todos los trabajos de autores de la \myFaculty lo que favorece que esta evaluación se pueda llevar a cabo, aunque esta no es una tarea sencilla. La evaluación de sistemas \acrshort{RI} se suele llevar a cabo mediante colecciones de prueba donde existe un conjunto de documentos, un conjunto de consultas y un conjunto de resultados que deberían de retornar las mismas  \cite{RI_Evaluation}. Al crear un sistema nuevo con una colección de documentos no utilizada no podemos comparar los resultados obtenidos con los que se esperarían, este problema se debe a la relatividad del concepto de relevancia. Por ello las colecciones de pruebas suelen incluir valoraciones de relevancia de expertos en la materia.
-	\item \textbf{Desarrollar un sistema que sea usable}: Muchos de los enfoques que he visto durante mi proceso de documentación no pasan de modelos teóricos, prototipos o sistemas en los que la usabilidad y la orientación al usuario brillan por su ausencia. Aunque este no sea el punto objetivo principal del sistema me parece muy importante que se tenga en cuenta al usuario durante todo el proceso de desarrollo, ya que un sistema puede ser increíble pero si los usuarios no lo entienden o no le saben sacar partido no sirve de nada. Por ello pretendo diseñar una interfaz de usuario que sea simple de usar y emplee metáforas y componentes ampliamente conocidos por los usuarios.
+
+	
+	\item \textbf{Descomponer el sistema de \acrshort{RI}}: Observando los diversos sistemas reales de recuperación de información científica que he analizado, como Google Scholar o Scopus, la gran mayoría dividen la búsqueda en búsqueda de autores y de artículos en sí. Ya que estos son dos tipos de datos diferenciados (aunque relacionados profundamente) e intuitivamente, se comprende que un sistema de RI funcionará mejor si los datos del mismo son homogéneos. Por ello el sistema a desarrollar dispondrá de dos partes una búsqueda de autores y otra de artículos.
+	
+	\item \textbf{Desarrollar un sistema que sea usable}: Muchos de los enfoques que he visto durante mi proceso de documentación no pasan de modelos teóricos, prototipos o sistemas en los que la usabilidad y la orientación al usuario brillan por su ausencia. Aunque este no sea el punto objetivo principal del sistema, me parece muy importante que se tenga en cuenta al usuario durante todo el proceso de desarrollo, ya que un sistema puede ser increíble pero si los usuarios no lo entienden o no le saben sacar partido no sirve de nada. Por ello, pretendo diseñar una interfaz de usuario que sea simple de usar, empleando metáforas y componentes ampliamente conocidos por los usuarios.
 
 \end{itemize}
 

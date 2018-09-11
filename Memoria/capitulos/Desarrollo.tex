@@ -1,6 +1,38 @@
 \chapter{Desarrollo}
-En este capítulo se detallara el proceso de desarrollo seguido dividido en \textit{sprints} como ya se ha comentado en la sección \nameref{sc:metodologia}.
+En este capítulo se detallara el proceso de desarrollo seguido, dividido en \textit{sprints} como ya se ha comentado en la sección \nameref{sc:metodologia}, así como un apartado inicial sobre las herramientas software empleadas y uno final con las modificaciones que ha sufrido la arquitectura planteada a lo largo del proceso de desarrollo.
 
+\section{Herramientas Software empleadas}
+\label{ch:herramientas}
+
+Comentar en más detalle todas las herramientas utilizadas con enlaces de cada una.
+
+\begin{itemize}
+	\item \textbf{Debian}: \acrfull{SO}.
+	\item \textbf{Python}: Lenguaje de programación usado en las primeras fases del proyecto y en servidor \gls{backend} \glsrefentry{backend}.
+	\item \textbf{JavaScript}: Lenguaje de programación interpretado en el que se ha escrito el \gls{frontend} \glsrefentry{frontend}.
+	\item \textbf{Elasticsearch}: Servidor de búsqueda.
+	\item \textbf{MongoDB}: Base de datos NoSQL.
+	\item \textbf{React}:  \Gls{framework} para el desarrollo de interfaces de usuario.
+	\item \textbf{Searchkit}: \Gls{framework} que incluye un conjunto de componentes React para la comunicación con Elasticsearch.
+	\item \textbf{TeXstudio}: Entorno integrado de escritura en \LaTeX{} utilizado para generación de la documentación.
+	\item \textbf{Docker}: Software de virtualización para basado en contenedores. Permite gestionar de forma simple la gestión y despliegue de una infraestructura software.
+	\item \textbf{Visual Studio Code}: Editor de código creado por Microsoft utilizado para toda la programación del proyecto.
+	\item Git
+	\item GitHub
+	\item Pandas
+	\item PyMongo
+	\item scopus-api
+	\item Beautiful Soup
+	\item Matplotlib
+	\item MaterialUI
+	\item elasticsearch-py
+	\item Star UML
+	\item Cerebro
+	\item Flask
+	\item Gimp
+	\item Nginx
+	\item uWSGI
+\end{itemize}
 
 \section{\textit{Sprint} 1}
 Este primer \textit{sprint} tiene como objetivo general la investigación básica sobre la \acrshort{RI}. Sus objetivos concretos son: 
@@ -12,7 +44,7 @@ Este primer \textit{sprint} tiene como objetivo general la investigación básic
 
 Siguiendo la recomendación de mi tutor (co-autor del libro) me centré en los capítulos \textit{"1 Introducción a la recuperación de información"}, \textit{"2 Indexación de documentos y procesado de consultas"}, \textit{"3 Modelos de recuperación de información clásicos"} y \textit{"10 Técnicas de modificación de la consulta"}. 
 
-Esta lectura me hizo adquirir unas bases más teóricas a lo que ya había estudiado en la asignatura del máster \acrlong{GIW} donde obtuvimos una nociones básicas de lo que supone la \acrshort{RI} y sus vertientes realizando alguna práctica.
+Esta lectura me hizo adquirir unas bases más teóricas a lo que ya había estudiado en la asignatura del máster \acrlong{GIW} donde obtuvimos una nociones básicas de lo que supone la \acrshort{RI} y sus vertientes, realizando alguna práctica.
 
 Los artículos de los talleres \acrlong{BIR} que encontré más destacados están detallados en el apartado \nameref{subsc:trabajosRelacionados}. Dichos trabajos se encuentran disponibles gratuitamente en \url{http://ceur-ws.org/} bajo el amparo de la Universidad Técnica de Aquisgrán (\textit{RWTH Aachen University}) en Alemania.
 
@@ -56,9 +88,9 @@ Ya en este punto decidí que estaba listo para ir documentando todo lo que habí
 
 Para asimilar y reflexionar sobre todo lo que había leído me puse a escribir el capítulo Contexto e Introducción de este trabajo ya que ello me ayudaría a pensar un enfoque correcto. También quería poder mostrar algo a mi tutor para obtener algo de \textit{feedback} por su parte.
 
-Continué leyendo algunos trabajos más con lo que dí por concluida mi proceso de investigación. Uno de esos últimos trabajos fue \cite{DBLP:conf/ecir/SarolLS18} el cual me gustó especialmente ya que pasaban de un modelo teórico a algo más práctico, accediendo a la \acrshort{API} de Scopus e incluyendo ejemplos de su implementación en un repositorio de \textit{GitHub} lo que me llevo a plantear mi modelo híbrido combinando el sistema habitual de un sistema \acrshort{RI} con reordenamiento de resultados \textit{a priori} usando medidas bibliométricas y un ordenamiento \textit{a posteriori} utilizando un grafo de citación entre los documentos.
+Continué leyendo algunos trabajos más con lo que di por concluido mi proceso de investigación. Uno de esos últimos trabajos fue \cite{DBLP:conf/ecir/SarolLS18} el cual me gustó especialmente ya que pasaban de un modelo teórico a algo más práctico, accediendo a la \acrshort{API} de Scopus e incluyendo ejemplos de su implementación en un repositorio de \textit{GitHub}, lo que me llevó a plantear mi modelo híbrido combinando el sistema habitual de un sistema \acrshort{RI} con reordenamiento de resultados \textit{a priori} usando medidas bibliométricas y un ordenamiento \textit{a posteriori} utilizando un grafo de citación entre los documentos.
 
-Desgraciadamente estos enfoques dependen ampliamente de la cobertura de medidas bibliométricas disponibles, por ejemplo me hubiera encantado poder probar una reordenación previa utilizando alguna \textit{altmetric} como el número de lecturas o descargas de un artículo, pero la plataforma que he utilizado para extraer los artículos no dispone de dichas medidas.
+Desgraciadamente estos enfoques dependen ampliamente de la cobertura de medidas bibliométricas disponibles. Por ejemplo, me hubiera encantado poder probar una reordenación previa utilizando alguna \textit{altmetric} como el número de lecturas o descargas de un artículo, pero la plataforma que he utilizado para extraer los artículos no dispone de dichas medidas.
 
 \section{\textit{Sprint} 4}
 \label{sc:sprint4}
@@ -70,13 +102,13 @@ Una vez sintetizado lo investigado y teniendo una idea aproximada de lo que pens
 
 Estuve haciendo alguna pruebas con algunos \glspl{framework} de búsqueda. Ya había utilizado \textit{Lucene} como parte de las prácticas de la asignatura \acrshort{GIW}, pero me pareció demasiado bajo nivel así que me centré en investigar otras alternativas. Encontré que las principales, que casualmente utilizaban por debajo \textit{Lucene}, eran \textit{\textbf{Solr}} y \textit{\textbf{\acrfull{ES}}}.
 
-Buscando alguna comparativa \cite{ES_Solr} y comentarios de usuarios en plataformas tan reputadas como \textit{StackOverflow} \cite{ES_Solr_SO} parecía que se recomendaba \acrshort{ES} por ser más sencillo de usar por lo que realicé un breve tutorial \cite{ES_tutorial} que me gustó bastante ya que resulta realmente simple de usar y basta únicamente con realizar consultas sobre una \acrshort{API} \acrshort{REST} por lo que basta con hacer peticiones \acrshort{HTTP} con algún cliente simple como \texttt{curl}. Todo esto hizo que me decidiera por este servidor de búsqueda.
+Buscando alguna comparativa \cite{ES_Solr} y comentarios de usuarios en plataformas tan reputadas como \textit{StackOverflow} \cite{ES_Solr_SO} parecía que se recomendaba \acrshort{ES} por ser más sencillo de usar, esto me animó a realizar un breve tutorial \cite{ES_tutorial} que me gustó bastante ya que resulta realmente simple de usar y basta únicamente con realizar consultas sobre una \acrshort{API} \acrshort{REST} por lo que basta con hacer peticiones \acrshort{HTTP} con algún cliente simple como \texttt{curl}. Todo esto hizo que me decidiera por este servidor de búsqueda.
 
 Como ya comenté en el apartado \ref{ls:dataSourceAnalisis} realicé un análisis de diversas fuentes de datos y me decanté por seleccionar alguna que dispusiera de \acrshort{API}, en concreto Scopus ya que me resultó más rápido encontrar artículos que me servirían para mi colección documental. Por lo que comencé buscando la implementación que habían realizado en el artículo \cite{DBLP:conf/ecir/SarolLS18}, ya que en el mismo comentan que se encuentra disponible en \textit{GitHub} \cite{bir_scopus_gh}. Vi que dicha implementación era de muy bajo nivel, extraía los artículos mediante peticiones \acrshort{HTTP} y parseaban el \acrshort{XML} obtenido directamente. Pensé que tenía que haber un mejor método para esto, alguna librería que ya implementara los métodos de la \acrshort{API} y abstrayera de esas tareas. 
 
 Así encontré la implementación oficial ofrecida por Elsevier, \texttt{elsapy} \cite{elsapy}, un modulo en \textit{python} que cuenta con diversas clases para modelar los tipos de documentos y permite obtener y parsear los datos de la \acrshort{API} de manera transparente. También encontré el módulo \texttt{scopus} \cite{scopus-api} una implementación alternativa que había comenzado a desarrollarse algo antes que la oficial, parecía más activa y contaba con mejor documentación incluyendo ejemplos bastante útiles. 
 
-Funcionalmente \texttt{scopus} era muy similar a la versión oficial, pero estaba mejor modelada, se centraba solo en Scopus, que era lo que yo necesitaba, y tenia algunos añadidos muy útiles como uso de una caché por defecto con el objetivo de no repetir peticiones ya hechas, si no servirlas desde un documento almacenado en disco, lo que hacia increíblemente veloz la recuperación de entidades ya consultadas previamente así como gestión transparente de \acrshort{API} \textit{key}, basta con introducirla en la primera ejecución y la propia librería la guarda en un fichero interno el cual usa para su consulta el resto de ocasiones. Todo esto hizo que me decantara por esta última sobre la implementación oficial.
+Funcionalmente \texttt{scopus} era muy similar a la versión oficial, pero estaba mejor modelada, se centraba solo en Scopus, que era lo que yo necesitaba, y tenía algunos añadidos muy útiles como uso de una caché por defecto con el objetivo de no repetir peticiones ya hechas, si no servirlas desde un documento almacenado en disco, lo que hacia increíblemente veloz la recuperación de entidades ya consultadas previamente así como gestión transparente de \acrshort{API} \textit{key}\footnote[3]{Basta con introducirla en la primera ejecución y la propia librería la guarda en un fichero interno el cual usa para su consulta el resto de ocasiones.}. Todo esto hizo que me decantara por esta última sobre la implementación oficial.
 
 Para poder realizar mis pruebas tuve que solicitar una \acrshort{API} \textit{key} en el portal de Elsevier developers \url{https://dev.elsevier.com/myapikey.html} creando una cuenta gratuita. Para poder descargar los datos de Scopus desde fuera de la red de la universidad me ha sido necesario utilizar el servicio de \acrshort{VPN} de la \acrshort{UGR} siguiendo el siguiente tutorial \cite{vpnUGR}.
 
@@ -100,7 +132,7 @@ Tras toda la documentación e investigación previas en este punto realicé el p
 
 \subsection{Obtención de datos}
 
-Teniendo en cuenta que no parecía haber opción de descarga de los datos del Ranking UGRinvestiga y que el formato parecía bastante estático con todos los datos en una tabla mi primer enfoque fue realizar un \gls{webscraping} utilizando la librería \texttt{BeautifulSoup} ya comentada previamente. El aspecto de la tabla se puede ver en la siguiente imagen.
+Teniendo en cuenta que no parecía haber opción de descarga de los datos del Ranking UGRinvestiga y que el formato parecía bastante estático con todos los datos en una tabla mi primer enfoque fue realizar un \gls{webscraping} utilizando la librería \texttt{BeautifulSoup}, ya comentada previamente. El aspecto de la tabla se puede ver en la siguiente imagen.
 
 
 \begin{figure}[h!]
@@ -110,11 +142,11 @@ Teniendo en cuenta que no parecía haber opción de descarga de los datos del Ra
 	\caption{Aspecto tabla ranking UGRinvestiga}
 \end{figure}
 
-Realizando este proceso extraje datos de históricos y de los últimos 5 años de los autores de la facultad, además de aplicar este proceso al catálogo de grupos de investigación de Tecnologías de la Información y la Comunicación de la  \acrshort{UGR} para realizar un macheo por código de grupo con los datos del ranking.
+Realizando este proceso extraje datos de históricos y de los últimos 5 años de los autores de la escuela, además de aplicar este proceso al catálogo de grupos de investigación de Tecnologías de la Información y la Comunicación de la  \acrshort{UGR} para realizar una unión por código de grupo con los datos del ranking.
 
-Posteriormente dí con el proyecto OpenData de la \acrlong{UGR} el cual entre otros \textit{datasets} ofrecía el mencionado ranking actualizado a fecha 28 de Mayo de 2018 \cite{opendataUGR} en formato Excel, fácilmente legible y con algunos datos adicionales como el departamento de los autores, la url de Google Scholar de cada autor o su \textit{nick} el cual podía ser muy útil para buscarlos en Scopus.
+Posteriormente di con el proyecto OpenData de la \acrlong{UGR} el cual entre otros \textit{datasets} ofrecía el mencionado ranking actualizado a fecha 28 de Mayo de 2018 \cite{opendataUGR} en formato Excel, fácilmente legible y con algunos datos adicionales como el departamento de los autores, la url de Google Scholar de cada autor o su \textit{nick} el cual podía ser muy útil para buscarlos en Scopus.
 
-Tras cargar estos últimos datos obtuve \textbf{214 autores} de la facultad. A continuación pasé al problema de buscar estos autores en Scopus, este problema no es nada trivial, ya que con frecuencia los autores no firman sus trabajos con su nombre completo, si no con parte de él o incluso de manera distinta entre unos trabajos y otros. Por ejemplo mi tutor, "JUAN MANUEL FERNÁNDEZ LUNA" suele firmar como Fernández Luna, Juan M. o como Fernández Luna, J.M.
+Tras cargar estos últimos datos obtuve \textbf{214 autores} de la escuela. A continuación pasé al problema de buscar estos autores en Scopus, este problema no es nada trivial, ya que con frecuencia los autores no firman sus trabajos con su nombre completo, si no con parte de él o incluso de manera distinta entre unos trabajos y otros. Por ejemplo mi tutor, "JUAN MANUEL FERNÁNDEZ LUNA" suele firmar como "Fernández-Luna, Juan M". o como "Fernández-Luna, J.M".
 
 El formato necesario para la búsqueda de autores en Scopus es nombre, apellidos y afiliación (la \acrshort{UGR} en este caso) por lo tanto primero me dispuse a extraer el nombre y apellidos a partir de la cadena completa que disponía, esto puede parecer sencillo, pero la riqueza del lenguaje español hace que existan apellidos compuestos o personas con segundos nombres lo que dificulta la tarea.
 
@@ -154,7 +186,7 @@ Donde $f\_name$ y $l\_name$ hacen referencia a nombre y apellidos respectivament
 Con este algoritmo he logrado encontrar algún resultado en Scopus para \textbf{202 de los 214} autores buscados (\textbf{$\sim$ 94.39 \% de los autores}), a pesar de esto el número total de autores recuperados son 397, por lo que habrá que realizar una limpieza de los mismos.
 
 \subsubsection{Limpieza de datos de autores}
-Si observamos la distribución de \textbf{nacionalidades de los autores} recuperados, la cual se ve en la siguiente imagen se aprecia que hay una mayoría abrumadora de Españoles (como cabría esperar) pero también algunas nacionalidades inesperadas como Palestina o Australiana. Por ello consideraré que todo autor cuya nacionalidad no sea española debe haber sido recuperado incorrectamente y sera eliminado al tratarse de ruido, haciendo esto pasamos de 397 autores de Scopus representando a 202 autores de la \acrshort{UGR} a un total de 381 autores de Scopus respresentando a \textbf{198 autores de la \acrshort{UGR} ($\sim$ 98.02 \% de los 202 previos)}.
+Si observamos la distribución de \textbf{nacionalidades de los autores} recuperados, la cual se ve en la siguiente imagen se aprecia que hay una mayoría abrumadora de Españoles (como cabría esperar) pero también algunas nacionalidades inesperadas como palestina o australiana. Por ello consideraré que todo autor cuya nacionalidad no sea española debe haber sido recuperado incorrectamente y será eliminado al tratarse de ruido, haciendo esto pasamos de 397 autores de Scopus representando a 202 autores de la \acrshort{UGR} a un total de 381 autores de Scopus respresentando a \textbf{198 autores de la \acrshort{UGR} ($\sim$ 98.02 \% de los 202 previos)}.
 
 \begin{figure}[h!]
 	
@@ -163,7 +195,7 @@ Si observamos la distribución de \textbf{nacionalidades de los autores} recuper
 	\caption{Distribución de nacionalidades entre los autores recuperados}
 \end{figure}
 
-Continuando el filtrado si mostramos la distribución de \textbf{ciudades de los autores} restantes (ver la siguiente imagen) vemos que Granada o sus variantes aglutinan a la gran mayoría de los autores, por ello filtraré todos aquellos que no sean Granada lo cual me deja con un total de 334 autores de Scopus (\textbf{188 autores de la \acrshort{UGR} $\sim$ 94.95\% de los 198 previos}).
+Continuando el filtrado, si mostramos la distribución de \textbf{ciudades de los autores} restantes (ver la siguiente imagen) vemos que Granada o sus variantes aglutinan a la gran mayoría de los autores, por ello filtraré todos aquellos que no sean Granada lo cual me deja con un total de 334 autores de Scopus (\textbf{188 autores de la \acrshort{UGR} $\sim$ 94.95\% de los 198 previos}).
 
 Por último he realizado un filtrado por \textbf{área del conocimiento} descartando aquellos autores que no tengan al menos un trabajo englobado en el área de Ciencias de la Computación (\textit{computer science}) con lo que finalmente me quedo con 199 autores de Scopus (\textbf{164 de la \acrshort{UGR}, $\sim$ 87.23 \% de los 188 previos})
 
@@ -185,12 +217,12 @@ En la siguiente gráfica represento un \textbf{\textit{clustering} de autores} \
 \end{figure}
 
 \subsubsection{Obtención de autores}
-Esta limpieza se llevo acabo usando los resultados devueltos por la búsqueda de autores de Scopus (usando la clase \texttt{AuthorSearch} del paquete \texttt{scopus} la cual implementa la \acrshort{API} \textit{Author Search} de Scopus). Estos resultados de búsqueda contienen un subconjunto de los datos de autores disponibles, por lo que el siguiente paso fue descargar la ficha de cada uno de los 199 autores de Scopus usando para ello la clase \texttt{ScopusAuthor} del paquete \texttt{scopus} la cual implementa la \acrshort{API} \textit{Author Retrieval} de Scopus.
+Esta limpieza se llevó acabo usando los resultados devueltos por la búsqueda de autores de Scopus (usando la clase \texttt{AuthorSearch} del paquete \texttt{scopus} la cual implementa la \acrshort{API} \textit{Author Search} de Scopus). Estos resultados de búsqueda contienen un subconjunto de los datos de autores disponibles, por lo que el siguiente paso fue descargar la ficha de cada uno de los 199 autores de Scopus usando para ello la clase \texttt{ScopusAuthor} del paquete \texttt{scopus} la cual implementa la \acrshort{API} \textit{Author Retrieval} de Scopus.
 
 \subsubsection{Obtención de abstracts}
-Una vez hecho esto me dispuse a llevar a cabo el grueso de la obtención de datos, la descarga de todos sus \textit{abstracts}. A partir de los autores de Scopus obtenidos previamente se obtienen todos los \texttt{eid} o \texttt{scopus\_id} de sus artículos con la clase \texttt{ScopusAuthor}. Utilizando esos identificadores recuperé todos los \textit{abstracts} usando la clase \texttt{ScopusAbstract} del paquete \texttt{scopus}, la cual implementa la \acrshort{API} \textit{Abstract Retrieval}, en su vista completa o \textit{full} \cite{scopusAbstractViews} ya que es la única que incluye las referencias, las palabras clave y las áreas del conocimiento de cada \textit{abstract}.
+Una vez hecho esto me dispuse a llevar a cabo el grueso de la obtención de datos, la descarga de todos sus \textit{abstracts}. A partir de los autores de Scopus obtenidos previamente se obtienen todos los \texttt{eid} o \texttt{scopus\_id} de sus artículos con la clase \texttt{ScopusAuthor}. Utilizando esos identificadores recuperé todos los \textit{abstracts} usando la clase \texttt{ScopusAbstract} del paquete \texttt{scopus}, la cual implementa la \acrshort{API} \textit{Abstract Retrieval}, en su vista completa o \textit{full} \cite{scopusAbstractViews}, ya que es la única que incluye las referencias, las palabras clave y las áreas del conocimiento de cada \textit{abstract}.
 
-Los 199 autores recuperados cuentan con un total de 1263 artículos en Scopus, aunque este dato no es real, ya que frecuentemente los artículos tienen varios autores de entre esos 199, por lo que estos serían contados múltiples veces, el número de artículos únicos asciende a \textbf{891}.
+Los 199 autores recuperados cuentan con un total de 1263 artículos en Scopus, aunque este dato no es real, ya que frecuentemente los artículos tienen varios autores de entre esos 199, por lo que estos serían contados múltiples veces. El número final de artículos únicos asciende a \textbf{891}.
 
 \subsection{Preprocesado de los datos obtenidos}
 En este punto había obtenido tres conjuntos de datos relacionados pero algo inconexos:
@@ -200,17 +232,17 @@ En este punto había obtenido tres conjuntos de datos relacionados pero algo inc
 	\item 891 \textit{abstracts} de Scopus. 
 \end{itemize}
 
-El primer paso como parece lógico fue combinar los autores de la \acrshort{UGR} y Scopus, el numero de estos no coincide ya Scopus a veces no es capaz que dos autores son la misma persona si firma de distinta manera, por ello crea dos autores distintos.
+El primer paso como parece lógico fue combinar los autores de la \acrshort{UGR} y Scopus. El numero de estos no coincide ya que Scopus a veces no es capaz de determinar que dos autores son la misma persona si firma de distinta manera, por ello crea dos autores distintos.
 
 Para realizar esta combinación agrupé los autores de Scopus por el ID \acrshort{UGR} sumando el número de documentos y de citas de los autores individuales seleccionando el mayor índice h individual entre ellos. A continuación mezclé estos 164 autores combinados de Scopus con los datos provenientes del Ranking UGRinvestiga y del nombre del grupo de investigación, quedando finalmente constituida la entidad de datos descrita en la sección \nameref{subsc:author} del capítulo Diseño. Dicha entidad se encuentra implementada en la clase del modelo \texttt{Author} y ha sido introducida en la \acrshort{BD} \textit{MongoDB} en la colección \textit{author}.
 
 En los \textit{abstract} emulé el proceso de combinación de autores asignando los artículos al mismo autor \acrshort{UGR} aunque originalmente fueran de distintos autores Scopus. 
 
-Tras ello limpié las referencias de cada uno de ellos para mantener solo las referencias a artículos que formaban parte de la colección, eliminando las referencias a otros trabajos externos. Esto puede suponer una perdida de información, ya que limitaría el análisis de co-citación, pero hace más manejable el conjunto de referencias y como se comprueba en \cite{DBLP:conf/ecir/SarolLS18} cuando más directa sea la relación de citación, más útil resulta para este análisis. Aplicando esta limpieza se mantienen un total de \textbf{742} referencias, quedando con esto la entidad descrita en la sección \nameref{subsc:abstract} del capítulo Diseño. Dicha entidad se encuentra implementada en la clase del modelo \texttt{Abstract} y ha sido introducida en la \acrshort{BD} \textit{MongoDB} en la colección \textit{abstract}.
+Tras ello limpié las referencias de cada uno de ellos para mantener solo las referencias a artículos que formaban parte de la colección, eliminando las referencias a otros trabajos externos. Esto puede suponer una perdida de información, ya que limitaría el análisis de co-citación, pero hace más manejable el conjunto de referencias y como se comprueba en \cite{DBLP:conf/ecir/SarolLS18}, cuanto más directa sea la relación de citación, más útil resulta para este análisis. Aplicando esta limpieza se mantienen un total de \textbf{742} referencias, quedando con esto la entidad descrita en la sección \nameref{subsc:abstract} del capítulo Diseño. Dicha entidad se encuentra implementada en la clase del modelo \texttt{Abstract} y ha sido introducida en la \acrshort{BD} \textit{MongoDB} en la colección \textit{abstract}.
 
 
 
-Como curiosidad de este \textit{sprint} me gustaría destacar que durante mi investigación de los datos devueltos por Scopus sobre los \textit{abstracts} me percaté que la librería \texttt{scopus} no parseaba las palabras clave de los mismos aunque estas aparecían en los \acrshort{XML} obtenidos de la \acrshort{API}, estas palabras clave podían funcionar bien en los sistema de búsqueda, como había leído durante mi proceso de documentación, por ello añadí esa funcionalidad a la librería y dicho cambio fue \href{https://github.com/scopus-api/scopus/pull/68}{incorporado a la misma} en su versión 0.9.
+Como curiosidad de este \textit{sprint} me gustaría destacar que durante mi investigación de los datos devueltos por Scopus sobre los \textit{abstracts} me percaté que la librería \texttt{scopus} no parseaba las palabras clave de los mismos aunque estas aparecían en los \acrshort{XML} obtenidos de la \acrshort{API}. Estas palabras clave podían funcionar bien en los sistema de búsqueda, como había leído durante mi proceso de documentación, por ello añadí esa funcionalidad a la librería y dicho cambio fue \href{https://github.com/scopus-api/scopus/pull/68}{incorporado a la misma} en su versión 0.9.
 
 \section{\textit{Sprint} 6}
 Una vez tenía los datos preparados en este sprint me marqué como objetivo crear un sistema de búsqueda básico por contenido (sin aplicar bibliometría). Este objetivo se descompuso en:
@@ -221,9 +253,9 @@ Una vez tenía los datos preparados en este sprint me marqué como objetivo crea
 \end{itemize}
 
 \subsection{Indexación de los datos}
-Tras analizar un par de alternativas como motores de búsqueda (ver \nameref{sc:sprint4}) me decanté por utilizar \acrshort{ES}. Tras realizar un breve tutorial me pareció muy manual el proceso de introducir datos por lo que busqué alguna forma de hacerlo programáticamente. En mi búsqueda dí con el tutorial \cite{indexingES}, que utilizaba el cliente oficial de \acrshort{ES} en \textit{python} \texttt{elasticsearch-py} \cite{ES_client}. Usando dicho tutorial como base y realizando un mapeo del índice \footnote{Forzar los datos y tipos de estos en un índice, lo cual no es necesario ya que \acrshort{ES} es capaz de gestionarlo dinámicamente, pero con ello se consigue aplicar estrategias de búsquedas específicas para los tipos de datos y hace que no se pueda introducir un documento distinto por error}\cite{mappingES} creé los índices \textit{author} y \textit{abstract}.
+Tras analizar un par de alternativas como motores de búsqueda (ver \nameref{sc:sprint4}) me decanté por utilizar \acrshort{ES}. Tras seguir un breve tutorial me pareció muy manual el proceso de introducir datos por lo que busqué alguna forma de hacerlo programáticamente. En mi búsqueda di con el tutorial \cite{indexingES}, que utilizaba el cliente oficial de \acrshort{ES} en \textit{python} \texttt{elasticsearch-py} \cite{ES_client}. Usando dicho tutorial como base y realizando un mapeo del índice \footnote[4]{Forzar los datos y tipos de estos en un índice, no es necesario ya que \acrshort{ES} es capaz de gestionarlo dinámicamente, pero con ello se consigue aplicar estrategias de búsquedas específicas para los tipos de datos y hace que no se pueda introducir un documento distinto por error.}\cite{mappingES} creé los índices \textit{author} y \textit{abstract}.
 
-No todos los datos de dichas entidades han sido indexadas, ya que hay algunas que no aportaría nada a la búsqueda, es más solo la entorpecería al ocupar un espacio innecesario en el índice. Por ejemplo los identificadores o \acrshort{URL}s no aportan nada.
+No todos los datos de dichas entidades han sido indexadas, ya que hay algunas que no aportaría nada a la búsqueda; es más solo la entorpecería al ocupar un espacio innecesario en el índice. Por ejemplo, los identificadores o \acrshort{URL}s no aportan nada.
 
 El índice \textit{author} está constituido por los campos útiles para la búsqueda de contenido (de tipo \textit{text}) y los campos de medidas bibliométricas para poder ordenar o aplicarlos en la búsqueda bibliométrica. En la siguiente tabla se recoge los campos concretos de la clase \texttt{Author} que forman parte del índice homónimo:
 
@@ -274,7 +306,7 @@ Teniendo en cuenta la características del proyecto cuyo objetivo es desarrollar
 
 Por eso comencé buscando librerías que facilitaran el desarrollo de interfaces de usuario para sistemas basados en \acrshort{ES}. Me topé con dos destacadas \textit{Searchkit} \cite{searchKit} y \textit{Reactivesearch} \cite{reactiveSearch}, ambas basadas en el \gls{framework} \textit{ReactJS}. Básicamente suponen un conjunto de componentes visuales ya construidos (filtros, barras de búsqueda...), \textit{layouts} y otras utilidades adicionales que facilitan la comunicación con \acrshort{ES}.
 
-Ojeando las documentaciones y ejemplos me dió la impresión de que \textit{Reactivesearch} parecía más completa y customizable, con más componentes y opciones de diseño, pero es desarrollada por appbase.io, una plataforma de \acrshort{DBaaS} y la documentación de \textit{Reactivesearch} se orienta mucho a que desarrolles aplicaciones de búsqueda utilizando su plataforma como fuente de datos, lo cual me echó algo para atrás. Por otro lado \textit{Searchkit} parecía más simple, con menos componentes y opciones pero funcionales, ideal para mí ya que no buscaba realizar una interfaz gráfica compleja, si no simple, contaba con ejemplos en vivo y proyectos de ejemplo demostrando la funcionalidad de cada uno de sus componentes.
+Ojeando las documentaciones y ejemplos me dió la impresión de que \textit{Reactivesearch} parecía más completa y adaptable, con más componentes y opciones de diseño, pero es desarrollada por appbase.io, una plataforma de \acrshort{DBaaS} y la documentación de \textit{Reactivesearch} se orienta mucho a que desarrolles aplicaciones de búsqueda utilizando su plataforma como fuente de datos, lo cual me echó algo para atrás. Por otro lado \textit{Searchkit} parecía más simple, con menos componentes y opciones pero funcionales, ideal para mí ya que no buscaba realizar una interfaz gráfica compleja, si no simple. Contaba con ejemplos en vivo y proyectos de ejemplo demostrando la funcionalidad de cada uno de sus componentes.
 
 Por todo ello decidí utilizar \textit{Searchkit}. En la siguiente imagen se puede apreciar el aspecto de la demo de esta librería, como se puede observar cuenta con una interfaz bastante simple, muy inspirada en \textit{Material Design} \cite{materialDesign} y con unas zonas claramente diferenciadas: En rojo podemos ver una barra superior con el nombre de la aplicación y la barra de búsqueda, a la izquierda en amarillo una zona de filtros, en recuadros azules un par de barras que muestran información sobre los resultados de búsqueda y permiten modificar la ordenación o visualización; por último en verde aparece la zona de resultados.
 
@@ -357,23 +389,23 @@ Con toda la infraestructura de búsqueda ya funcionando había llegado la hora d
 \subsection{Aplicación de medidas bibliométricas y ordenación de resultados}
 \acrlong{ES} provee una puntuación o \texttt{\_score} en cada documento devuelto por cada consulta. Dicha puntuación está basada en el propio modelo de \textit{Lucene}, el cual se explica brevemente en la documentación oficial de \acrshort{ES} \cite{ES_scoring}. Básicamente supone la combinación de varios modelos clásicos explicados en el apartado \nameref{subsc:modelos}. 
 
-Primero se ejecuta un modelo booleano para descartar documentos que pueden formar parte del resultado de la consulta, tras esto para ordenar por relevancia este subconjunto de documentos se utiliza el modelo vectorial con un esquema de pesos \textit{tf*idf} modificado con una normalización en función de la longitud del campo (a campo más corto, más relevancia) además de algunas otras modificaciones, como los campos que el usuario haya decidido priorizar.
+Primero se ejecuta un modelo booleano para descartar documentos que de ningún modo pueden formar parte del resultado de la consulta (por no tener ninguna relación en absoluto), tras esto para ordenar por relevancia este subconjunto de documentos se utiliza el modelo vectorial con un esquema de pesos \textit{tf*idf} modificado con una normalización en función de la longitud del campo (a campo más corto, más relevancia) además de algunas otras modificaciones, como los campos que el usuario haya decidido priorizar.
 
 Todo esto hace que esta puntuación sea muy dependiente de la consulta y no tenga un límite superior, ya que eso significaría que se puede determinar la relevancia absoluta dada una consulta, cosa que no es posible como ya he discutido en los comienzos de esta memoria. 
 
-Por suerte en \acrshort{ES} esta contemplada la posibilidad de modificar esta puntuación de manera interna usando lo que se conoce como \textit{Function Score Query} \cite{ES_func_score}, simplemente en la propia consulta se determina como se quiere modificar dicha puntuación. Dispone de bastante flexibilidad, permite reemplazarla por completo, combinarla mediante una suma, media o multiplicación con otras medidas como por ejemplo una función sobre un campo del documento (como puede ser las citas) o cualquier función calculable con un \textit{script}. 
+Por suerte en \acrshort{ES} esta contemplada la posibilidad de modificar esta puntuación de manera interna usando lo que se conoce como \textit{Function Score Query} \cite{ES_func_score}, simplemente en la propia consulta se determina como se quiere modificar dicha puntuación. Dispone de bastante flexibilidad, permite reemplazarla por completo, combinarla mediante una suma, media o multiplicación con otras medidas como, por ejemplo, una función sobre un campo del documento (como puede ser las citas) o cualquier función calculable con un \textit{script}. 
 
-Esta fue mi primera opción con la que estuve probando logrando realizar combinaciones. Logre probar algunos ejemplos prometedores pero no tenía claro como combinar ya que por ejemplo la puntuaciones que \acrshort{ES} asignaba en mis pruebas a los documentos solían ser pequeñas (menores que 10) y aplicarle alguna modificación con el campo de las citas (que llega a superar las centenas) hacía que prácticamente diera igual la consulta, los resultados siempre eran un listado ordenado por citas ya que su peso era mucho mayor que todo el mecanismo de puntuación interno de \acrshort{ES}. Por ello me puse a buscar como normalizar las puntuaciones internas entre 0 y 1 para aplicar yo también una normalización a las citas y poder combinar ambas medidas con igual peso cada una. Tras navegar por varia preguntas en \textit{StackOverflow} que aplicaban diversos trucos que no llegaban a funcionar dí con una \textit{feature request} en el propio repositorio \textit{GitHub} de \acrshort{ES} \cite{ES_normalize_score} donde los autores afirmaban que no se trataba de una buena idea y simplemente se limitaban a cerrar.
+Esta fue mi primera opción con la que estuve probando logrando realizar combinaciones. Logré probar algunos ejemplos prometedores pero no tenía claro como combinar ya que por ejemplo la puntuaciones que \acrshort{ES} asignaba en mis pruebas a los documentos solían ser pequeñas (menores que 10) y aplicarle alguna modificación con el campo de las citas (que llega a superar las centenas) hacía que prácticamente diera igual la consulta, los resultados siempre eran un listado ordenado por citas ya que su peso era mucho mayor que todo el mecanismo de puntuación interno de \acrshort{ES}. Por ello me puse a buscar como normalizar las puntuaciones internas entre 0 y 1 para aplicar yo también una normalización a las citas y poder combinar ambas medidas con igual peso cada una. Tras navegar por varia preguntas en \textit{StackOverflow} que aplicaban diversos trucos que no llegaban a funcionar di con una \textit{feature request} en el propio repositorio \textit{GitHub} de \acrshort{ES} \cite{ES_normalize_score} donde los autores afirmaban que no se trataba de una buena idea y simplemente se limitaban a cerrar.
 
 Esto hizo que me planteara un enfoque más manual, si no podía combinar a mi gusto las puntuaciones en \acrshort{ES} podría obtener las puntuaciones de los documentos en el \gls{frontend}, normalizar por la máxima puntuación para la consulta y tras esto combinar con mis medidas. 
 
-Para llevar a cabo este enfoque lo primero que realicé fue normalizar los números de citas e índices h para introducirlos como nuevos campos precalculados en los índices ya creados, por ello creé los campos \texttt{cites\_norm} y \texttt{hindex\_norm} en el índice de autores y los homólogos en el de artículos, con la excepción de que el índice h de un artículo no es algo real, ya que esta medida se aplica a los autores, pero para poder aplicarlo realice una normalización de la media de los índices h de los autores del artículo.
+Para llevar a cabo este enfoque lo primero que realicé fue normalizar los números de citas e índices h para introducirlos como nuevos campos precalculados en los índices ya creados, por ello creé los campos \texttt{cites\_norm} y \texttt{hindex\_norm} en el índice de autores y los homólogos en el de artículos, con la excepción de que el índice h de un artículo no es algo real, ya que esta medida se aplica a los autores, pero para poder aplicarlo realicé una normalización de la media de los índices h de los autores del artículo.
 
-Teniendo ya ambas medidas normalizas tenia que establecer el método de combinación, siguiendo el consejo de mi tutor implementé dos combinaciones que han sido ampliamente utilizadas y estudiadas para este tipo de problemas, los algoritmos \texttt{CombMAX} y \texttt{CombSUM} \cite{DBLP:conf/trec/ShawF94}. El primero es básicamente seleccionar el valor máximo en N rankings de puntuación normalizados para cada uno de los documentos mientras que el segundo supone la suma de las N puntuaciones normalizadas para cada documento. 
+Teniendo ya ambas medidas normalizas tenía que establecer el método de combinación, siguiendo el consejo de mi tutor implementé dos combinaciones que han sido ampliamente utilizadas y estudiadas para este tipo de problemas: los algoritmos \texttt{CombMAX} y \texttt{CombSUM} \cite{DBLP:conf/trec/ShawF94}. El primero es básicamente seleccionar el valor máximo en N rankings de puntuación normalizados para cada uno de los documentos mientras que el segundo supone la suma de las N puntuaciones normalizadas para cada documento. 
 
 Estas son todas las piezas para la aplicación de medidas bibliométricas en mi sistema, el mecanismo por tanto es el siguiente:
 
-Cada consulta $q$ devuelve un conjunto de documentos ordenados por el mecanismo interno de \acrshort{ES} $\{d_1, d_2, ..., d_n\}$ cada uno de los cuales cuenta con una puntuación $s$, por lo que lo primero que hago tras recibir el resultado es buscar la puntuación máxima de entre todos los documentos $maxScore$ y normalizar las puntuaciones de la manera siguiente:
+Cada consulta $q$ devuelve un conjunto de documentos ordenados por el mecanismo interno de \acrshort{ES} $\{d_1, d_2, ..., d_n\}$, cada uno de los cuales cuenta con una puntuación $s$, por lo que lo primero que hago tras recibir el resultado es buscar la puntuación máxima de entre todos los documentos $maxScore$ y normalizar las puntuaciones de la manera siguiente:
 
 \begin{equation}
 s_{ni} = \frac{s_i}{maxScore} \forall i \in \{1, 2, ..., n\}
@@ -381,13 +413,66 @@ s_{ni} = \frac{s_i}{maxScore} \forall i \in \{1, 2, ..., n\}
 
 Tras esto según el mecanismo de ordenación elegido entre: \texttt{CombMAX\_cites}, \texttt{CombSUM\_cites}, \texttt{CombMAX\_hindex} y \texttt{CombSUM\_hindex} se suman o calculan los máximos entre las puntuaciones \acrshort{ES} normalizadas y las puntuaciones de citas o índice H asignando finalmente una puntuación $s'$ a cada documento por la cual se reordena la lista de documentos.
 
-Esto se aplica tanto para la búsqueda de autores como de artículos. Además de este mecanismo también se puede seleccionar la ordenación de \acrshort{ES} (sin medidas bibliométricas ninguna) y ordenación únicamente por citas, índice h, nombre (en caso de autores) o título (en caso de artículos).
+Esto se aplica tanto para la búsqueda de autores como de artículos. Además de este mecanismo también se puede seleccionar la ordenación de \acrshort{ES} (sin medidas bibliométricas ninguna) y ordenación únicamente por citas, índice h, nombre (en caso de autores) o título (en caso de artículos). La siguiente tabla recoge las ordenaciones de cada uno de los buscadores:
+
+\begin{table} [h!]
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		\textbf{Autores} & \textbf{Artículos}\\
+		\hline\hline
+		\multicolumn{2}{|c|}{\acrshort{ES} Default} \\ \hline
+		Nombre & Título \\ \hline
+		\multicolumn{2}{|c|}{Citas} \\ \hline 
+		\multicolumn{2}{|c|}{Índice H} \\ \hline
+		\multicolumn{2}{|c|}{CombMax Citas} \\ \hline
+		\multicolumn{2}{|c|}{CombSum Citas} \\ \hline
+		\multicolumn{2}{|c|}{CombMax Índice H} \\ \hline
+		\multicolumn{2}{|c|}{CombSum Índice H } \\ \hline
+		
+	\end{tabular}
+	\caption{Resumen de las ordenaciones disponibles en cada módulo de búsqueda}
+\end{table}
 
 
 \section{\textit{Sprint} 8}
+Esta última iteración del proyecto tuvo como objetivo refinar lo hecho hasta ahora. Esto se reduce a:
+\begin{itemize}
+	\item Finalizar y optimizar la implementación de las ordenaciones 
+	\item Mejorar el despliegue del sistema para facilitarlo
+	\item Ultimar la memoria del proyecto
+\end{itemize}
 
-Refinamientos de la memoria
+Para ultimar el sistema desarrollado, estuve mejorando el mecanismo de selección de ordenaciones usando un selector propio, creado con \textit{MaterialUI}, que me permitía un control más fino que los ya integrados en \textit{Searchkit}. 
 
-Mejorar despliegue
+Probando estas ordenaciones, me percaté de que la búsqueda dinámica según se escribe en el cuadro de búsqueda era demasiado pesada en el caso de los artículos. Dicha funcionalidad se sigue manteniendo para los autores, ya que son menos autores y el tamaño de un autor es bastante menor que el de un artículo. En el caso de la búsqueda de artículos deshabilité esa posibilidad, teniendo que pulsar \texttt{Enter} o cambiando el foco del cuadro de búsqueda para que se lance la petición contra \acrshort{ES}.
 
-Documentación código
+Como ya he comentado, para el desarrollo del proyecto, he utilizado contenedores \textit{Docker}, esto permite crear una infraestructura replicable de forma sencilla. Pero tanto el \gls{frontend} como el \gls{backend} disponen de modos de depuración y desarrollo capaces, por ejemplo, de detectar cambios en el código de forma dinámica, recargando los servicios y permitiendo observar rápidamente los cambios. Estas funcionalidades resultan muy útiles durante el proceso de desarrollo, pero añaden una sobrecarga innecesaria para el uso real del sistema. Por ello se recomiendan desactivar las opciones de depuración y desarrollo antes de pasar cualquier sistema a producción. 
+
+Para conseguir ese objetivo creé un nuevo contenedor que producía y minificaba el código del \gls{frontend} para producción. El mismo se encargaba de servir el \gls{backend} utilizando un servidor de aplicación \textit{uWSGI}. Para más detalles sobre la infraestructura final ver el siguiente apartado así como el anexo que explica el proceso de instalación y despliegue del sistema.
+
+Por último, se finalizaron algunos apartados de esta memoria, como los resúmenes, conclusiones o anexos; así como la aplicación de correcciones por parte del tutor.
+
+\section{Arquitectura final del sistema}
+
+La arquitectura final del sistema es la de una aplicación web distribuida, algo diferente y más compleja que la propuesta inicialmente en \ref{sc:arq_inicial}:
+\begin{itemize}
+	\item Un \textbf{cliente web} que se ejecuta en el navegador y constituye la interfaz de usuario, este se encarga de recoger las consultas, enviarlas al servidor de \acrfull{ES} y mostrar los resultados de las mismas sirviéndose de tecnologías como \textit{Searchkit}, \textit{ReactJS} o \textit{MaterialUI}. 
+	
+	\item Un \textbf{servidor Elastic} donde se ejecuta \acrshort{ES} y el cual contiene los índices de autores y \textit{abstracts} así como los datos indexados para la búsqueda (que no son todos los listados en el modelo de datos previamente).
+	
+	\item Un \textbf{servidor de monitorización} del servidor Elastic utilizando el proyecto de software libre Cerebro. Este permite monitorizar en tiempo real diversas medidas del servidor como la carga, espacio utilizado o estado además de múltiples funciones como un cliente REST que permite la consulta a bajo nivel sobre \acrshort{ES} muy utilizado para depuración o durante el desarrollo para hacer pequeñas pruebas.
+	
+	\item Un \textbf{servidor de aplicación} que utiliza \textit{uWSGI}, \textit{Nginx} y \textit{Flask} para montar algunos microservicios auxiliares que permiten recuperar el resto del modelo de datos que no se encuentra indexado así como aportar algunas estructuras de datos precalculadas para facilitar la búsqueda. También es el encargado de servir el código \gls{frontend} al cliente (donde se ejecuta).
+	
+	\item Un \textbf{servidor mongo} que lleva una \acrshort{BD} \textit{MongoDB} la cual contiene la totalidad de los datos de ambas colecciones y sirve como fuente de datos para el servidor de aplicación.
+	
+\end{itemize}
+
+\begin{figure}[ht]
+	
+	\centering
+	\includegraphics[width=0.9\linewidth]{imagenes/achitecture}
+	\caption{Diagrama de arquitectura final con las principales tecnologías usadas en cada nodo}
+	\label{fig:finalArchitecture}
+\end{figure}

@@ -1,22 +1,10 @@
 \chapter{Diseño}
 
-\section{Enfoque planteado}
-Como se ha podido comprobar en el apartado previo existen numerosas propuestas para combinar estas la bibliometría y la \acrshort{RI}, pero estos trabajos se realizan en un ámbito más académico y muchas veces no llegan a materializarse en sistemas reales. Los principales sistemas de \acrshort{RI} para la recuperación de literatura académica integran algunas medidas básicas pero no llegan a implementar los modelos más complejos planteados desde la investigación a pesar de que sus resultados sean esperanzadores. 
-
-Esto hace que este campo siga estando en desarrollo y resulte interesante plantear nuevos modelos a la par que testearlos.
-
-Por ello este \acrshort{TFM} servirá para desarrollar un prototipo de modelo que combine ambas ramas de la teoría de la información y sirva para evaluar el rendimiento de estos planteamientos. El objetivo es comparar un sistema de \acrshort{RI} clásico con uno que incorpore técnicas bibliométricas intentando medir su viabilidad y potencial mejora en los resultados recuperados.
-
-En los últimos tiempos el acceso a artículos se ha incrementado exponencialmente gracias a algunas de las plataformas descritas previamente, a su vez la información bibliográfica que incorporan también ha aumentado sustancialmente lo que hace cada vez más plausible la implementación de este tipo de sistemas. La irrupción de las \textit{altmetrics} resulta destacable, a pesar de ser unas medidas bibliométricas bastante recientes su capacidad para determinar la popularidad de los trabajos científicos es muy significativa.
-
-Es especialmente interesante el enfoque de las técnica híbridas, como las planteadas en el último trabajo analizado, que permiten por un lado no divergir del modelo mental de sistema de \acrshort{RI} del usuario, un buscador textual, pero incluir las potenciales ventajas de usar otro tipo de medidas. 
-
-El sistema propuesto utilizará como base un modelo clásico realizando una reordenación \textit{a priori} de los resultados en función de algunas medidas directas como el número de citas y el número de lectores en una plataforma (incluyendo con ello alguna \textit{altmetric}). Se plantea utilizar una realimentación inconsciente del usuario basada en considerar como relevantes los documentos del listado inicial que el usuario descargue tras leer el resumen y utilizándolos como semillas para refinar la búsqueda de manera transparente para él. Esta reordenación  \textit{a posteriori} se servirá del grafo de citación de estos documentos semilla para seleccionar los que documentos que tengan una relación fuerte.
 
 \section{Fuentes de datos}
 Al ser este un sistema \acrshort{RI} el diseño ha de girar en torno a los datos, por ello comencé explorando diversas alternativas para utilizar como fuente de datos. 
 
-Como punto inicial para la extracción de los datos de los autores de la \acrshort{ETSIIT} partí del Ranking UGRinvestiga \cite{Ranking_UGRInvestiga}. En este se lista a todos los autores de la facultad junto con sus citas e índice h total y los últimos 5 años.
+Como punto inicial para la extracción de los datos de los autores de la \acrshort{ETSIIT} partí del Ranking UGRinvestiga \cite{Ranking_UGRInvestiga}. En este se lista a todos los autores de la escuela junto con sus citas e índice h total y los últimos 5 años.
 
 Sin embargo no hay modo de obtener datos de los artículos concretos por lo que barajé múltiples bases de datos bibliográficas, además de las ya comentadas en la sección \nameref{subsec:sistemasRI} también exploré \href{https://www.researchgate.net/}{Research Gate}.
 
@@ -24,13 +12,13 @@ Los resultados de mi análisis fueron los siguientes:
 \label{ls:dataSourceAnalisis}
 \begin{itemize}
 	
-	\item Google Scholar y Research Gate parecen tener bastantes datos en comparación a otras opciones, sin embargo no ofrecen una \acrshort{API} por lo que la extracción de datos solo se podría llevar a cabo mediante \textit{\gls{webscraping}} \glsrefentry{webscraping}. Lo cual no es un proceso sencillo ya que muchas de estas web contienen mecanismos de detección de bots como los CAPTCHAs \cite{scrapping_GS} y además es un método muy sensible al cambio, en caso de que produzca alguna modificación en la web en cuestión es probable que toque reescribir el método de extracción de datos.
+	\item Google Scholar y Research Gate parecen tener bastantes datos en comparación a otras opciones, sin embargo no ofrecen una \acrshort{API} por lo que la extracción de datos solo se podría llevar a cabo mediante \textit{\gls{webscraping}} \glsrefentry{webscraping}. Esto no es un proceso sencillo ya que muchas de estas web contienen mecanismos de detección de bots como los CAPTCHAs \cite{scrapping_GS} y además es un método muy sensible al cambio: en caso de que produzca alguna modificación en la web en cuestión es probable que toque reescribir el método de extracción de datos.
 	\item \acrshort{WoS} y Scopus sí disponen de una \acrshort{API}, tras realizar algunas pruebas y leer opiniones sobre ambas me decanté por utilizar Scopus como fuente de datos ya que su \acrshort{API} me resultó más cómoda de utilizar y encontré datos fácilmente de algunos autores de la \acrshort{ETSIIT} (cosa que me costó bastante más en \acrshort{WoS}).
 \end{itemize}
 
 \section{Modelo de datos}
 
-Siguiendo el modelo de Scopus decidí separar la búsqueda de autores y la de artículos ya que son dos tipos de datos muy diferenciados e intuitivamente se comprende que un sistema de \acrshort{RI} funcionará mejor si los datos son homogéneos.
+Siguiendo el modelo de Scopus decidí separar la búsqueda de autores y la de artículos como apunté en los objetivos.
 
 Por tanto mi modelo de datos está constituido por 2 entidades distintas pero relacionadas: Autores (\textit{Author}) y Artículos (\textit{Abstract}). 
 
@@ -69,26 +57,19 @@ La entidad \textit{Abstract} corresponde casi directamente con los datos obtenid
 
 \newpage
 
-\section{Arquitectura del sistema}
-
-La arquitectura final del sistema es la de una aplicación web distribuida:
+\section{Arquitectura inicial del sistema}
+\label{sc:arq_inicial}
+La arquitectura del sistema planteado se basará en el modelo cliente/servidor con tres nodos:
 \begin{itemize}
-	\item Un \textbf{cliente web} que se ejecuta en el navegador y constituye la interfaz de usuario, este se encarga de recoger las consultas, enviarlas al servidor de \acrfull{ES} y mostrar los resultados de las mismas sirviéndose de tecnologías como \textit{Searchkit}, \textit{ReactJS} o \textit{MaterialUI}. 
-	
-	\item Un \textbf{servidor Elastic} donde se ejecuta \acrshort{ES} y el cual contiene los índices de autores y \textit{abstracts} así como los datos indexados para la búsqueda (que no son todos los listados en el modelo de datos previamente).
-	
-	\item Un \textbf{servidor de monitorización} del servidor Elastic utilizando el proyecto de software libre Cerebro. Este permite monitorizar en tiempo real diversas medidas del servidor como la carga, espacio utilizado o estado además de múltiples funciones como un cliente REST que permite la consulta a bajo nivel sobre \acrshort{ES} muy utilizado para depuración o durante el desarrollo para hacer pequeñas pruebas.
-	
-	\item Un \textbf{servidor de aplicación} que utiliza \textit{Flask} para montar algunos microservicios auxiliares que permiten recuperar el resto del modelo de datos que no se encuentra indexado así como aportar algunas estructuras de datos precalculadas para facilitar la búsqueda.
-	
-	\item Un \textbf{servidor mongo} que lleva una \acrshort{BD} \textit{MongoDB} la cual contiene la totalidad de los datos de ambas colecciones y sirve como fuente de datos para el servidor de aplicación.
-	
+	\item \textbf{Servidor de \acrlong{BD}}: El cual almacenara la información correspondientes a autores y artículos como se ha modelado en el apartado previo.
+	\item \textbf{Servidor de \acrshort{RI}}: Donde se llevará a cabo la búsqueda en sí, se servirá del servidor de \acrshort{BD} como almacenamiento de datos y atenderá las peticiones de búsqueda.
+	\item \textbf{Cliente}: Parte del sistema que será visible para el usuario y que se encargará de recoger las peticiones de búsqueda, enviarlas al servidor de \acrshort{RI} y presentar los resultados devueltos por el mismo
 \end{itemize}
 
 \begin{figure}[ht]
 	
 	\centering
-	\includegraphics[width=\linewidth]{imagenes/achitecture}
-	\caption{Diagrama de arquitectura final con las principales tecnologías usadas en cada nodo}
-	\label{fig:finalArchitecture}
+	\includegraphics[width=\linewidth]{imagenes/initial_architecture}
+	\caption{Diagrama de arquitectura inicial del sistema}
+
 \end{figure}

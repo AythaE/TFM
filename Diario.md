@@ -231,8 +231,42 @@ Algo lenta la busqueda de abstracts, se bloquea el input, puede ser mejor desact
 TODO:
 - [ ] Escribir apartado Introducción > Organización de la memoria
 - [ ] Escribir apartado Técnicas y Herramientas
-- [ ] Escribir apartado Desarrollo > Script 8
-- [ ] Escribir apartado Conclusiones y Trabajos Futuos
+- [x] Escribir apartado Desarrollo > Script 8
+- [ ] Escribir apartado Conclusiones y Trabajos Futuros
 - [ ] Escribir resumen
 - [ ] Escribir resumen inglés
+- [x] Añadir cuadro resumen ordenaciones
+- [x] Eliminar objetivo evaluación y a trabajos futuros
+- [x] Añadir arquitectura esbozada en diseño y detallada al final del desarrollo
+- [x] Fusionar técnicas y herramientas en el primer apartado de la memoria o diseño
+- [ ] Análisis con historias de usuario
+- [x] Revisar números footnotes
 - [ ] Limpiar código y documentar un poco frontend
+
+
+## 11/09/2018
+
+Descripción de apartados de la memoria del TFM:
+- [x] **Título del trabajo**
+- [x] **Nombre del autor**
+- [x] **Nombre del tutor/tutores**
+- [x] **Índice de los contenidos**
+- [ ] **Resumen**: Se resumirán:
+    - [ ] los objetivos planteados, 
+    - [ ] la metodología seguida, 
+    - [ ] los resultados alcanzados, y 
+    - [ ] las conclusiones del trabajo
+- [ ] **Introducción**: Debe incluir:
+    - [ ] Contextualización del trabajo: Temática   y/o   problema   que   se   aborda   (incluyendo   interés   y adecuación a los objetivos del TFM).
+- [ ] **Antecedentes**
+- [ ] **Objetivos**: Exposición precisa del aporte al conocimiento o a la práctica profesional de la Ingeniería Informática que se quiere llevar a cabo en el trabajo que se presenta. Incluyendo un análisis de la utilidad y beneficios conseguidos al alcanzarlos.
+- [x] **Planificación inicial del Trabajo** a diferentes niveles: temporal, económico y/o de recursos.
+- [x] **Metodología**:  se   describirá   la   metodología   que   se   utilizó   para   la consecución de los objetivos perseguidos. Se incluirá la descripción deherramientas, tecnologías y técnicas utilizadas, así como una justificación de por qué se hizo así.
+- [ ] **Desarrollo del Trabajo**: se expondrá de manera ordenada:
+    - [ ] El estudio profundo del estado del arte relativo al trabajo realizado.
+    - [ ] Las actuaciones y trabajo  realizado para conseguir los objetivos.
+    - [ ] Si procede, se incluirán los ajustes realizados en la planificación inicial. 
+- [ ] **Resultados**:  Se   realizará   una   exposición   ordenada   de   los   resultados, incluyendo  pruebas  y   análisis  de  los  mismos.  Es  recomendable   incluir prototipos o demostradores del trabajo, así como estudios comparativos ilustrados   mediante   tablas   y/o   gráficos.     Deben   incluirse     comentarios relacionándolos   entre   sí   y   con   los   descritos   en   la   introducción.  Este apartado   podría   integrarse   dentro   del   apartado   anterior   (Desarrollo   del Trabajo).
+- [ ] **Discusión y conclusiones**: Se deben destacar los aspectos novedosos y relevantes del estudio y las conclusiones que se derivan de ellos. No se deben repetir con detalle los datos u otra información ya presentados en las secciones   anteriores.   Se     deben   relacionar   las   conclusiones   con   los objetivos del trabajo, evitando afirmaciones no contrastadas y conclusiones no respaldadas suficientemente por  los datos disponibles.
+- [x] **Bibliografía**: Incluirá todas las referencias de libros, webs, documentos y artículos consultados durante la utilización del trabajo.
+- [ ] **Anexo**:  se   podrá   anexar   toda   aquella   documentación   que   sea relevante para la compresión y clarificación del trabajo desarrollado
