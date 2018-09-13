@@ -1,44 +1,125 @@
 \chapter{Desarrollo}
 En este capítulo se detallara el proceso de desarrollo seguido, dividido en \textit{sprints} como ya se ha comentado en la sección \nameref{sc:metodologia}, así como un apartado inicial sobre las herramientas software empleadas y uno final con las modificaciones que ha sufrido la arquitectura planteada a lo largo del proceso de desarrollo.
 
-\section{Herramientas Software empleadas}
+\section{Herramientas software empleadas}
 \label{ch:herramientas}
 
-Comentar en más detalle todas las herramientas utilizadas con enlaces de cada una.
+En esta sección describiré las herramientas software utilizadas a lo largo de todo el desarrollo del proyecto y el uso concreto para el que se han empleado
 
 \begin{itemize}
-	\item \textbf{Debian}: \acrfull{SO}.
-	\item \textbf{Python}: Lenguaje de programación usado en las primeras fases del proyecto y en servidor \gls{backend} \glsrefentry{backend}.
-	\item \textbf{JavaScript}: Lenguaje de programación interpretado en el que se ha escrito el \gls{frontend} \glsrefentry{frontend}.
-	\item \textbf{Elasticsearch}: Servidor de búsqueda.
-	\item \textbf{MongoDB}: Base de datos NoSQL.
-	\item \textbf{React}:  \Gls{framework} para el desarrollo de interfaces de usuario.
-	\item \textbf{Searchkit}: \Gls{framework} que incluye un conjunto de componentes React para la comunicación con Elasticsearch.
-	\item \textbf{TeXstudio}: Entorno integrado de escritura en \LaTeX{} utilizado para generación de la documentación.
-	\item \textbf{Docker}: Software de virtualización para basado en contenedores. Permite gestionar de forma simple la gestión y despliegue de una infraestructura software.
-	\item \textbf{Visual Studio Code}: Editor de código creado por Microsoft utilizado para toda la programación del proyecto.
-	\item Git
-	\item GitHub
-	\item Pandas
-	\item PyMongo
-	\item scopus-api
-	\item Beautiful Soup
-	\item Matplotlib
-	\item MaterialUI
-	\item elasticsearch-py
-	\item Star UML
-	\item Cerebro
-	\item Flask
-	\item Gimp
-	\item Nginx
-	\item uWSGI
+	\item \textit{\textbf{Debian}}: \acrfull{SO} utilizado por mi equipo personal durante todo el desarrollo. 
+	
+	\url{https://www.debian.org/index.es.html}
+	
+	\item \textit{ \textbf{Python}}: Lenguaje de programación usado en las fases exploratorias del proyecto, la indexación de documentos y que ejecuta el servidor \gls{backend} \glsrefentry{backend}.
+	
+	\url{https://www.python.org/}
+	
+	\item \textit{\textbf{JavaScript}}: Lenguaje de programación interpretado en el que se ha escrito el \gls{frontend} \glsrefentry{frontend} de la aplicación.
+	
+	\url{https://developer.mozilla.org/es/docs/Web/JavaScript}
+	
+	
+	\item \textit{\textbf{Elasticsearch}}: Servidor de búsqueda utilizado como motor principal del sistema, este contiene los índices sobre los que se buscan y realiza la búsquedas por contenido.
+	
+	\url{https://www.elastic.co/products/elasticsearch}
+	
+	
+	\item \textit{\textbf{MongoDB}}: Base de datos NoSQL empleada como almacén principal de datos a la cual se conecta el servidor \gls{backend} para servir los datos.
+	
+	\url{https://www.mongodb.com/es/what-is-mongodb}
+	
+	\item \textit{\textbf{ReactJS}}:  \Gls{framework} \textit{JavaScript} para el desarrollo de interfaces de usuario desarrollado por \textit{Facebook} y utilizado como principal motor que potencia el \gls{frontend}.
+	
+	\url{https://reactjs.org/}
+	
+	\item \textit{\textbf{Searchkit}}: \Gls{framework} que incluye un conjunto de componentes \textit{React} para la comunicación con \textit{Elasticsearch}, algunos de los cuales se han utilizado para el desarrollo, incluyendo el tema y \textit{layout} general de la interfaz de usuario.
+	
+	\url{http://www.searchkit.co/}
+	
+	\item \textit{\textbf{TeXstudio}}: Entorno integrado de escritura en \LaTeX{} utilizado para generación de esta memoria.
+	
+	\url{https://www.texstudio.org/}
+	
+	\item \textit{\textbf{Docker}}: Software de virtualización para basado en contenedores. Permite gestionar de forma simple la gestión y despliegue de una infraestructura software. Se ha empleado para gestionar la infraestructura a lo largo de todo el desarrollo ya que permite realizar pruebas rápidas de servicios, al no requerir instalar ninguna utilidad directamente en la maquina de desarrollo, si no simplemente descargar contenedores ya preparados y configurados para ser utilizados.
+	
+	\url{https://www.docker.com/}
+	
+	\item \textit{\textbf{Visual Studio Code}}: Editor de código multiplataforma creado por \textit{Microsoft} y utilizado para toda la programación llevada a cabo en el proyecto del proyecto.
+	
+	\url{https://code.visualstudio.com/}
+	
+	\item \textit{\textbf{Git}}: Sistema de control de versiones empleado para versionar todos los artefactos del proyecto.
+	
+	
+	\url{https://git-scm.com/}
+	
+	\item \textit{\textbf{GitHub}}: Plataforma de desarrollo colaborativo utilizada como servidor \textit{git} donde almacenar todos los artefactos del proyecto.
+	
+	\url{https://github.com/}
+	
+	\item \textbf{\textit{Pandas}}: Librería de análisis de datos en \textit{Python} que se ha convertido en estándar \textit{de facto} para el manejo de datos en dicho lenguaje. Se ha utilizado para la extracción y limpieza de datos.
+	
+	\url{https://pandas.pydata.org/}
+	
+	\item \textit{\textbf{PyMongo}}: \textit{Driver} oficial de \textit{MongoDB} en \textit{Python}, utilizado en todos los accesos programáticos a dicha \acrshort{BD}.
+	
+	\url{https://github.com/mongodb/mongo-python-driver}
+	
+	\item \textit{\textbf{Robo3T}}: Cliente de \textit{MongoDB} con interfaz gráfica de usuario empleado para realizar pequeñas consultas y poder ver los datos de manera más visual durante el proceso de desarrollo.
+	
+	\url{https://robomongo.org/}
+	
+	\item \textbf{\textit{scopus-api}}: Librería \textit{Python} para la interacción con la \acrshort{API} de Scopus utilizada para la obtención de datos.
+	
+	\url{https://scopus.readthedocs.io/en/latest/}
+	
+	
+	\item \textit{\textbf{Beautiful Soup}}: Librería \textit{Python} que facilita el \gls{webscraping} utilizada para extraer datos del ranking UGRinvestiga.
+	
+	\url{https://www.crummy.com/software/BeautifulSoup/}
+	
+	\item \textbf{\textit{Matplotlib}}: Librería \textit{Python} para generar gráficos en dos dimensiones. Utilizada para crear algunos gráficos durante el análisis exploratorio de datos.
+	
+	\url{https://matplotlib.org/}
+	
+	\item \textbf{\textit{MaterialUI}}: \Gls{framework} \textit{JavaScript} que contiene un conjunto de elementos \textit{React} implementando el estándar de diseño \textit{Material Design} de \textit{Google}. Utilizado para algunos componentes de la interfaz de usuario como los botones, vistas detalladas de artículos o autores y otros controles.
+	
+	\url{https://material-ui.com/}
+	
+	\item \textit{\textbf{elasticsearch-py}}: Cliente \textit{Python} oficial de \acrshort{ES}, este permite el control a bajo nivel de dicho servidor de búsqueda. Se ha empleado para realizar la indexación de los datos en \acrshort{ES}
+	
+	\url{https://elasticsearch-py.readthedocs.io/en/master/}
+	\item \textit{\textbf{Star UML}}: Programa de modelado de software utilizado para la generación de los diagramas de este proyecto.
+	
+	\url{http://staruml.io/}
+	
+	\item \textit{\textbf{Cerebro}}: Servidor de monitorización de \acrshort{ES} empleado para gestionar el servidor durante el desarrollo, así como para realizar algunas pruebas ya que dispone de una pequeña interfaz que permite lanzar consultas contra dicho servidor. 
+	
+	\url{https://github.com/lmenezes/cerebro}
+	
+	\item \textbf{\textit{Flask}}: \Gls{framework} de desarrollo web \textit{Python}, es el que potencia los servicios del \gls{backend}.
+	
+	\url{http://flask.pocoo.org/}
+	
+	\item \textbf{\textit{Gimp}}: \textit{Software} de manipulación de imágenes integrado en mi sistema operativo y que ha sido utilizado para editar algunas de la imágenes de esta memoria.
+	
+	\url{https://www.gimp.org/}
+	
+	\item \textit{\textbf{Nginx}}: Servidor web que recibe las peticiones del navegador, es encargado de servir los ficheros estáticos del \gls{frontend} y derivar las peticiones al \gls{backend}.
+	
+	\url{https://www.nginx.com/}
+	
+	\item \textbf{\textit{uWSGI}}: Servidor de aplicaciones \textit{Python} encargado de ejecutar el \gls{backend} \textit{Flask} comunicándose con \textit{Nginx}.
+	
+	\url{https://uwsgi-docs.readthedocs.io/en/latest/}
 \end{itemize}
 
 \section{\textit{Sprint} 1}
 Este primer \textit{sprint} tiene como objetivo general la investigación básica sobre la \acrshort{RI}. Sus objetivos concretos son: 
 
 \begin{itemize}
-	\item Leer el libro \acrlong{RI}: un enfoque práctico y multidisplinar \cite{RIspaBook}.
+	\item Leer el libro \acrlong{RI}: un enfoque práctico y multidisciplinar \cite{RIspaBook}.
 	\item Buscar los talleres \acrshort{BIR} centrándose en sus editoriales para realizar un listado priorizado por interés de los diversos artículos.
 \end{itemize}
 
@@ -104,9 +185,9 @@ Estuve haciendo alguna pruebas con algunos \glspl{framework} de búsqueda. Ya ha
 
 Buscando alguna comparativa \cite{ES_Solr} y comentarios de usuarios en plataformas tan reputadas como \textit{StackOverflow} \cite{ES_Solr_SO} parecía que se recomendaba \acrshort{ES} por ser más sencillo de usar, esto me animó a realizar un breve tutorial \cite{ES_tutorial} que me gustó bastante ya que resulta realmente simple de usar y basta únicamente con realizar consultas sobre una \acrshort{API} \acrshort{REST} por lo que basta con hacer peticiones \acrshort{HTTP} con algún cliente simple como \texttt{curl}. Todo esto hizo que me decidiera por este servidor de búsqueda.
 
-Como ya comenté en el apartado \ref{ls:dataSourceAnalisis} realicé un análisis de diversas fuentes de datos y me decanté por seleccionar alguna que dispusiera de \acrshort{API}, en concreto Scopus ya que me resultó más rápido encontrar artículos que me servirían para mi colección documental. Por lo que comencé buscando la implementación que habían realizado en el artículo \cite{DBLP:conf/ecir/SarolLS18}, ya que en el mismo comentan que se encuentra disponible en \textit{GitHub} \cite{bir_scopus_gh}. Vi que dicha implementación era de muy bajo nivel, extraía los artículos mediante peticiones \acrshort{HTTP} y parseaban el \acrshort{XML} obtenido directamente. Pensé que tenía que haber un mejor método para esto, alguna librería que ya implementara los métodos de la \acrshort{API} y abstrayera de esas tareas. 
+Como ya comenté en el apartado \ref{ls:dataSourceAnalisis} realicé un análisis de diversas fuentes de datos y me decanté por seleccionar alguna que dispusiera de \acrshort{API}, en concreto Scopus ya que me resultó más rápido encontrar artículos que me servirían para mi colección documental. Por lo que comencé buscando la implementación que habían realizado en el artículo \cite{DBLP:conf/ecir/SarolLS18}, ya que en el mismo comentan que se encuentra disponible en \textit{GitHub} \cite{bir_scopus_gh}. Vi que dicha implementación era de muy bajo nivel, extraía los artículos mediante peticiones \acrshort{HTTP} y manejaban el \acrshort{XML} obtenido directamente. Pensé que tenía que haber un mejor método para esto, alguna librería que ya implementara los métodos de la \acrshort{API} y abstrayera de esas tareas. 
 
-Así encontré la implementación oficial ofrecida por Elsevier, \texttt{elsapy} \cite{elsapy}, un modulo en \textit{python} que cuenta con diversas clases para modelar los tipos de documentos y permite obtener y parsear los datos de la \acrshort{API} de manera transparente. También encontré el módulo \texttt{scopus} \cite{scopus-api} una implementación alternativa que había comenzado a desarrollarse algo antes que la oficial, parecía más activa y contaba con mejor documentación incluyendo ejemplos bastante útiles. 
+Así encontré la implementación oficial ofrecida por Elsevier, \texttt{elsapy} \cite{elsapy}, un modulo en \textit{Python} que cuenta con diversas clases para modelar los tipos de documentos y permite obtener y parsear los datos de la \acrshort{API} de manera transparente. También encontré el módulo \texttt{scopus} \cite{scopus-api} una implementación alternativa que había comenzado a desarrollarse algo antes que la oficial, parecía más activa y contaba con mejor documentación incluyendo ejemplos bastante útiles. 
 
 Funcionalmente \texttt{scopus} era muy similar a la versión oficial, pero estaba mejor modelada, se centraba solo en Scopus, que era lo que yo necesitaba, y tenía algunos añadidos muy útiles como uso de una caché por defecto con el objetivo de no repetir peticiones ya hechas, si no servirlas desde un documento almacenado en disco, lo que hacia increíblemente veloz la recuperación de entidades ya consultadas previamente así como gestión transparente de \acrshort{API} \textit{key}\footnote[3]{Basta con introducirla en la primera ejecución y la propia librería la guarda en un fichero interno el cual usa para su consulta el resto de ocasiones.}. Todo esto hizo que me decantara por esta última sobre la implementación oficial.
 
@@ -186,7 +267,7 @@ Donde $f\_name$ y $l\_name$ hacen referencia a nombre y apellidos respectivament
 Con este algoritmo he logrado encontrar algún resultado en Scopus para \textbf{202 de los 214} autores buscados (\textbf{$\sim$ 94.39 \% de los autores}), a pesar de esto el número total de autores recuperados son 397, por lo que habrá que realizar una limpieza de los mismos.
 
 \subsubsection{Limpieza de datos de autores}
-Si observamos la distribución de \textbf{nacionalidades de los autores} recuperados, la cual se ve en la siguiente imagen se aprecia que hay una mayoría abrumadora de Españoles (como cabría esperar) pero también algunas nacionalidades inesperadas como palestina o australiana. Por ello consideraré que todo autor cuya nacionalidad no sea española debe haber sido recuperado incorrectamente y será eliminado al tratarse de ruido, haciendo esto pasamos de 397 autores de Scopus representando a 202 autores de la \acrshort{UGR} a un total de 381 autores de Scopus respresentando a \textbf{198 autores de la \acrshort{UGR} ($\sim$ 98.02 \% de los 202 previos)}.
+Si observamos la distribución de \textbf{nacionalidades de los autores} recuperados, la cual se ve en la siguiente imagen se aprecia que hay una mayoría abrumadora de Españoles (como cabría esperar) pero también algunas nacionalidades inesperadas como palestina o australiana. Por ello consideraré que todo autor cuya nacionalidad no sea española debe haber sido recuperado incorrectamente y será eliminado al tratarse de ruido, haciendo esto pasamos de 397 autores de Scopus representando a 202 autores de la \acrshort{UGR} a un total de 381 autores de Scopus representando a \textbf{198 autores de la \acrshort{UGR} ($\sim$ 98.02 \% de los 202 previos)}.
 
 \begin{figure}[h!]
 	
@@ -253,7 +334,7 @@ Una vez tenía los datos preparados en este sprint me marqué como objetivo crea
 \end{itemize}
 
 \subsection{Indexación de los datos}
-Tras analizar un par de alternativas como motores de búsqueda (ver \nameref{sc:sprint4}) me decanté por utilizar \acrshort{ES}. Tras seguir un breve tutorial me pareció muy manual el proceso de introducir datos por lo que busqué alguna forma de hacerlo programáticamente. En mi búsqueda di con el tutorial \cite{indexingES}, que utilizaba el cliente oficial de \acrshort{ES} en \textit{python} \texttt{elasticsearch-py} \cite{ES_client}. Usando dicho tutorial como base y realizando un mapeo del índice \footnote[4]{Forzar los datos y tipos de estos en un índice, no es necesario ya que \acrshort{ES} es capaz de gestionarlo dinámicamente, pero con ello se consigue aplicar estrategias de búsquedas específicas para los tipos de datos y hace que no se pueda introducir un documento distinto por error.}\cite{mappingES} creé los índices \textit{author} y \textit{abstract}.
+Tras analizar un par de alternativas como motores de búsqueda (ver \nameref{sc:sprint4}) me decanté por utilizar \acrshort{ES}. Tras seguir un breve tutorial me pareció muy manual el proceso de introducir datos por lo que busqué alguna forma de hacerlo programáticamente. En mi búsqueda di con el tutorial \cite{indexingES}, que utilizaba el cliente oficial de \acrshort{ES} en \textit{Python} \texttt{elasticsearch-py} \cite{ES_client}. Usando dicho tutorial como base y realizando un mapeo del índice \footnote[4]{Forzar los datos y tipos de estos en un índice, no es necesario ya que \acrshort{ES} es capaz de gestionarlo dinámicamente, pero con ello se consigue aplicar estrategias de búsquedas específicas para los tipos de datos y hace que no se pueda introducir un documento distinto por error.}\cite{mappingES} creé los índices \textit{author} y \textit{abstract}.
 
 No todos los datos de dichas entidades han sido indexadas, ya que hay algunas que no aportaría nada a la búsqueda; es más solo la entorpecería al ocupar un espacio innecesario en el índice. Por ejemplo, los identificadores o \acrshort{URL}s no aportan nada.
 
@@ -306,7 +387,7 @@ Teniendo en cuenta la características del proyecto cuyo objetivo es desarrollar
 
 Por eso comencé buscando librerías que facilitaran el desarrollo de interfaces de usuario para sistemas basados en \acrshort{ES}. Me topé con dos destacadas \textit{Searchkit} \cite{searchKit} y \textit{Reactivesearch} \cite{reactiveSearch}, ambas basadas en el \gls{framework} \textit{ReactJS}. Básicamente suponen un conjunto de componentes visuales ya construidos (filtros, barras de búsqueda...), \textit{layouts} y otras utilidades adicionales que facilitan la comunicación con \acrshort{ES}.
 
-Ojeando las documentaciones y ejemplos me dió la impresión de que \textit{Reactivesearch} parecía más completa y adaptable, con más componentes y opciones de diseño, pero es desarrollada por appbase.io, una plataforma de \acrshort{DBaaS} y la documentación de \textit{Reactivesearch} se orienta mucho a que desarrolles aplicaciones de búsqueda utilizando su plataforma como fuente de datos, lo cual me echó algo para atrás. Por otro lado \textit{Searchkit} parecía más simple, con menos componentes y opciones pero funcionales, ideal para mí ya que no buscaba realizar una interfaz gráfica compleja, si no simple. Contaba con ejemplos en vivo y proyectos de ejemplo demostrando la funcionalidad de cada uno de sus componentes.
+Ojeando las documentaciones y ejemplos me dio la impresión de que \textit{Reactivesearch} parecía más completa y adaptable, con más componentes y opciones de diseño, pero es desarrollada por appbase.io, una plataforma de \acrshort{DBaaS} y la documentación de \textit{Reactivesearch} se orienta mucho a que desarrolles aplicaciones de búsqueda utilizando su plataforma como fuente de datos, lo cual me echó algo para atrás. Por otro lado \textit{Searchkit} parecía más simple, con menos componentes y opciones pero funcionales, ideal para mí ya que no buscaba realizar una interfaz gráfica compleja, si no simple. Contaba con ejemplos en vivo y proyectos de ejemplo demostrando la funcionalidad de cada uno de sus componentes.
 
 Por todo ello decidí utilizar \textit{Searchkit}. En la siguiente imagen se puede apreciar el aspecto de la demo de esta librería, como se puede observar cuenta con una interfaz bastante simple, muy inspirada en \textit{Material Design} \cite{materialDesign} y con unas zonas claramente diferenciadas: En rojo podemos ver una barra superior con el nombre de la aplicación y la barra de búsqueda, a la izquierda en amarillo una zona de filtros, en recuadros azules un par de barras que muestran información sobre los resultados de búsqueda y permiten modificar la ordenación o visualización; por último en verde aparece la zona de resultados.
 
@@ -336,7 +417,7 @@ Además de esto al conectarnos con una instancia local es necesario activar las 
 
 Además de \textit{Searchkit} también he utilizado el \gls{framework} \textit{MaterialUI} para algunos de los componentes visuales como las \textit{tabs} de selección de búsqueda de autores o \textit{abstracts} o los botones que aparecen en la aplicación.
 
-Esta imagen muestra el aspecto que tiene el buscador de autores, como se puede ver la interfaz es realmente sencilla contando unicamente con una barra de búsqueda, unas pestañas para cambiar entre búsqueda de autores o artículos y las propias vistas de resultados así como un selector de orden de los mismos.
+Esta imagen muestra el aspecto que tiene el buscador de autores, como se puede ver la interfaz es realmente sencilla contando únicamente con una barra de búsqueda, unas pestañas para cambiar entre búsqueda de autores o artículos y las propias vistas de resultados así como un selector de orden de los mismos.
 
 
 \begin{figure}[h]
@@ -425,10 +506,10 @@ Esto se aplica tanto para la búsqueda de autores como de artículos. Además de
 		Nombre & Título \\ \hline
 		\multicolumn{2}{|c|}{Citas} \\ \hline 
 		\multicolumn{2}{|c|}{Índice H} \\ \hline
-		\multicolumn{2}{|c|}{CombMax Citas} \\ \hline
-		\multicolumn{2}{|c|}{CombSum Citas} \\ \hline
-		\multicolumn{2}{|c|}{CombMax Índice H} \\ \hline
-		\multicolumn{2}{|c|}{CombSum Índice H } \\ \hline
+		\multicolumn{2}{|c|}{CombMAX Citas} \\ \hline
+		\multicolumn{2}{|c|}{CombSUM Citas} \\ \hline
+		\multicolumn{2}{|c|}{CombMAX Índice H} \\ \hline
+		\multicolumn{2}{|c|}{CombSUM Índice H } \\ \hline
 		
 	\end{tabular}
 	\caption{Resumen de las ordenaciones disponibles en cada módulo de búsqueda}

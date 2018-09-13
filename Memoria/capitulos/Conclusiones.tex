@@ -1,27 +1,36 @@
 \chapter{Conclusiones y Trabajos Futuros}
 
 \section{Relación del \acrshort{TFM} con lo aprendido en el Máster}
+Para comenzar el último capítulo de la presente memoria destacaré las principales asignaturas del Máster que me han ayudado a llevar a cabo este proyecto.
 
-GIW
-
-SSBW
-
-CC
-
+\begin{itemize}
+	\item \textbf{\acrlong{GIW}}: Como ya he ido comentado desde la introducción de esta memoria, esta asignatura fue mi principal motivación para elegir este proyecto. Ya que es donde adquirí las primeras nociones de lo que es un sistema de \acrshort{RI} así como donde lleve a cabo alguna práctica construyendo uno por mi mismo. Esta asignatura me resultó la optativa más interesante del Máster ya que enseña los fundamentos de sistemas de información que son totalmente desconocidos para los estudiantes que no provienen de esa rama de la informática como yo.
+	\item \textbf{Sistemas Software Basados en Web}: En ella se imparten los fundamentos de las aplicaciones web, utilizando herramientas extensamente empleadas a la par que punteras. Para mí supuso mis primeros acercamientos serios a \textit{Python} o \textit{JavaScript} y sus bases me resultan útiles a diario en mi trabajo. En este proyecto he aplicado los conocimientos adquiridos sobre arquitectura de aplicaciones web, gestión de infraestructuras con \textit{Docker} o \textit{ReactJS}.
+	\item \textbf{Cloud Computing: Fundamentos e Infraestructuras}: A pesar de que en principio es la asignatura menos relacionada con la temática y desarrollo del proyecto de las tres. Durante sus clases he aprendido realmente a utilizar \textit{GitHub} y los sistemas de control de versiones, una habilidad realmente útil. También me enseñó los conceptos detrás de \textit{Docker} así como otros sistemas de gestión y despliegue de infraestructuras.
+\end{itemize}
 
 \section{Conclusiones}
+A título personal me ha resultado un proyecto muy interesante, que considero me ha enseñado bastante. Me siento satisfecho con el mismo, aunque me haya costado más tiempo y esfuerzo de lo esperado, mi curiosidad inicial sobre los buscadores ha quedado ampliamente satisfecha. 
 
-Proyecto interesante
+Aunque siempre se puede seguir aprendiendo tengo asimilados los fundamentos del funcionamiento de un sistema de recuperación de información y me considero capacitado para crear algún sistema de búsqueda en el futuro.
 
-Curiosidad planteada en la motivacion satisfecha
+En mis pruebas con los distintos mecanismos de ordenaciones, me he encontrado que el algoritmo de combinación de \textit{rankings} \texttt{CombMAX} no modifica demasiado los resultados, ya que depende mucho de que los datos se encuentren en la misma escala para poder combinarlos adecuadamente A pesar de haber normalizado las puntuaciones dadas por \acrshort{ES}, los números de citas e índice h para conseguirlo, la normalización de citas e índice h se ha hecho sobre la distribución total de estos valores en toda la colección, mientras que la normalización de la puntuación de \acrshort{ES} no puede hacerse de forma absoluta. Por un lado porque dicha puntuación mide la relevancia y este no es un concepto absoluto, si no subjetivo; y por otro porque es dependiente de la consulta, por ello se normaliza la puntuación de forma dinámica.
 
-No tiempo suficiente para llevar a cabo todo lo planteado. Objetivo de  Evaluación no cumplido
+Esto implica que la puntuación máxima de \acrshort{ES} dada para una consulta se asigna al valor 1 y a partir de ahí se normaliza el resto de puntuaciones, pero si entre los documentos retornados no se encuentran algunos con un número significativo de citas o índice h sobre el total (como suele ser el caso), la comparación resulta totalmente desigual y la puntuación de \acrshort{ES} resulta superior casi siempre por lo que no varía mucho el orden sobre la ordenación por defecto.
+
+Este problema se hace más sutil en el algoritmo \texttt{CombSUM}, ya que simplemente se suman ambas puntuaciones, por lo que el número de citas o índice h puede variar la ordenación de forma más fácil. Como puede parecer lógico, lo que más se observan son reordenaciones locales, es decir, intercambios entre documentos consecutivos o muy cercanos en la ordenación por defecto, no grandes diferencias.
+
+Como siempre suele pasar en estos proyectos, me he dejado bastantes cosas en el tintero que me gustaría haber probado. Si se analiza la funcionalidad del sistema definitivo se aprecia que no podido implementar un sistema de ordenación a \textit{posteriori} utilizando la información sobre citas recolectada. En parte por falta de tiempo, pero también por los datos disponibles sobre las citas, a pesar de contar con 742 citas en 891 artículos, estas citas se encuentran muy concentradas. Solo 370 artículos tienen alguna cita sobre alguno de esos 891 documentos ($\sim$ 41,53 \% del total), este porcentaje resulta bastante bajo para utilizar esta información en alguna ordenación ya que de más de la mitad de artículos no se dispone de información alguna.
+
 
 \section{Trabajos futuros}
-Relevance feedback
 
-Redes de citación
+La principal linea de trabajo que quedaría por seguir en este proyecto es la de \textbf{evaluar la mejora producida al aplicar medidas bibliométricas al sistema}. El hecho de que la colección documental del sistema esté constituida por autores de la \myFaculty favorece que esta evaluación se pueda llevar a cabo, aunque esta no es una tarea sencilla. 
 
-Intentar obtener Altmetrics de otras fuentes
+La evaluación de sistemas \acrshort{RI} se suele llevar a cabo mediante colecciones de prueba, donde existe un conjunto de documentos, un conjunto de consultas y un conjunto de resultados que deberían de retornar las mismas \cite{RI_Evaluation}. Al crear un sistema nuevo con una colección de documentos no utilizada previamente podemos comparar los resultados obtenidos con los que se esperarían, este problema se debe a la relatividad del concepto de relevancia. Por ello las colecciones de pruebas suelen incluir valoraciones de relevancia de expertos en la materia.
 
-\textbf{Evaluar la mejora producida al aplicar medidas bibliométricas al sistema}: como colección de datos del sistema \acrshort{RI} a desarrollar se ha decidido utilizar el conjunto de todos los trabajos de autores de la \myFaculty lo que favorece que esta evaluación se pueda llevar a cabo, aunque esta no es una tarea sencilla. La evaluación de sistemas \acrshort{RI} se suele llevar a cabo mediante colecciones de prueba donde existe un conjunto de documentos, un conjunto de consultas y un conjunto de resultados que deberían de retornar las mismas  \cite{RI_Evaluation}. Al crear un sistema nuevo con una colección de documentos no utilizada no podemos comparar los resultados obtenidos con los que se esperarían, este problema se debe a la relatividad del concepto de relevancia. Por ello las colecciones de pruebas suelen incluir valoraciones de relevancia de expertos en la materia.
+La forma más sencilla de llevar a cabo una evaluación sería realizar pruebas con el sistema y usuarios expertos como los propios profesores de la \myFaculty. Realizando para ello algunas consultas y que ellos mismos comprueben las diferencias entre las distintas ordenaciones, finalmente mediante algún tipo de encuesta se podría recoger su opinión sobre la relevancia de las medidas en la recuperación llevada a cabo.
+
+Otra posible linea sería la de incorporar \textbf{redes de citación} para realizar \textit{relevance feedback} \cite{relevanceFeedback} utilizando las referencias, para ello, por los motivos comentados en el apartado previo, habría que incluir todas las referencias de los artículos en lugar de las propias internas. Esto aumentará significativamente en número de citas aunque muchas apunten a artículos externos, ese tipo de relación de citación conocida como co-citación es más débil que la citación directa pero también puede aportar información relevante, como se ha mencionado en algunos trabajos del apartado \nameref{subsc:trabajosRelacionados}. 
+
+Hay que tener en cuenta que este supone un procesamiento costoso al tener que operar sobre grandes grafos de artículos y citas como nodos y aristas respectivamente. Especialmente en el contexto de la búsqueda donde el usuario busca la inmediatez que le ofrecen gigantes como Google. No merecería la pena montar un esquema complejo que de resultados buenos pero tarde varios segundos en dar una respuesta. Por ello para explorar estos enfoques, habría que contar con un equipo más potente y adaptado a las necesidades de computo que el utilizado, así como, con alta probabilidad, utilizar estrategias de optimización \textit{greedy} \cite{greedy}.

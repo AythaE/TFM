@@ -14,20 +14,38 @@ Es especialmente interesante el enfoque de las técnica híbridas, como las plan
 El sistema propuesto utilizará como base un modelo clásico realizando una reordenación \textit{a priori} de los resultados en función de algunas medidas directas como el número de citas o el número de lectores en una plataforma (incluyendo con ello alguna \textit{altmetric}). Se plantea utilizar una realimentación inconsciente del usuario basada en considerar como relevantes los documentos del listado inicial que el usuario descargue tras leer el resumen y utilizándolos como semillas para refinar la búsqueda de manera transparente para él. Esta reordenación  \textit{a posteriori} se servirá del grafo de citación de estos documentos semilla para seleccionar los que documentos que tengan una relación fuerte.
 
 \section{Historias de usuario}
-Siguiendo los enfoques de las metodologías ágiles, como la empleada, en lugar de definir los requerimientos y alcance del software mediante una especificación de requisitos de usuario o casos de uso, me he decantado por utilizar historias de usuario.
+Siguiendo los enfoques de las metodologías ágiles como la empleada, en lugar de definir los requerimientos y alcance del software mediante una especificación de requisitos de usuario o casos de uso, me he decantado por utilizar historias de usuario.
 
 El usuario que se mencionará en estas historias así como el del sistema final será un usuario relacionado con el mundo científico y que esté familiarizado con los conceptos típicos como las medidas bibliométricas empleadas.
 
 En la siguiente lista se recogen las historias de usuario con las que se ha trabajado
 
 \begin{itemize}
-	\item Seleccionar el método de ordenación a \textit{priori} de los resultados de búsqueda
-	\item Seleccionar el método de ordenación a \textit{posteriori} de los resultados
-	\item Realizar búsquedas de autores
-	\item Realizar búsquedas de artículos
-	\item Poder desplegar una vista detallada de un artículo 
-	\item Poder desplegar una vista detallada de un autor
+	\item \textbf{Seleccionar el método de ordenación a \textit{priori} de los resultados de búsqueda}: El usuario tendrá que poder elegir entre varios criterios de ordenación de resultados basados en medidas bibliométricas directas. Los criterios concretos dependen de la disponibilidad de datos bibliográficos por lo que se definirán más adelante.
+	
+	\item \textbf{Seleccionar el método de ordenación a \textit{posteriori} de los resultados}: El usuario ha de tener la posibilidad de seleccionar entre varios métodos de ordenación de los resultados en base a su interacción con el sistema.
+
+	\item \textbf{Realizar búsquedas de autores}: El usuario podrá ejecutar búsquedas de autores entre el colección de los mismos. Por motivos de comodidad y familiaridad se utilizarán como autores aquellos pertenecientes a la \myFaculty de la \myUni.
+	
+	\item \textbf{Realizar búsquedas de artículos}: El usuario deberá tener la posibilidad de hacer búsquedas de artículos en el sistema. Al igual que en la historia previa el conjunto de artículos estará constituido por los trabajos de los autores mencionados previamente.
+	
+	\item \textbf{Desplegar una vista detallada de un artículo}: El usuario dispondrá de la posibilidad de desplegar una vista detallada de cada uno de los artículos devueltos en la búsqueda. Dicha vista tiene como objetivo mostrar una información básica sobre los artículos que permita discernir su contenido y relevancia, así como permitir enlazar a otras fuentes de informaron más detalladas sobre el mismo. Contendrá al menos los siguientes datos:
+	\begin{itemize}
+		\item[\textendash] Título
+		\item[\textendash] Autores
+		\item[\textendash] Resumen
+		\item[\textendash] Información bibliográfica
+		\item[\textendash] Palabras clave
+	\end{itemize}
+	
+	\item \textbf{Desplegar una vista detallada de un autor}:  El usuario dispondrá de la posibilidad de desplegar una vista detallada de cada uno de los autores devueltos en la búsqueda. Al igual que en el caso anterior ha de contener un extracto de información sobre el autor así como enlaces a otras fuentes de datos o perfiles con más datos. Contendrá al menos los siguientes datos:
+	\begin{itemize}
+		\item[\textendash] Nombre
+		\item[\textendash] Apellidos
+		\item[\textendash] Departamento / Grupo de investigación
+		\item[\textendash] Información bibliográfica
+
+	\end{itemize}
 	
 \end{itemize}
 
-\subsubsection{Breve descripción de cada uno}
