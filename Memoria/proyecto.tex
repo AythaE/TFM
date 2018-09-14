@@ -15,6 +15,7 @@
 \decimalpoint
 \usepackage{dcolumn}
 \usepackage{dirtree}
+\usepackage{wrapfig}
 \newcolumntype{.}{D{.}{\esperiod}{-1}}
 \makeatletter
 \addto\shorthandsspanish{\let\esperiod\es@period@code}
@@ -427,7 +428,8 @@ pdfproducer = {pdflatex}
 
 \printnoidxglossary[type=\acronymtype, title=Lista de Acrónimos]
 %\addcontentsline{toc}{chapter}{Lista de Acrónimos}
-\input{apendices/manual_de_uso}
+\input{apendices/manual_usuario}
+\input{apendices/manual_tecnico}
 
 \chapter*{}
 \thispagestyle{empty}

@@ -12,7 +12,7 @@ Los resultados de mi análisis fueron los siguientes:
 \label{ls:dataSourceAnalisis}
 \begin{itemize}
 	
-	\item Google Scholar y Research Gate parecen tener bastantes datos en comparación a otras opciones, sin embargo no ofrecen una \acrshort{API} por lo que la extracción de datos solo se podría llevar a cabo mediante \textit{\gls{webscraping}} \glsrefentry{webscraping}. Esto no es un proceso sencillo ya que muchas de estas web contienen mecanismos de detección de bots como los CAPTCHAs \cite{scrapping_GS} y además es un método muy sensible al cambio: en caso de que produzca alguna modificación en la web en cuestión es probable que toque reescribir el método de extracción de datos.
+	\item Google Scholar y Research Gate parecen tener bastantes datos en comparación a otras opciones, sin embargo no ofrecen una \acrshort{API} por lo que la extracción de datos solo se podría llevar a cabo mediante \textit{\gls{webscraping}} \glsrefentry{webscraping}. Esto no es un proceso sencillo, ya que muchas de estas web contienen mecanismos de detección de bots como los CAPTCHAs \cite{scrapping_GS} y además es un método muy sensible al cambio: en caso de que produzca alguna modificación en la web en cuestión es probable que toque reescribir el método de extracción de datos.
 	\item \acrshort{WoS} y Scopus sí disponen de una \acrshort{API}, tras realizar algunas pruebas y leer opiniones sobre ambas me decanté por utilizar Scopus como fuente de datos ya que su \acrshort{API} me resultó más cómoda de utilizar y encontré datos fácilmente de algunos autores de la \acrshort{ETSIIT} (cosa que me costó bastante más en \acrshort{WoS}).
 \end{itemize}
 
@@ -29,12 +29,12 @@ En las siguientes secciones se describen brevemente ambas entidades.
 \label{subsc:author}
 Esta entidad es resultado de la combinación de la información disponible en el Ranking UGRinvestiga \cite{Ranking_UGRInvestiga} y en Scopus, por eso podemos ver en el siguiente diagrama con el prefijo \texttt{ugr} las medidas de dicho ranking y con el de \texttt{scopus} los de la plataforma homónima. 
 
-Respecto a los atributos que finalizan en \texttt{5} estos hacen referencia a los valores de dichas medidas de los últimos cinco años mientras que este sufijo no aparece las medidas son totales.
+Respecto a los atributos que finalizan en \texttt{5} estos hacen referencia a los valores de dichas medidas de los últimos cinco años.
 
 \begin{figure}[ht]
 	
 	\centering
-	\includegraphics[width=0.4\linewidth]{imagenes/Author}
+	\includegraphics[width=0.5\linewidth]{imagenes/Author}
 	\caption{Clase \textit{Author}}
 \end{figure}
 
@@ -51,7 +51,7 @@ La entidad \textit{Abstract} corresponde casi directamente con los datos obtenid
 \begin{figure}[h]
 	
 	\centering
-	\includegraphics[width=0.4\linewidth]{imagenes/Abstract}
+	\includegraphics[width=0.5\linewidth]{imagenes/Abstract}
 	\caption{Clase \textit{Abstract}}
 \end{figure}
 

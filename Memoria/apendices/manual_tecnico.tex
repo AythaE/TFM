@@ -1,10 +1,12 @@
-\chapter{Manual técnico de uso}
+\chapter{Manual técnico}
 
 \section{Descripción de la arquitectura}
-El sistema desarrollado a lo largo de este proyecto se ha servido de \textit{Docker} como forma de gestionar la infraestructura de los diversos nodos que lo conforman. La arquitectura final del sistema como se recoge en la figura \ref{fig:finalArchitecture} se constituye de 4 nodos o contenedores \textit{Docker} concretamente.
+El sistema desarrollado a lo largo de este proyecto se ha servido de \textit{Docker} como forma de gestionar la infraestructura de los diversos nodos que lo conforman. La arquitectura final del sistema como se recoge en la figura \ref{fig:finalArchitecture} se constituye de 5 nodos o contenedores \textit{Docker} concretamente.
 
 \begin{itemize}
-	\item \textit{\textbf{app}}: contenedor que contiene una imagen con un servidor \textit{Nginx} encargado de servir el \gls{frontend} \textit{React} y el cual se comunica con servidor de aplicación \textit{uWSGI} mediante un \textit{socket UNIX}. Dicho servidor de aplicación sirve la aplicación \textit{Flask} que constituye el \gls{backend} del sistema.
+	\item \textit{\textbf{frontend}}: contenedor que contiene una imagen con un servidor \textit{Nginx} encargado de servir el \gls{frontend} \textit{React} y el cual se comunica con servidor de \gls{backend}. 
+	
+	\item \textit{\textbf{backend}}: contenedor que sirve la aplicación \textit{Flask} que constituye el \gls{backend} del sistema.
 	\item \textit{\textbf{elasticsearch}}: contenedor en el cual se encuentra alojada una imagen de \acrlong{ES} en su versión \textit{Open Source} siguiendo las instrucciones oficiales \cite{ES_docker}.
 	\item \textit{\textbf{mongodb}}: contenedor con la imagen de \textit{MongoDB} utilizada
 	\item \textit{\textbf{cerebro}}: contenedor con el servicio de monitorización de \acrshort{ES} \textit{Cerebro}. Este contenedor no es necesario para el funcionamiento del sistema pero ha resultado muy útil durante el desarrollo para gestionar el contenedor de \acrshort{ES}
@@ -50,9 +52,9 @@ Con todo esto ya estamos listos para desplegar la aplicación. Para ello basta c
 $ docker-compose -f "docker-compose.yml" up --build
 \end{lstlisting}
 
-Una vez finalice la construcción del contenedor \textbf{\textit{app}} se mostrarán unos mensajes indicando que todos los contenedores han arrancado correctamente, tras esto podremos acceder a \url{http://localhost} donde se encontrará desplegada la aplicación.
+Una vez finalice la construcción de los contenedores se mostrarán unos mensajes indicando que todos los contenedores han arrancado correctamente, tras esto podremos acceder a \url{http://localhost} donde se encontrará desplegada la aplicación.
 
-En caso de algún problema en el despliegue esto seguramente se deba a los puertos disponibles, el sistema utiliza los puertos 80 (acceso \acrshort{HTTP} \gls{frontend}), 27017 (\textit{MongoDB}), 9000 (\textit{Cerebro}), 9200 y 9300 (\acrlong{ES}). Por lo que si alguno de esos puertos se encuentra en uso el despliegue fallará. Dicho mapeo de puertos se puede cambiar fácilmente modificando los \texttt{ports} en el fichero \texttt{docker-compose.yml}.
+En caso de algún problema en el despliegue esto seguramente se deba a los puertos disponibles, el sistema utiliza los puertos 80 (acceso \acrshort{HTTP} \gls{frontend}), 5000 (\gls{backend}), 27017 (\textit{MongoDB}), 9000 (\textit{Cerebro}), 9200 y 9300 (\acrlong{ES}). Por lo que si alguno de esos puertos se encuentra en uso el despliegue fallará. Dicho mapeo de puertos se puede cambiar fácilmente modificando los \texttt{ports} en el fichero \texttt{docker-compose.yml}.
 
 
 Para parar la aplicación basta con aplicar un \texttt{Ctrl\^\ C} sobre la consola donde se esté ejecutando el comando de despliegue.

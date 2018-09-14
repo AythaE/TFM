@@ -1,5 +1,5 @@
 \chapter{Desarrollo}
-En este capítulo se detallara el proceso de desarrollo seguido, dividido en \textit{sprints} como ya se ha comentado en la sección \nameref{sc:metodologia}, así como un apartado inicial sobre las herramientas software empleadas y uno final con las modificaciones que ha sufrido la arquitectura planteada a lo largo del proceso de desarrollo.
+En este capítulo se detallará el proceso de desarrollo seguido, dividido en \textit{sprints} como ya se ha comentado en la sección \nameref{sc:metodologia}, así como un apartado inicial sobre las herramientas software empleadas y uno final con las modificaciones que ha sufrido la arquitectura planteada a lo largo del proceso de desarrollo.
 
 \section{Herramientas software empleadas}
 \label{ch:herramientas}
@@ -109,23 +109,20 @@ En esta sección describiré las herramientas software utilizadas a lo largo de 
 	\item \textit{\textbf{Nginx}}: Servidor web que recibe las peticiones del navegador, es encargado de servir los ficheros estáticos del \gls{frontend} y derivar las peticiones al \gls{backend}.
 	
 	\url{https://www.nginx.com/}
-	
-	\item \textbf{\textit{uWSGI}}: Servidor de aplicaciones \textit{Python} encargado de ejecutar el \gls{backend} \textit{Flask} comunicándose con \textit{Nginx}.
-	
-	\url{https://uwsgi-docs.readthedocs.io/en/latest/}
+
 \end{itemize}
 
 \section{\textit{Sprint} 1}
 Este primer \textit{sprint} tiene como objetivo general la investigación básica sobre la \acrshort{RI}. Sus objetivos concretos son: 
 
 \begin{itemize}
-	\item Leer el libro \acrlong{RI}: un enfoque práctico y multidisciplinar \cite{RIspaBook}.
+	\item Leer el libro \textit{"\acrlong{RI}: un enfoque práctico y multidisciplinar"} \cite{RIspaBook}.
 	\item Buscar los talleres \acrshort{BIR} centrándose en sus editoriales para realizar un listado priorizado por interés de los diversos artículos.
 \end{itemize}
 
 Siguiendo la recomendación de mi tutor (co-autor del libro) me centré en los capítulos \textit{"1 Introducción a la recuperación de información"}, \textit{"2 Indexación de documentos y procesado de consultas"}, \textit{"3 Modelos de recuperación de información clásicos"} y \textit{"10 Técnicas de modificación de la consulta"}. 
 
-Esta lectura me hizo adquirir unas bases más teóricas a lo que ya había estudiado en la asignatura del máster \acrlong{GIW} donde obtuvimos una nociones básicas de lo que supone la \acrshort{RI} y sus vertientes, realizando alguna práctica.
+Esta lectura me hizo adquirir unas bases más teóricas a lo que ya había estudiado en la asignatura del máster \acrlong{GIW}, donde obtuvimos una nociones básicas de lo que supone la \acrshort{RI} y sus vertientes, realizando alguna práctica.
 
 Los artículos de los talleres \acrlong{BIR} que encontré más destacados están detallados en el apartado \nameref{subsc:trabajosRelacionados}. Dichos trabajos se encuentran disponibles gratuitamente en \url{http://ceur-ws.org/} bajo el amparo de la Universidad Técnica de Aquisgrán (\textit{RWTH Aachen University}) en Alemania.
 
@@ -148,7 +145,7 @@ Para el segundo \textit{sprint} plantee el indagar en la \acrshort{RI} e ir intr
 	\item Buscar información sobre medidas bibliométricas (Citas, índice h combinado...)
 \end{itemize}
 
-A partir de la lista priorizada fui leyendo los primeros artículos, el orden de esta lista lo fui alterando ya que con frecuencia al indagar en el trabajo este perdía o incrementaba su interés. Con el objetivo de poder aprovechar más estas lecturas fui creando una especie de resúmenes en los que anotaba los puntos más importantes que se trataban en el artículo, otros artículos relacionados de los que se hablaba o los resultados obtenidos con su trabajo. En la siguiente imagen se puede apreciar uno de estos "resúmenes":
+A partir de la lista priorizada fui leyendo los primeros artículos, el orden de esta lista lo fui alterando, ya que con frecuencia, al indagar en el trabajo este perdía o incrementaba su interés. Con el objetivo de poder aprovechar más estas lecturas fui creando una especie de resúmenes en los que anotaba los puntos más importantes que se trataban en el artículo, otros artículos relacionados de los que se hablaba o los resultados obtenidos con su trabajo. En la siguiente imagen se puede apreciar uno de estos ''resúmenes'':
 
 \begin{figure}[h!]
 	
@@ -157,6 +154,7 @@ A partir de la lista priorizada fui leyendo los primeros artículos, el orden de
 	\caption{Ejemplo de resumen de uno de los papers}
 \end{figure}
 
+\newpage
 En este momento me empecé a introducir en el mundo de las medidas bibliométricas, ya que no tenía conocimiento previo alguno de que existiera esta disciplina siquiera, mediante la lectura de artículos iba descubriendo distintas medidas así como sus posibles aplicaciones a la \acrshort{RI} cuyo resultado final se encuentra sintetizado en la sección \nameref{sc:bibliometria}.
 
 \section{\textit{Sprint} 3}
@@ -169,7 +167,7 @@ Ya en este punto decidí que estaba listo para ir documentando todo lo que habí
 
 Para asimilar y reflexionar sobre todo lo que había leído me puse a escribir el capítulo Contexto e Introducción de este trabajo ya que ello me ayudaría a pensar un enfoque correcto. También quería poder mostrar algo a mi tutor para obtener algo de \textit{feedback} por su parte.
 
-Continué leyendo algunos trabajos más con lo que di por concluido mi proceso de investigación. Uno de esos últimos trabajos fue \cite{DBLP:conf/ecir/SarolLS18} el cual me gustó especialmente ya que pasaban de un modelo teórico a algo más práctico, accediendo a la \acrshort{API} de Scopus e incluyendo ejemplos de su implementación en un repositorio de \textit{GitHub}, lo que me llevó a plantear mi modelo híbrido combinando el sistema habitual de un sistema \acrshort{RI} con reordenamiento de resultados \textit{a priori} usando medidas bibliométricas y un ordenamiento \textit{a posteriori} utilizando un grafo de citación entre los documentos.
+Continué leyendo algunos trabajos más con lo que di por concluido mi proceso de investigación. Uno de esos últimos trabajos fue \cite{DBLP:conf/ecir/SarolLS18}, el cual me gustó especialmente ya que pasaban de un modelo teórico a algo más práctico, accediendo a la \acrshort{API} de Scopus e incluyendo ejemplos de su implementación en un repositorio de \textit{GitHub}, lo que me llevó a plantear mi modelo híbrido combinando el sistema habitual de un sistema \acrshort{RI} con reordenamiento de resultados \textit{a priori} usando medidas bibliométricas y un ordenamiento \textit{a posteriori} utilizando un grafo de citación entre los documentos.
 
 Desgraciadamente estos enfoques dependen ampliamente de la cobertura de medidas bibliométricas disponibles. Por ejemplo, me hubiera encantado poder probar una reordenación previa utilizando alguna \textit{altmetric} como el número de lecturas o descargas de un artículo, pero la plataforma que he utilizado para extraer los artículos no dispone de dichas medidas.
 
@@ -267,7 +265,7 @@ Donde $f\_name$ y $l\_name$ hacen referencia a nombre y apellidos respectivament
 Con este algoritmo he logrado encontrar algún resultado en Scopus para \textbf{202 de los 214} autores buscados (\textbf{$\sim$ 94.39 \% de los autores}), a pesar de esto el número total de autores recuperados son 397, por lo que habrá que realizar una limpieza de los mismos.
 
 \subsubsection{Limpieza de datos de autores}
-Si observamos la distribución de \textbf{nacionalidades de los autores} recuperados, la cual se ve en la siguiente imagen se aprecia que hay una mayoría abrumadora de Españoles (como cabría esperar) pero también algunas nacionalidades inesperadas como palestina o australiana. Por ello consideraré que todo autor cuya nacionalidad no sea española debe haber sido recuperado incorrectamente y será eliminado al tratarse de ruido, haciendo esto pasamos de 397 autores de Scopus representando a 202 autores de la \acrshort{UGR} a un total de 381 autores de Scopus representando a \textbf{198 autores de la \acrshort{UGR} ($\sim$ 98.02 \% de los 202 previos)}.
+Si observamos la distribución de \textbf{nacionalidades de los autores} recuperados, la cual se ve en la siguiente imagen, se aprecia que hay una mayoría abrumadora de Españoles (como cabría esperar) pero también algunas nacionalidades inesperadas como palestina o australiana. Por ello consideraré que todo autor cuya nacionalidad no sea española debe haber sido recuperado incorrectamente y será eliminado al tratarse de ruido, haciendo esto pasamos de 397 autores de Scopus representando a 202 autores de la \acrshort{UGR} a un total de 381 autores de Scopus representando a \textbf{198 autores de la \acrshort{UGR} ($\sim$ 98.02 \% de los 202 previos)}.
 
 \begin{figure}[h!]
 	
@@ -336,7 +334,7 @@ Una vez tenía los datos preparados en este sprint me marqué como objetivo crea
 \subsection{Indexación de los datos}
 Tras analizar un par de alternativas como motores de búsqueda (ver \nameref{sc:sprint4}) me decanté por utilizar \acrshort{ES}. Tras seguir un breve tutorial me pareció muy manual el proceso de introducir datos por lo que busqué alguna forma de hacerlo programáticamente. En mi búsqueda di con el tutorial \cite{indexingES}, que utilizaba el cliente oficial de \acrshort{ES} en \textit{Python} \texttt{elasticsearch-py} \cite{ES_client}. Usando dicho tutorial como base y realizando un mapeo del índice \footnote[4]{Forzar los datos y tipos de estos en un índice, no es necesario ya que \acrshort{ES} es capaz de gestionarlo dinámicamente, pero con ello se consigue aplicar estrategias de búsquedas específicas para los tipos de datos y hace que no se pueda introducir un documento distinto por error.}\cite{mappingES} creé los índices \textit{author} y \textit{abstract}.
 
-No todos los datos de dichas entidades han sido indexadas, ya que hay algunas que no aportaría nada a la búsqueda; es más solo la entorpecería al ocupar un espacio innecesario en el índice. Por ejemplo, los identificadores o \acrshort{URL}s no aportan nada.
+No todos los datos de dichas entidades han sido indexados, ya que hay algunas que no aportarían nada a la búsqueda; es más solo la entorpecerían al ocupar un espacio innecesario en el índice. Por ejemplo, los identificadores o \acrshort{URL}s no aportan nada.
 
 El índice \textit{author} está constituido por los campos útiles para la búsqueda de contenido (de tipo \textit{text}) y los campos de medidas bibliométricas para poder ordenar o aplicarlos en la búsqueda bibliométrica. En la siguiente tabla se recoge los campos concretos de la clase \texttt{Author} que forman parte del índice homónimo:
 
@@ -398,7 +396,7 @@ Por todo ello decidí utilizar \textit{Searchkit}. En la siguiente imagen se pue
 	\caption{Aspecto demo \textit{Searchkit}}
 \end{figure}
 
-Para mi aplicación seguiré este esquema a excepción de la zona de filtros amarilla ya que el pretendo que el la búsqueda sea lo más simple posible.
+Para mi aplicación seguiré este esquema a excepción de la zona de filtros amarilla ya que el pretendo que la búsqueda sea lo más simple posible.
 
 Habilitar la conexión entre \acrshort{ES} y \textit{Searchkit} es realmente sencillo, basta con instanciar un objeto \texttt{SearchkitManager} y pasarlo como argumento al componente \textit{React} \texttt{SearchkitProvider} que englobe todos los componentes de \textit{Searchkit} como si se tratara de un contexto. En el siguiente bloque de código se puede contemplar como se realiza la conexión con el índice de \textit{author} de \acrshort{ES}.
 
@@ -449,7 +447,7 @@ Por otro lado la vista del buscador de \textit{abstracts} es algo diferente ya q
 
 \newpage
 
-Como cabe esperar también se dispone de una vista detallada de cada artículo, donde se muestran datos más detallados, el\textit{abstract} o en enlace del mismo en Scopus.
+Como cabe esperar también se dispone de una vista detallada de cada artículo, donde se muestran datos más detallados, el \textit{abstract} o en enlace del mismo en Scopus.
 \begin{figure}[h]
 	
 	\centering
@@ -476,7 +474,7 @@ Todo esto hace que esta puntuación sea muy dependiente de la consulta y no teng
 
 Por suerte en \acrshort{ES} esta contemplada la posibilidad de modificar esta puntuación de manera interna usando lo que se conoce como \textit{Function Score Query} \cite{ES_func_score}, simplemente en la propia consulta se determina como se quiere modificar dicha puntuación. Dispone de bastante flexibilidad, permite reemplazarla por completo, combinarla mediante una suma, media o multiplicación con otras medidas como, por ejemplo, una función sobre un campo del documento (como puede ser las citas) o cualquier función calculable con un \textit{script}. 
 
-Esta fue mi primera opción con la que estuve probando logrando realizar combinaciones. Logré probar algunos ejemplos prometedores pero no tenía claro como combinar ya que por ejemplo la puntuaciones que \acrshort{ES} asignaba en mis pruebas a los documentos solían ser pequeñas (menores que 10) y aplicarle alguna modificación con el campo de las citas (que llega a superar las centenas) hacía que prácticamente diera igual la consulta, los resultados siempre eran un listado ordenado por citas ya que su peso era mucho mayor que todo el mecanismo de puntuación interno de \acrshort{ES}. Por ello me puse a buscar como normalizar las puntuaciones internas entre 0 y 1 para aplicar yo también una normalización a las citas y poder combinar ambas medidas con igual peso cada una. Tras navegar por varia preguntas en \textit{StackOverflow} que aplicaban diversos trucos que no llegaban a funcionar di con una \textit{feature request} en el propio repositorio \textit{GitHub} de \acrshort{ES} \cite{ES_normalize_score} donde los autores afirmaban que no se trataba de una buena idea y simplemente se limitaban a cerrar.
+Esta fue mi primera opción con la que estuve probando logrando realizar combinaciones. Logré probar algunos ejemplos prometedores pero no tenía claro como combinar ya que por ejemplo la puntuaciones que \acrshort{ES} asignaba en mis pruebas a los documentos solían ser pequeñas (menores que 10) y aplicarle alguna modificación con el campo de las citas (que llega a superar las centenas) hacía que prácticamente diera igual la consulta, los resultados siempre eran un listado ordenado por citas ya que su peso era mucho mayor que todo el mecanismo de puntuación interno de \acrshort{ES}. Por ello me puse a buscar como normalizar las puntuaciones internas entre 0 y 1 para aplicar yo también una normalización a las citas y poder combinar ambas medidas con igual peso cada una. Tras navegar por varias preguntas en \textit{StackOverflow} que aplicaban diversos trucos que no llegaban a funcionar di con una \textit{feature request} en el propio repositorio \textit{GitHub} de \acrshort{ES} \cite{ES_normalize_score} donde los autores afirmaban que no se trataba de una buena idea y simplemente se limitaban a cerrar.
 
 Esto hizo que me planteara un enfoque más manual, si no podía combinar a mi gusto las puntuaciones en \acrshort{ES} podría obtener las puntuaciones de los documentos en el \gls{frontend}, normalizar por la máxima puntuación para la consulta y tras esto combinar con mis medidas. 
 
@@ -530,7 +528,7 @@ Probando estas ordenaciones, me percaté de que la búsqueda dinámica según se
 
 Como ya he comentado, para el desarrollo del proyecto, he utilizado contenedores \textit{Docker}, esto permite crear una infraestructura replicable de forma sencilla. Pero tanto el \gls{frontend} como el \gls{backend} disponen de modos de depuración y desarrollo capaces, por ejemplo, de detectar cambios en el código de forma dinámica, recargando los servicios y permitiendo observar rápidamente los cambios. Estas funcionalidades resultan muy útiles durante el proceso de desarrollo, pero añaden una sobrecarga innecesaria para el uso real del sistema. Por ello se recomiendan desactivar las opciones de depuración y desarrollo antes de pasar cualquier sistema a producción. 
 
-Para conseguir ese objetivo creé un nuevo contenedor que producía y minificaba el código del \gls{frontend} para producción. El mismo se encargaba de servir el \gls{backend} utilizando un servidor de aplicación \textit{uWSGI}. Para más detalles sobre la infraestructura final ver el siguiente apartado así como el anexo que explica el proceso de instalación y despliegue del sistema.
+Para conseguir ese objetivo creé un nuevo contenedor que producía y minificaba el código del \gls{frontend} para producción. Dicho contenedor se comunica con el encargado de servir el \gls{backend}. Para más detalles sobre la infraestructura final ver el siguiente apartado así como el anexo que explica el proceso de instalación y despliegue del sistema.
 
 Por último, se finalizaron algunos apartados de esta memoria, como los resúmenes, conclusiones o anexos; así como la aplicación de correcciones por parte del tutor.
 
@@ -544,7 +542,9 @@ La arquitectura final del sistema es la de una aplicación web distribuida, algo
 	
 	\item Un \textbf{servidor de monitorización} del servidor Elastic utilizando el proyecto de software libre Cerebro. Este permite monitorizar en tiempo real diversas medidas del servidor como la carga, espacio utilizado o estado además de múltiples funciones como un cliente REST que permite la consulta a bajo nivel sobre \acrshort{ES} muy utilizado para depuración o durante el desarrollo para hacer pequeñas pruebas.
 	
-	\item Un \textbf{servidor de aplicación} que utiliza \textit{uWSGI}, \textit{Nginx} y \textit{Flask} para montar algunos microservicios auxiliares que permiten recuperar el resto del modelo de datos que no se encuentra indexado así como aportar algunas estructuras de datos precalculadas para facilitar la búsqueda. También es el encargado de servir el código \gls{frontend} al cliente (donde se ejecuta).
+	\item Un \textbf{servidor proxy} que utiliza \textit{Nginx}, es el encargado de servir el código \gls{frontend} al cliente (donde se ejecuta) y redirigir las peticiones al \textit{backend}.
+		
+	\item Un \textbf{servidor de aplicación} que utiliza \textit{Flask} para montar algunos microservicios auxiliares que permiten recuperar el resto del modelo de datos que no se encuentra indexado así como aportar algunas estructuras de datos precalculadas para facilitar la búsqueda. 
 	
 	\item Un \textbf{servidor mongo} que lleva una \acrshort{BD} \textit{MongoDB} la cual contiene la totalidad de los datos de ambas colecciones y sirve como fuente de datos para el servidor de aplicación.
 	
@@ -553,7 +553,7 @@ La arquitectura final del sistema es la de una aplicación web distribuida, algo
 \begin{figure}[ht]
 	
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/achitecture}
+	\includegraphics[width=0.9\linewidth]{imagenes/architecture}
 	\caption{Diagrama de arquitectura final con las principales tecnologías usadas en cada nodo}
 	\label{fig:finalArchitecture}
 \end{figure}

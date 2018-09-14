@@ -234,7 +234,7 @@ TODO:
 - [x] Escribir apartado Desarrollo > Script 8
 - [x] Escribir apartado Conclusiones y Trabajos Futuros
 - [x] Escribir resumen
-- [ ] Escribir resumen inglés
+- [x] Escribir resumen inglés
 - [x] Añadir cuadro resumen ordenaciones
 - [x] Eliminar objetivo evaluación y a trabajos futuros
 - [x] Añadir arquitectura esbozada en diseño y detallada al final del desarrollo
@@ -251,11 +251,11 @@ Descripción de apartados de la memoria del TFM:
 - [x] **Nombre del autor**
 - [x] **Nombre del tutor/tutores**
 - [x] **Índice de los contenidos**
-- [ ] **Resumen**: Se resumirán:
+- [x] **Resumen**: Se resumirán:
     - [x] los objetivos planteados, 
     - [x] la metodología seguida, 
-    - [ ] los resultados alcanzados, y 
-    - [ ] las conclusiones del trabajo
+    - [x] los resultados alcanzados, y 
+    - [x] las conclusiones del trabajo
 - [x] **Introducción**: Debe incluir:
     - [x] Contextualización del trabajo: Temática   y/o   problema   que   se   aborda   (incluyendo   interés   y adecuación a los objetivos del TFM).
 - [x] **Antecedentes**
@@ -275,4 +275,9 @@ Descripción de apartados de la memoria del TFM:
 
 Preguntas:
 - Manual de usuario necesario? solo hay un cuadro de búsqueda, una pestaña para seleccionar entre búsqueda de autores y abstract y un selector de ordenación.
+- Manual de usuario y técnico
 - Solo entregar memoria no?
+- Meter en introducción 
+
+Estructura defensa
+15 minutos de defensa + 5 demostracion 
