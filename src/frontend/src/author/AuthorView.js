@@ -31,9 +31,6 @@ class AuthorView extends React.Component {
                 if(json.success){
                     this.setState({ author: json.data, loaded: true })
                 }
-                else{
-                    //TODO display error message
-                }
             })
         })
     }

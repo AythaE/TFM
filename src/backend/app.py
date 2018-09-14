@@ -4,7 +4,7 @@ from db.mongodb_connection import db_connection
 import json
 from bson import json_util
 
-DEBUG = True
+DEBUG = False
 
 app = Flask(__name__)
 cors = CORS(app)

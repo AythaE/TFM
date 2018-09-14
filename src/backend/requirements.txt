@@ -55,6 +55,7 @@ six==1.11.0
 subprocess32==3.5.2
 traitlets==4.3.2
 urllib3==1.23
+uWSGI==2.0.17.1
 wcwidth==0.1.7
 Werkzeug==0.14.1
 wrapt==1.10.11

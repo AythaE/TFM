@@ -16,16 +16,11 @@ class AuthorSearch extends Component {
     changeSorting = (sorting_field, mode) => {
         if (directSortingFields.indexOf(sorting_field) !== -1)
             this.props.searchkit.setQueryProcessor((plainQueryObject) => {
-                console.log("Before modification")
-                console.log(plainQueryObject)
                 let newSorting = {};
                 newSorting[sorting_field] = mode;
                 let sortingArray = []
                 sortingArray.push(newSorting)
                 plainQueryObject.sort = sortingArray
-                console.log("After modification")
-                console.log(plainQueryObject)
-                //
                 return plainQueryObject
             }
             );
@@ -51,14 +46,9 @@ class AuthorSearch extends Component {
 
                     <ActionBarRow>
                         <HitsStats />
-                        {/* <div style={{ marginRight: "15px" }}>
-                                <label className="sk-hits-stats__info">Results per page: </label>
 
-                                <PageSizeSelector options={[5, 10, 15, 20]} />
-                            </div> */}
                         <div>
                         <FormControl>
-                                    {/* <label className="sk-hits-stats__info">Sorting: </label> */}
                                     <InputLabel htmlFor="sorting">Sorting</InputLabel>
                                     <Select
                                         value={this.state.rerank_method}

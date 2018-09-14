@@ -13,17 +13,19 @@ services:
       default:
         aliases:
           - backend
- 
-  app:
-    container_name: app
-    build: ./src
+          
+  frontend:
+    container_name: frontend
+    build: ./src/frontend
     restart: always
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
     ports: 
       - 80:80
     networks:
       default:
         aliases:
-          - app
+          - frontend
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0
     container_name: elasticsearch

@@ -34,7 +34,6 @@ class AbstractDialog extends Component {
     }
 
     getData() {
-        // TODO call back for references lookup
         if (!this.state.fullLoaded) {
             fetch(ABSTRACT_SERVICE_URL + this.props.scopusId).then(response => {
                 response.json().then(json => {
@@ -42,9 +41,6 @@ class AbstractDialog extends Component {
                         this.formatFields(json.data);
 
                         this.setState({ abstract: json.data, fullLoaded: true })
-                    }
-                    else {
-                        //TODO display error message
                     }
                 })
             })
@@ -90,7 +86,6 @@ class AbstractDialog extends Component {
                         <DialogContentText component="div">
                             <h3>Info</h3>
                             <ul style={{ listStyleType: "none" }}>
-                                {/* TODO make the authors clickable and search for all them abstracts or go to the page in author search */}
                                 {this.state.abstract.authors && <li><b>Authors:</b> {this.authors}</li>}
                                 {this.state.abstract.publication_name && <li><b>Publication name:</b> {this.state.abstract.publication_name}</li>}
                                 {this.state.abstract.date && <li><b>Publication date:</b> {this.date}</li>}
@@ -135,9 +130,7 @@ class AbstractDialog extends Component {
 
                                                     return (
                                                         <li key={`${this.scopus_id}-refs-${index}`}>
-                                                            {/* TODO make the title clickable */}
                                                             <div className='ref-div'>
-                                                                {/* <b>{this.props.referencesLookup[ref_id].title}</b><br/> */}
                                                                 <AbstractDialog referencesLookup={this.props.referencesLookup} scopusId={ref_id} title={this.props.referencesLookup[ref_id].title} />
                                                                 {formatCommaList(this.props.referencesLookup[ref_id].authors)}<br />
                                                                 {formatDate(this.props.referencesLookup[ref_id].date.$date)}

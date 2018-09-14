@@ -13,29 +13,6 @@ import AbstractSearch from './abstract/AbstractSearch';
 const authorSearchkit = new SearchkitManager("http://localhost:9200/author");
 const abstractSearchkit = new SearchkitManager("http://localhost:9200/abstract");
 
-// abstractSearchkit.setQueryProcessor((plainQueryObject) => {
-//   console.log("Before modification")
-//   console.log(JSON.stringify(plainQueryObject))
-
-//   if ('query' in plainQueryObject) {
-//     const originalQuery = Object.assign({}, plainQueryObject.query)
-
-//     plainQueryObject.query = {
-//       "function_score": {
-//         "query": originalQuery,
-//         "field_value_factor": {
-//           "field": "cites",
-//           "missing": 0
-//         },
-//         "boost_mode": "sum"
-//       }
-//     }
-
-//     console.log("After modification")
-//     console.log(JSON.stringify(plainQueryObject))
-//     return plainQueryObject
-//   }
-// });
 // First search to initialize properly
 abstractSearchkit._search();
 authorSearchkit._search();
@@ -87,9 +64,7 @@ class App extends Component {
               <SearchBox
                 ref={this.abstractSearchBox}
                 autofocus={true}
-                // searchOnChange={true}
                 prefixQueryFields={["abstract^1", "title^5", "keywords^10", "subject_areas^5", "authors^5"]}
-                // searchThrottleTime={500} 
                 />
             }
 
@@ -101,7 +76,6 @@ class App extends Component {
                 <Tab label="Author search" />
                 <Tab label="Abstract search" />
               </Tabs>
-              {/* <Button variant='fab' color="primary" classes={{fab: "fab"}} aria-label="Scroll to top"> <UpIcon /></Button> */}
 
               {this.state.selectedTab === authorTab && <AuthorSearch searchkit={authorSearchkit}/>}
               {this.state.selectedTab === abstractTab && <AbstractSearch searchkit={abstractSearchkit} searchbox={this.abstractSearchBox}/>}
