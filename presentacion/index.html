@@ -1,49 +1,119 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<title>Desarrollo de un prototipo de motor de búsqueda que incorpore técnicas bibliométricas para mejorar la
+		recuperación</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/white.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-state="no-toc-progress" data-menu-title="Portada">
+				<div style="display: flex; justify-content: space-between;">
+					<img src="images/logo_ugr.jpg" style="width: 200px; height: auto;border: 0;" />
+					<img src="images/etsiit_logo.png" style="width: 200px; height: auto;display: block; border: 0;" />
+				</div>
+				<h2 class="no-toc-progress">Trabajo de Fin de Máster</h2>
+				<h4>Desarrollo de un prototipo de motor de búsqueda que incorpore técnicas bibliométricas para mejorar la
+					recuperación</h4>
+				<small>Máster Universitario en Ingeniería Informática</small>
+
+				<hr />
+
+				<p>Autor: Aythami Estévez Olivas</p>
+				<p>Tutor: Juan Manuel Fernández Luna</p>
+
+			</section>
+			<section data-state="no-toc-progress">
+				<h2 class="no-toc-progress">Índice</h2>
+				<ul>
+					<li>Objetivos</li>
+					<li>Planificación</li>
+					<li>Contexto</li>
+					<li>Análisis</li>
+					<li>Diseño</li>
+					<li>Desarrollo</li>
+					<li>Conclusiones y trabajos futuros </li>
+				</ul>
+			</section>
+			<section>
+				<section>
+					<h2>Objetivos</h2>
+				</section>
+				<section>
+					<h3>Objetivo Principal</h3>
+					<p>Desarrollar un sistema de recuperación de información que incorpore medidas bibliométricas para mejorar la
+						recuperación clásica</p>
+				</section>
+				<section>
+					<h3>Otros Objetivos</h3>
+					<ul>
+						<li>Descomponer el sistema RI: búsqueda autores y artículos</li>
+						<li>Desarrollar sistema usable</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<h2>Planificación</h2>
+			</section>
+			<section>
+				<h2>Contexto</h2>
+			</section>
+			<section>
+				<h2>Análisis</h2>
+			</section>
+			<section>
+				<h2>Diseño</h2>
+			</section>
+			<section>
+				<h2>Desarrollo</h2>
+			</section>
+			<section>
+				<h2>Conclusiones y trabajos futuros</h2>
+			</section>
 		</div>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			transition: 'fade',
+			slideNumber: true,
+			history: true,
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function () { toc_progress.initialize(); toc_progress.create(); } },
+				{ src: 'plugin/menu/menu.js' }
+			]
+		});
+	</script>
+</body>
+
 </html>
